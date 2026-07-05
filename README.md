@@ -1,15 +1,22 @@
 # Basil documentation site
 
-The source for the Basil documentation site, built with [Zola](https://www.getzola.org/)
-and a tweaked copy of the [EasyDocs](https://github.com/codeandmedia/zola_easydocs_theme)
-theme (vendored under `themes/easydocs/`, MIT-licensed).
+See the live site at **[docs.openbasil.org](https://docs.openbasil.org)**
+
+|                      |                                                                 |
+| -------------------- | --------------------------------------------------------------- |
+| Live docs            | [docs.openbasil.org](https://docs.openbasil.org)                |
+| Basil (the code)     | https://github.com/openbasil/basil                              |
+| Documentation source | https://github.com/openbasil/basil-doc                          |
+| Built with           | [Zola](https://www.getzola.org/)                                |
+| Theme based on       | [EasyDocs](https://github.com/codeandmedia/zola_easydocs_theme) |
+| License              | Apache 2.0                                                      |
 
 ## Build & preview
 
 Requires `zola` on your `PATH`. Common tasks are wrapped in the `justfile`:
 
 ```sh
-just serve     # live-reload preview at http://127.0.0.1:21000
+just serve      # live-reload preview at http://127.0.0.1:21000
 just build      # render the static site into ./public
 just check      # check internal links
 just clean      # remove ./public
@@ -36,30 +43,3 @@ static/                     logo, favicon, images
 templates/shortcodes/       callout shortcodes: note / tip / best / caution / danger
 themes/easydocs/            vendored theme (Basil-branded palette + callout CSS)
 ```
-
-## Authoring conventions
-
-- **Sections** are folders with an `_index.md` carrying `title`, `weight` (nav order),
-  and `sort_by = "weight"`. **Pages** carry `title` and `weight`.
-- **Callouts** use shortcodes whose body is markdown. Keep fenced code blocks *outside* them:
-
-  ```
-  {% note() %}
-  A clarifying detail.
-  {% end %}
-
-  {% caution(title="Custom heading") %}
-  Something easy to get wrong.
-  {% end %}
-  ```
-
-  Available: `note`, `tip`, `best`, `caution`, `danger`.
-- **Status pills** are inline HTML: `<span class="pill impl">implemented</span>` and
-  `<span class="pill gap">roadmap</span>`.
-- **Cross-links** use absolute site paths with a trailing slash, e.g. `[the policy](/configuration/policy/)`.
-
-## Source of truth
-
-Much of this content is derived from the Basil repo: `README.md`, `Features.md`, and the
-operator runbook (`docs/runbooks/operations.html`). When the code or those docs change, update
-the corresponding pages here.
