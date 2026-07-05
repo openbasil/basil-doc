@@ -17,7 +17,7 @@ unlock, so scope and monitor it with the same care as the bundle itself.
 On a host with a TPM 2.0, a TPM-sealed unlock slot removes the external fetcher entirely: the slot key
 is sealed to the host's PCRs and unsealed at boot, so no operator secret or upstream store sits on the
 unlock path. It is feature-gated behind the off-by-default `unlock-tpm` build. Create the slot with
-`basil bundle create --slot tpm:pcrs=0,2,4,7`, scaffold config with `basil config init --unlock tpm`,
+`basil bundle create --slot tpm:pcrs=0,2,4,7`, scaffold config with `basil init --unlock tpm`,
 and set `[unlock] unlock-tpm = true`. The passphrase-fetch pattern below suits hosts without a usable
 TPM.
 {% end %}

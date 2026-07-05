@@ -14,8 +14,7 @@ Daemon/offline commands operate on config files and don't need a running broker.
 | Command | Purpose |
 | --- | --- |
 | `basil agent -c <toml>` | Run the broker daemon from a TOML startup config. See [Configuration overview](/configuration/overview/). |
-| `basil config init --backend … --unlock … --dir …` | Scaffold a least-privilege starter catalog + policy + config. |
-| `basil config check -c <toml>` (`--require`) | Validate catalog + policy, enforce capability requirements, probe the backend for declared keys. `--require` exits non-zero on an absent required key. |
+| `basil init --backend … --unlock … --dir … [--socket …]` | Scaffold a least-privilege starter catalog + policy + config. Generated `socket` follows `--socket` > `BASIL_SOCKET` > `<dir>/basil.sock`. |
 | `basil bundle create <bundle> --slot …` | Create a sealed bundle with `--slot`/`--backend`. `--deposit-key <OUT>` adds a public deposit recipient; `--from <FILE>` loads a `[[slot]]`/`[[backend]]` TOML manifest. |
 | `basil bundle add-slot <bundle> --slot … --open …` | Add an unlock slot to an existing bundle. |
 | `basil bundle set-backend <bundle> --backend … --open …` | Replace one backend credential in the sealed payload. |
@@ -24,8 +23,8 @@ Daemon/offline commands operate on config files and don't need a running broker.
 | `basil bundle promote <bundle> [--dry-run] [--backend …] [--contributor …] --open …` | Review or fold authorized deposits into the sealed payload. |
 | `basil bundle deposit-key <bundle> --out … --open …` | Export or create the bundle's public deposit recipient. |
 | `basil bundle verify <bundle> --open …` / `show <bundle> [--open …]` | Verify unlock or inspect non-secret bundle metadata. |
-| `basil config explain --catalog … --policy … --subject … (--op … --key … \| --effective) [--json]` | Offline policy dry-run; `--effective` previews every grant. See [Policy explain](/operations/policy-explain/). |
-| `basil doctor -c <toml> [--json] [--check-keys]` | Preflight environment diagnostics. See [Doctor](/operations/doctor/). |
+| `basil explain --subject … (--op … --key … \| --effective) [--catalog … --policy …] [--live] [--json]` | Policy dry-run; offline against the files by default, `--live` against the running broker. `--effective` previews every grant (offline-only). See [Policy explain](/operations/policy-explain/). |
+| `basil doctor -c <toml> [--json] [--keys] [--strict]` | Preflight diagnostics: validate catalog + policy, enforce capability + invocation bindings; `--keys` adds the authenticated per-key probe; `--strict` fails on warnings. See [Doctor](/operations/doctor/). |
 
 ## Status & probes
 
@@ -111,7 +110,7 @@ These require dedicated policy grants. They are not implied by data-plane grants
 | Command | Purpose | Grant |
 | --- | --- | --- |
 | `reload [--check] [--json]` | Validate + atomically swap catalog/policy from disk. `--check` is a dry-run. | `op:reload` over `broker.reload`. See [Hot reload](/operations/hot-reload/). |
-| `explain --subject … --op … --key … [--json]` | Live "would this be allowed, and why?" against the serving generation. | `op:explain` over `broker.explain`. See [Policy explain](/operations/policy-explain/). |
+| `explain --live --subject … --op … --key … [--json]` | Live "would this be allowed, and why?" against the serving generation (`--live`; the default offline mode needs no grant). | `op:explain` over `broker.explain`. See [Policy explain](/operations/policy-explain/). |
 | `revoke --trust-domain … --jti … --expires-at-unix … [--json]` | Persist and publish a JWT-SVID revocation. | `op:revoke` over `broker.revoke`. See [Revocation](/operations/revocation/). |
 
 ## Where to go next

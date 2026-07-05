@@ -25,7 +25,7 @@ below lists the minimum permissions required for each operation.
 
 | Basil operation | Cloud KMS RPC | IAM permission it needs |
 | --- | --- | --- |
-| Startup reconcile / `config check` existence probe | `GetCryptoKey` | `cloudkms.cryptoKeys.get` |
+| Startup reconcile / `doctor --keys` existence probe | `GetCryptoKey` | `cloudkms.cryptoKeys.get` |
 | Sign (`ES256`/`ES384`, `Ed25519`) | `AsymmetricSign` | `cloudkms.cryptoKeyVersions.useToSign` |
 | Get public key (and JWKS) | `GetPublicKey` | `cloudkms.cryptoKeyVersions.viewPublicKey` |
 | Verify a signature | none (done locally) | `cloudkms.cryptoKeyVersions.viewPublicKey` |
@@ -297,15 +297,16 @@ allow-list and signature. The `type=gcp-kms` field syntax is identical. See the 
 
 ## Verify the wiring
 
-Confirm the catalog and backend agree before you depend on them. `basil config check` parses the
+Confirm the catalog and backend agree before you depend on them. `basil doctor --keys` parses the
 catalog and policy, enforces that each backend provides what the catalog requires, and read-only probes
-the backend for declared keys. Add `--require` to exit non-zero when a `missing=error` key is absent,
-so a broken deploy fails the pipeline instead of surfacing under traffic:
+the backend for declared keys. A `missing=error` key that is absent is fatal and exits non-zero on its
+own, so a broken deploy fails the pipeline instead of surfacing under traffic (add `--strict` to also
+fail on warnings):
 
 ```sh
-basil config check --catalog /etc/basil/catalog.json \
+basil doctor --keys --catalog /etc/basil/catalog.json \
   --policy /etc/basil/policy.json \
-  --bundle /var/lib/basil/bundle.sealed --require
+  --bundle /var/lib/basil/bundle.sealed
 ```
 
 `basil doctor` runs broader preflight environment and deployment checks, and once the agent is running,
@@ -313,7 +314,7 @@ basil config check --catalog /etc/basil/catalog.json \
 exit code your orchestrator can gate on.
 
 {% caution(title="The live probe needs working credentials and network") %}
-The key-existence probe in `config check` and the readiness reachability check call Cloud KMS
+The key-existence probe in `doctor --keys` and the readiness reachability check call Cloud KMS
 (`GetCryptoKey` for the base key, and `GetPublicKey` when Basil needs the public half), so they need
 resolvable ADC or a sealed key file and outbound network to `cloudkms.googleapis.com`. A probe
 failure there points at credentials, IAM, or connectivity, not at a catalog mistake.
@@ -322,7 +323,7 @@ failure there points at credentials, IAM, or connectivity, not at a catalog mist
 {% caution(title="Doctor does not prove the Cloud KMS IAM path") %}
 `basil doctor` catches feature and configuration mismatches, but it does not unlock the broker or run
 startup reconcile against Cloud KMS. A green `doctor` does not prove that `cloudkms.cryptoKeys.get`
-is present; a missing grant surfaces when `config check`, `ready`, or the broker startup reconcile
+is present; a missing grant surfaces when `doctor --keys`, `ready`, or the broker startup reconcile
 performs the live key-existence probe.
 {% end %}
 
@@ -352,7 +353,7 @@ As of this writing, Basil's CI has no live Google Cloud KMS lane. The offline un
 resource-name construction (key-ring, crypto-key, and version paths); the sign, verify, encrypt,
 decrypt, and provisioning calls themselves require live Cloud KMS credentials and are not run in CI.
 Treat the end-to-end flow as validated by construction and design, and verify it against your own
-project with `basil config check` before you rely on it.
+project with `basil doctor --keys` before you rely on it.
 {% end %}
 
 ## Where to go next

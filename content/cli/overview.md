@@ -24,11 +24,10 @@ that user's grants. Use systemd `User=`/`Group=` or `runuser -u <svc>` to act as
 | Command | Purpose |
 | --- | --- |
 | `basil agent` | Run the broker daemon. |
-| `basil config init` | First-run scaffolding: write a starter catalog + least-privilege policy + config. See [First run](/getting-started/first-run/). |
-| `basil config check` | Pre-flight: validate catalog + policy, enforce capability requirements, and read-only probe the backend for declared keys. |
+| `basil init` | First-run scaffolding: write a starter catalog + least-privilege policy + config. See [First run](/getting-started/first-run/). |
 | `basil bundle` | Create, update, verify, review, and promote sealed credential bundles. See [Unlock & the sealed bundle](/configuration/unlock-and-bundle/). |
-| `basil config explain` | Offline policy dry-run: "would this be allowed, and why?" See [Policy explain](/operations/policy-explain/). |
-| `basil doctor` | Preflight environment diagnostics before the daemon starts. See [Doctor](/operations/doctor/). |
+| `basil explain` | Offline policy dry-run by default: "would this be allowed, and why?" `--live` queries the running broker. See [Policy explain](/operations/policy-explain/). |
+| `basil doctor` | Preflight diagnostics before the daemon starts: validate catalog + policy, enforce capability + invocation bindings, and (with `--keys`) probe the backend for declared keys. See [Doctor](/operations/doctor/). |
 
 ## Client & operator commands
 
@@ -48,4 +47,4 @@ invocation is *allowed* to do is bounded by the caller's identity and the [polic
 
 - [Command reference](/cli/command-reference/): every command with its flags and signatures.
 - [The policy](/configuration/policy/): what a caller's identity is actually allowed to do.
-- [First run](/getting-started/first-run/): scaffold a working config with `basil config init`.
+- [First run](/getting-started/first-run/): scaffold a working config with `basil init`.

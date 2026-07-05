@@ -17,7 +17,7 @@ do about it:
 | `UNAUTHENTICATED` | `Unauthenticated` | Missing peer credentials (`SO_PEERCRED`): the broker can't attest the caller, so it fails closed before policy runs. |
 | `INVALID_REQUEST` | `InvalidArgument` | Malformed input, wrong op for the key's class, or an algorithm mismatch. A client/config bug; fix the call. |
 | `PAYLOAD_TOO_LARGE` | `ResourceExhausted` | Over an encrypt/payload cap. Raise the limit ([Limits](/configuration/limits/)) or chunk the data. |
-| `UNSUPPORTED` / `UNSUPPORTED_ALGORITHM` | `Unimplemented` | The op or algorithm isn't backed here (usually a catalog/backend mismatch). Re-run `basil config check`. |
+| `UNSUPPORTED` / `UNSUPPORTED_ALGORITHM` | `Unimplemented` | The op or algorithm isn't backed here (usually a catalog/backend mismatch). Re-run `basil doctor`. |
 | `DECRYPT_FAILED` | `InvalidArgument` | AEAD/unseal authentication failed: wrong key, tampered ciphertext, or mismatched AAD. Opaque on purpose: no oracle distinguishing the cause. |
 | `BACKEND_UNAVAILABLE` | `Unavailable` | The backend is unreachable. Likely transient infra, so retry and check Vault/OpenBao health. |
 | `BACKEND_ERROR` / `INTERNAL` | `Internal` | The backend rejected the op, or an internal invariant (e.g. a misconfigured `publicPath`) tripped. Check logs; usually a config issue. |

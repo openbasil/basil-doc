@@ -139,11 +139,11 @@ operation, then zeroize them. AWS KMS and GCP Cloud KMS are separate in-place tr
 | Status | Capability                                                               |
 | ------ | ------------------------------------------------------------------------ |
 | ✅     | Local audit log (per-operation decision records)                         |
-| ✅     | Offline catalog + policy validation (`basil config check`)               |
+| ✅     | Offline catalog + policy validation (`basil doctor`)                     |
 | ✅     | Startup reconcile with capability enforcement and existence probes       |
 | ✅     | Admin `Status` RPC (backend, version, protocol)                          |
 | ✅     | Hot reload for catalog and policy with generation pinning                |
-| ✅     | Policy dry-run / explain mode (`basil config explain`, offline)          |
+| ✅     | Policy dry-run / explain mode (`basil explain`, offline default)         |
 | ✅     | Admin health/readiness probes                                            |
 | ✅     | Audit/log sink: OTLP / OpenTelemetry (`otlp` cargo feature, default-off) |
 | ✅     | Audit/log sink: journald                                                 |
@@ -170,10 +170,10 @@ operation, then zeroize them. AWS KMS and GCP Cloud KMS are separate in-place tr
 | ------ | ---------------------------------------------------------------------------------------------------------- |
 | ✅     | `basil` CLI (keys, sign/verify, encrypt/decrypt, get/set, rotate, mint, NATS `.creds`, issue-cert, status) |
 | ✅     | `basil get --format` materialization (`raw`, `hex`, standard padded `base64`, `base64-url-no-pad`)         |
-| ✅     | `basil config check` validates a catalog + policy offline                                                  |
-| ✅     | `basil config init` config/template scaffolding                                                            |
-| ✅     | `basil doctor` environment check                                                                           |
-| ✅     | `basil explain` explains a policy decision against the live broker                                         |
+| ✅     | `basil doctor` validates a catalog + policy offline                                                        |
+| ✅     | `basil init` config/template scaffolding                                                                   |
+| ✅     | `basil doctor` environment check (`--keys` adds the authenticated per-key probe)                           |
+| ✅     | `basil explain` explains a policy decision (offline dry-run by default; `--live` against the broker)       |
 | ✅     | Rust client library (`basil` crate, async + sync)                                                          |
 | ✅     | Go client library (`github.com/openbasil/basil-go`, package `basil`; `spiffe` + `stream` subpackages)      |
 | ✅     | Cross-language streaming container interop (Rust reference CLI ↔ Go `stream`)                              |

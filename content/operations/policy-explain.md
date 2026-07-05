@@ -5,17 +5,18 @@ weight = 70
 
 # Policy explain / dry-run
 
-`basil config explain` answers "would this request be allowed, and why?" **without performing it**. It
-loads *only* the catalog and policy JSON (no sealed bundle, no backend I/O, no socket, no secret
-material), builds the real policy decision point, and evaluates a proposed subject/op/key tuple
-through the same matcher the live broker enforces with. There is no second copy of the matching
-logic, so a dry-run can never report a different answer than enforcement; default-deny holds exactly
-as it does at request time.
+`basil explain` answers "would this request be allowed, and why?" **without performing it**. By
+**default** it is an *offline* dry-run: it loads *only* the catalog and policy JSON (no sealed bundle,
+no backend I/O, no socket, no secret material), builds the real policy decision point, and evaluates a
+proposed subject/op/key tuple through the same matcher the live broker enforces with. There is no
+second copy of the matching logic, so a dry-run can never report a different answer than enforcement;
+default-deny holds exactly as it does at request time.
 
-The running broker also exposes the same single-tuple explanation as a gated live admin RPC and
-top-level `basil explain` command. Use the offline `basil config explain` path for pre-deploy review
-of proposed files; use live `basil explain` when an operator needs to interrogate the currently
-serving generation.
+Add `--live` to instead query the **running** broker's serving generation over the global `--socket`
+(a gated admin RPC — see the grant below). The two modes are one verb: use the default offline path
+for pre-deploy review of proposed files; use `--live` when an operator needs to interrogate the
+currently serving generation. `--effective` (preview every grant for a subject) is offline-only and
+conflicts with `--live`.
 
 ## Live explain grant
 
@@ -54,23 +55,24 @@ Run the command under the granted identity; Basil attests the caller through Uni
 credentials.
 
 ```sh
-basil explain --subject svc.grafana --op get --key grafana.admin_password --json
+basil explain --live --subject svc.grafana --op get --key grafana.admin_password --json
 ```
 
 ## The subcommand & flags
 
 ```sh
-basil config explain --catalog catalog.json --policy policy.json \
+basil explain --catalog catalog.json --policy policy.json \
   --subject svc.grafana --op get --key grafana.admin_password [--json]
 ```
 
 | Flag | Meaning |
 | --- | --- |
-| `--catalog` / `--policy` | The exported catalog & policy JSON (also honored from a `--config` TOML or `BASIL_CATALOG`/`BASIL_POLICY`). The bundle is **not** needed. |
+| `--catalog` / `--policy` | The exported catalog & policy JSON the offline dry-run reads (also honored from a `--config` TOML or `BASIL_CATALOG`/`BASIL_POLICY`). The bundle is **not** needed. Ignored on the `--live` path, which reads the broker's serving generation. |
 | `--subject` | The registered policy subject to evaluate. Offline explain evaluates the subject name directly; live requests resolve a caller to a subject before enforcement. |
-| `--op` | One policy op token (the full list follows this table). |
-| `--key` | The catalog key/target to evaluate. |
-| `--effective` | Preview **every** `(key, op)` the subject is granted across the whole catalog (ignores `--op`/`--key`). |
+| `--op` | One policy op token (the full list follows this table). Required unless `--effective`. |
+| `--key` | The catalog key/target to evaluate. Required unless `--effective`. |
+| `--effective` | Preview **every** `(key, op)` the subject is granted across the whole catalog (ignores `--op`/`--key`). Offline-only; conflicts with `--live`. |
+| `--live` | Query the **running** broker's serving generation over the global `--socket` instead of the offline file dry-run. Needs the `explain` admin grant (above). |
 | `--json` | Emit a stable machine-readable object instead of human-readable text. |
 
 The `--op` tokens are: `get`, `list`, `get_public_key`, `verify`, `sign`, `sign_nats_jwt`,
@@ -98,7 +100,7 @@ materializing a PQC private seed in the broker process for one operation.
 ## Allow: the matched rule
 
 ```sh
-$ basil config explain --catalog catalog.json --policy policy.json \
+$ basil explain --catalog catalog.json --policy policy.json \
     --subject svc.grafana --op get --key grafana.admin_password
 ALLOW  subject svc.grafana  get  grafana.admin_password  (via subject:svc.grafana)
   matched rule `grafana-reader`: action `role:reader` over target `grafana.admin_password`
@@ -169,11 +171,11 @@ The `--effective` view emits `{"subject":…,"effective":[{"key","op","via","rul
 `null` for a world-readable public-class read.
 
 {% best() %}
-Before merging a catalog/policy change, run `basil config explain` in CI against the *proposed* files
+Before merging a catalog/policy change, run `basil explain` in CI against the *proposed* files
 for the tuples you care about (the service identities that must keep working and the ones that must
 stay denied), and assert on the `--json` `decision`. Because `explain` runs the identical matcher the
 broker enforces with, a green dry-run is a real guarantee, not an approximation. Pair it with
-[`basil config check`](/configuration/overview/) so a change that would be rejected at load *or* would
+[`basil doctor`](/operations/doctor/) so a change that would be rejected at load *or* would
 change an authorization outcome is caught pre-merge. Use `--effective --json` to diff the full granted
 `(key, op)` set for an identity across the old and new policy.
 {% end %}

@@ -98,4 +98,4 @@ just cargo-live-e2e
 ## Where to go next
 
 - [Quickstart](/getting-started/quickstart/): the throwaway dev fixture, end to end.
-- [First run: basil config init](/getting-started/first-run/): scaffold a real least-privilege config.
+- [First run: basil init](/getting-started/first-run/): scaffold a real least-privilege config.

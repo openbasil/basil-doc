@@ -13,16 +13,15 @@ serving, so mistakes surface at startup, not under traffic.
 ## The subcommands
 
 The broker is one binary, `basil`, with these config/daemon subcommands (plus
-[`config init`](/getting-started/first-run/) for first-run scaffolding):
+[`init`](/getting-started/first-run/) for first-run scaffolding):
 
 | Command | Purpose |
 | --- | --- |
-| `basil config init` | First-run scaffolding: a starter catalog + least-privilege policy + config. |
+| `basil init` | First-run scaffolding: a starter catalog + least-privilege policy + config. |
 | `basil agent` | Run the broker daemon. |
-| `basil config check` | Pre-flight: validate catalog + policy, enforce capability requirements, and read-only probe the backend for declared keys. |
-| `basil config explain` | Offline policy dry-run: "would this be allowed, and why?" See [Policy explain](/operations/policy-explain/). |
+| `basil doctor` | Pre-flight: validate catalog + policy, enforce capability + invocation bindings, and (with `--keys`) read-only probe the backend for declared keys. See [Doctor](/operations/doctor/). |
+| `basil explain` | Policy dry-run: "would this be allowed, and why?" Offline against the files by default; `--live` against the running broker. See [Policy explain](/operations/policy-explain/). |
 | `basil bundle` | Create, update, verify, review, and promote sealed credential bundles. See [Unlock & the sealed bundle](/configuration/unlock-and-bundle/). |
-| `basil doctor` | Preflight environment diagnostics before the daemon starts. See [Doctor](/operations/doctor/). |
 
 ## Startup config
 
@@ -120,10 +119,11 @@ return a signed, encrypted operation response.
 | `--vault-addr` | `VAULT_ADDR` | Default backend address when a credential pins none. |
 
 {% best() %}
-Run `basil config check --catalog … --policy … --bundle …` in CI and before every deploy. It parses
-both files, confirms each backend can provide what the catalog requires, and probes the backend for
-declared keys. Add `--require` to exit non-zero when a required (`missing=error`) key is absent,
-turning a 3am surprise into a failed pipeline.
+Run `basil doctor --keys --catalog … --policy … --bundle …` in CI and before every deploy. It parses
+both files, confirms each backend can provide what the catalog requires, and (with `--keys`) probes
+the backend for declared keys. A missing required (`missing=error`) key is fatal and exits non-zero on
+its own — turning a 3am surprise into a failed pipeline; add `--strict` to also fail on warnings
+(a `missing=generate` key, `bao` not on `PATH`, loose bundle perms).
 {% end %}
 
 {% note() %}

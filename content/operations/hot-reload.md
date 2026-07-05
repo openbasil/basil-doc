@@ -159,7 +159,7 @@ basil reload --check --json
 basil reload --json
 ```
 
-Recommended flow: run `basil reload --check` first (or `basil config check` in CI; both run the
+Recommended flow: run `basil reload --check` first (or `basil doctor` in CI; both run the
 identical validation), confirm it validates, then `basil reload` to apply. The dry-run leaves the
 serving generation unchanged; the response reports the *would-be* new generation id.
 
@@ -176,7 +176,7 @@ The rejection `reason` tokens are the same as the SIGHUP path. Both an applied r
 audited.
 
 {% best() %}
-Gate the same catalog/policy through `basil config check` in CI before you deploy. It runs the
+Gate the same catalog/policy through `basil doctor` in CI before you deploy. It runs the
 identical validation the reload runs, so a reload that would be rejected is caught pre-merge rather
 than at the SIGHUP. After a reload, confirm the new `generation` id in the audit trail before
 declaring the change live.

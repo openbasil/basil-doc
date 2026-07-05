@@ -45,18 +45,18 @@ Enable the engines Basil uses. In dev mode `secret/` is already a KV-v2 mount, s
 bao secrets enable transit
 ```
 
-Scaffold a starter config, seal the dev token into a bundle, validate, and run. `basil config init`
+Scaffold a starter config, seal the dev token into a bundle, validate, and run. `basil init`
 writes catalog, policy, and agent TOML (never secrets); the token goes into a `0600` file that
 `basil bundle create` seals:
 
 ```sh
-basil config init --backend openbao --unlock bip39 --dir ./basil
+basil init --backend openbao --unlock bip39 --dir ./basil
 printf '%s\n' root > ./basil/backend-token
 chmod 600 ./basil/backend-token
 basil bundle create ./basil/bundle.sealed \
     --slot bip39 \
     --backend id=primary,type=openbao,addr=http://127.0.0.1:8200,token-file=./basil/backend-token
-basil config check -c ./basil/basil-agent.toml
+basil doctor -c ./basil/basil-agent.toml
 basil agent -c ./basil/basil-agent.toml
 ```
 
@@ -261,8 +261,8 @@ one credential to a contributor who should *not* hold the unlock secret, use the
 
 {% caution(title="There is no `kms set-cred` command") %}
 Depositing or replacing a backend credential is done with `basil bundle create` / `set-backend` /
-`deposit`. Older notes referencing a `basil config bundle set-cred` surface describe a pre-release CLI
-that has been removed; there is no separate `kms` verb. The same `bundle` verbs also seal cloud KMS
+`deposit`. Older notes referencing a `config bundle set-cred` surface describe a pre-release CLI
+that has been removed (the whole `basil config` namespace is gone); there is no separate `kms` verb. The same `bundle` verbs also seal cloud KMS
 credentials (`type=aws-kms` / `type=gcp-kms`) when you use those backends instead.
 {% end %}
 
@@ -332,14 +332,14 @@ Confirm the wiring before and after the broker starts. `basil doctor` resolves t
 daemon does and runs read-only diagnostics:
 
 ```sh
-basil doctor -c /etc/basil/agent.toml               # reachability, bundle perms, catalog/policy
-basil doctor -c /etc/basil/agent.toml --check-keys   # also unlock + read-only key-existence probe
-basil config check -c /etc/basil/agent.toml          # probe that catalog keys exist in the backend
+basil doctor -c /etc/basil/agent.toml            # offline: reachability, bundle perms, catalog/policy, capability
+basil doctor -c /etc/basil/agent.toml --keys     # also unlock + read-only key-existence probe
+basil doctor -c /etc/basil/agent.toml --strict   # treat warnings as failures too
 ```
 
 Doctor's `backend_reachability` check hits the unauthenticated `GET /v1/sys/health` on each configured
-address, so a `fail` there means the server is down, sealed, or the address is wrong, independent of
-your token. Adding `--check-keys` unlocks the bundle, performs the AppRole/JWT login, and runs the same
+address, so a `fatal` there means the server is down, sealed, or the address is wrong, independent of
+your token. Adding `--keys` unlocks the bundle, performs the AppRole/JWT login, and runs the same
 metadata and KV existence reads startup reconcile would, without generating or mutating anything. Read
 [Doctor](/operations/doctor/) for every check and its remediation.
 

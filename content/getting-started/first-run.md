@@ -1,18 +1,18 @@
 +++
-title = "First run: basil config init"
+title = "First run: basil init"
 weight = 30
 +++
 
-# First run: `basil config init`
+# First run: `basil init`
 
-Starting from nothing? `basil config init` scaffolds a minimal, valid, **least-privilege** starter set
+Starting from nothing? `basil init` scaffolds a minimal, valid, **least-privilege** starter set
 into a target directory so you don't hand-author JSON/TOML from scratch. It writes **configuration
 only**: never secret material, and **not** the sealed bundle (which needs interactive unlock
 material). It prints the bundle command shape for your chosen unlock method instead.
 
 ```sh
 # OpenBao + a BIP39 break-glass slot, scaffolded under ./basil
-basil config init --backend openbao --unlock bip39 --dir ./basil
+basil init --backend openbao --unlock bip39 --dir ./basil
 ```
 
 ## What it writes
@@ -24,24 +24,26 @@ Into the target dir (refusing to overwrite an existing file unless `--force`):
 - **`policy.json`** grants only the uid that ran `init` a narrow signer role
   (`sign` / `verify` / `get_public_key`) over only that one key. Everything else is default-deny.
 - **`basil-agent.toml`** is a commented config pointing at the catalog/policy/bundle/socket paths, with
-  socket mode `0600` (owner-only) by default and the placeholders you must fill clearly marked.
+  socket mode `0600` (owner-only) by default and the placeholders you must fill clearly marked. The
+  generated `socket` line follows precedence `--socket <path>` > `BASIL_SOCKET` > `<dir>/basil.sock`.
 
 | Flag | Meaning | Default |
 | --- | --- | --- |
 | `--backend` | `openbao` \| `vault` \| `keystore`: picks the backend kind and starter config. | `openbao` |
 | `--unlock` | `bip39` \| `passphrase` \| `tpm` \| `age-yubikey`: which `bundle create` slot the next steps print (init never seals); `bip39` and `age-yubikey` are in default builds, while `tpm` needs an `unlock-tpm` build. | `bip39` |
 | `--dir` | Target directory (created if absent). | `./basil` |
+| `--socket` | Socket path baked into the generated config. Precedence: `--socket` > `BASIL_SOCKET` > `<dir>/basil.sock`. | `<dir>/basil.sock` |
 | `--addr` | Backend HTTP URL (vault/openbao only). | `http://127.0.0.1:8200` |
 | `--transit-mount` | Transit mount the example key lives under (vault/openbao only). | `transit` |
 | `--passphrase-file` | Existing `0600` passphrase file to bake into the config and the printed `bundle create` command. Only valid with `--unlock passphrase` (see below). | placeholder |
 | `--force` | Overwrite existing target files (otherwise init refuses and names them). | off |
 
 The catalog/policy are produced by serializing the real schema types, so the output is valid by
-construction and passes the same loader `check`/`run` use (init re-validates the pair before writing).
+construction and passes the same loader `doctor`/`agent` use (init re-validates the pair before writing).
 
 ## The full new-user flow
 
-1. **Scaffold:** `basil config init --backend openbao --unlock bip39 --dir ./basil`.
+1. **Scaffold:** `basil init --backend openbao --unlock bip39 --dir ./basil`.
 2. **Fill inputs & create the bundle** (init prints the exact command). For OpenBao with a BIP39 slot
    and a dev token:
 
@@ -56,11 +58,11 @@ construction and passes the same loader `check`/`run` use (init re-validates the
    Point `bip39-phrase-file` in the TOML at a `0600` file holding the 24-word phrase init showed once.
    (For a dev backend: `bao secrets enable transit`, then reconcile creates `example.signing_key`
    on first run.)
-3. **Validate:** `basil config check -c ./basil/basil-agent.toml`.
+3. **Validate:** `basil doctor -c ./basil/basil-agent.toml` (add `--keys` to also probe the backend).
 4. **Run:** `basil agent -c ./basil/basil-agent.toml`.
 5. **Exercise:** `basil --socket ./basil/basil.sock sign --key-id example.signing_key 'hello basil'`.
 
-This whole chain (`init` → `bundle create` → `check` → `run` → sign with the scaffolded
+This whole chain (`init` → `bundle create` → `doctor` → `agent` → sign with the scaffolded
 `example.signing_key`) is covered end to end against a live dev OpenBao and Vault, so the starter
 set is proven usable, not just loadable.
 

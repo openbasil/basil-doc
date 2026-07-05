@@ -23,7 +23,7 @@ weight = 20
 | **Lease** | A short-lived, narrowly-scoped credential (NATS JWT, SPIFFE token) that expires on its own. |
 | **Materialize-to-use** | The sanctioned exception (design §17.7): for algorithms the backend can't run in place, the private is materialized in-process for one op, then zeroized. Its public half is provisioned out of band. |
 | **NKey** | A NATS Ed25519 key encoding used by NATS identity JWTs. |
-| **PDP** | Policy Decision Point: the component that evaluates `(subject, op, key)` against the policy. `basil config explain` drives the same PDP the broker enforces with. |
+| **PDP** | Policy Decision Point: the component that evaluates `(subject, op, key)` against the policy. `basil explain` drives the same PDP the broker enforces with. |
 | **Policy** | The default-deny allow-list mapping resolved subjects to operations on keys. |
 | **Reconcile** | The startup check that every catalog key actually exists in its backend, per its `missing` policy. |
 | **Sealed bundle** | The encrypted file holding the backend credential, opened by an unlock slot at startup. |

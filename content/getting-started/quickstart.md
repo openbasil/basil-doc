@@ -71,7 +71,7 @@ Vault-compatible backend did the crypto in place. No private key ever crossed th
 
 ## Where to go next
 
-- [First run: basil config init](/getting-started/first-run/): scaffold your own least-privilege
+- [First run: basil init](/getting-started/first-run/): scaffold your own least-privilege
   starter set instead of the throwaway fixture.
 - [Make it your own](/getting-started/make-it-your-own/): the self-contained `basil-example.nix`.
 - [The policy](/configuration/policy/): how the broker decided your shell was allowed.

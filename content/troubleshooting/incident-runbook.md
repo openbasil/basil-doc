@@ -56,8 +56,8 @@ See [Unlock & the sealed bundle](/configuration/unlock-and-bundle/) for slot det
   reconcile is what's failing, a missing-but-required key is the likely cause: fix the backend, or
   (recovery only) boot with `no-reconcile = true` / `capability-policy = "degraded"` to serve the
   healthy subset while you investigate.
-- **Review:** once back, re-run `basil config check --require` to confirm every required key is
-  present before clearing the incident.
+- **Review:** once back, re-run `basil doctor --keys` to confirm every required key is
+  present before clearing the incident (a `missing=error` key that can't be satisfied is fatal).
 
 See [Capability policy & reconcile](/configuration/capability-and-reconcile/).
 
@@ -83,7 +83,7 @@ See [Capability policy & reconcile](/configuration/capability-and-reconcile/).
 - **Symptom:** a materialize-to-use key fails reconcile (boot) or returns `INTERNAL`/`UNSUPPORTED` at
   request time; the loader rejects a catalog missing/extra `publicPath`.
 - **Fix:** provision both halves out of band (the private at `path`, the public at `publicPath`),
-  then re-run `basil config check`. Reconcile probes *both*, so a half-provisioned key fails closed
+  then re-run `basil doctor --keys`. Reconcile probes *both*, so a half-provisioned key fails closed
   rather than serving a key whose public can't resolve.
 
 ## Suspected unauthorized access
