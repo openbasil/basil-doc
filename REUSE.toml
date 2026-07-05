@@ -1,0 +1,51 @@
+version = 1
+
+# Central licensing declaration for basil-doc (REUSE 3.3 / SPDX).
+#
+# Rationale for the split:
+#   - Documentation prose and creative assets are licensed CC-BY-4.0, the
+#     traditional choice for content (permissive, attribution-only).
+#   - Build/tooling files (templates, site config, CI) stay Apache-2.0 to match
+#     Basil (the code).
+#   - The vendored EasyDocs theme keeps its upstream MIT license and author.
+#
+# Embedded code samples inside the docs are offered under Apache-2.0 (see
+# content/license/), so they can be copy-pasted without an attribution burden.
+
+# Documentation prose.
+[[annotations]]
+path = ["content/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 OpenBasil Contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Creative assets: diagrams and site imagery.
+[[annotations]]
+path = ["diagrams/**", "static/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 OpenBasil Contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Build, tooling, and site configuration (matches Basil the code).
+[[annotations]]
+path = [
+  "templates/**",
+  ".github/**",
+  "config.toml",
+  "justfile",
+  "README.md",
+  "REUSE.toml",
+  ".gitignore",
+  ".typos.toml",
+  "LICENSE",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 OpenBasil Contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Vendored theme: EasyDocs, kept under its upstream MIT license and authorship.
+[[annotations]]
+path = ["themes/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2021 Roman Soldatenkov"
+SPDX-License-Identifier = "MIT"

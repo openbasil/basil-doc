@@ -7,6 +7,7 @@ default_port := "21000"
 default_base := "http://127.0.0.1:21000"
 zola := "nix run nixpkgs#zola --"
 #zola := "zola --"
+reuse := "nix run nixpkgs#reuse --"
 
 # Show available targets.
 default:
@@ -37,3 +38,12 @@ clean:
 stats: build
     @echo "Built site in ./public"
     @find public -name '*.html' | wc -l | xargs echo "HTML pages:"
+
+# Check REUSE/SPDX license compliance across the repo.
+# Per-file licensing is declared centrally in REUSE.toml (prose = CC-BY-4.0,
+# creative assets = CC-BY-4.0, build/tooling = Apache-2.0, vendored theme = MIT),
+# so Markdown content needs no inline headers. addlicense is intentionally not
+# used here: it silently skips Markdown, which is nearly the whole repo.
+check-spdx:
+    {{reuse}} lint
+

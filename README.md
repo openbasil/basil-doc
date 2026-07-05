@@ -1,5 +1,11 @@
 # Basil documentation site
 
+<!--
+SPDX-FileCopyrightText: 2026 OpenBasil Contributors
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 See the live site at **[docs.openbasil.org](https://docs.openbasil.org)**
 
 |                      |                                                                 |
@@ -9,7 +15,7 @@ See the live site at **[docs.openbasil.org](https://docs.openbasil.org)**
 | Documentation source | https://github.com/openbasil/basil-doc                          |
 | Built with           | [Zola](https://www.getzola.org/)                                |
 | Theme based on       | [EasyDocs](https://github.com/codeandmedia/zola_easydocs_theme) |
-| License              | Apache 2.0                                                      |
+| License              | Docs [CC-BY-4.0](LICENSES/CC-BY-4.0.txt); code/build [Apache-2.0](LICENSES/Apache-2.0.txt) |
 
 ## Build & preview
 
