@@ -10,7 +10,7 @@ name: Deploy docs
 #
 # One-time setup (outside this workflow):
 #   1. Create the Pages project once (name must match --project-name below):
-#        wrangler pages project create basil-docs --production-branch=main
+#        wrangler pages project create basil-doc --production-branch=main
 #      (or create it in the dashboard).
 #   2. Add the custom domain docs.openbasil.org to the Pages project; because
 #      Cloudflare hosts the DNS, this creates the CNAME and cert automatically.
@@ -64,4 +64,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # --branch=main forces a production deploy (docs.openbasil.org),
           # since the tag ref itself is not "main".
-          command: pages deploy public --project-name=basil-docs --branch=main
+          command: pages deploy public --project-name=basil-doc --branch=main
