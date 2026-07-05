@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Capability policy &amp; reconcile </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/configuration/capability-and-reconcile/#capability-policy-reconcile">Capability policy &amp; reconcile</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/#mintable-key-types">Mintable key types</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="capability-policy-reconcile">Capability policy &amp; reconcile&nbsp;<a class="anchor" href="#capability-policy-reconcile">&#xE732;</a></h1>
+<p>Two startup checks keep you from booting a broker that can't do its job:</p>
+<ul>
+<li><strong>Capability policy</strong> (<code>capability-policy</code>): does each backend provide the engines, capabilities, and
+mintable key types the catalog needs? Pure catalog math, no backend I/O.</li>
+<li><strong>Reconcile</strong>: does each key actually exist in its backend? Honors each key's <code>missing</code> policy.</li>
+</ul>
+<table><thead><tr><th>Setting</th><th>Behavior</th></tr></thead><tbody>
+<tr><td><code>capability-policy = "strict"</code></td><td><em>Default.</em> Any unmet requirement aborts startup. Every gap is reported together.</td></tr>
+<tr><td><code>capability-policy = "degraded"</code></td><td>Defer to each key's <code>missing</code>: a gap on a <code>missing=error</code> key is still fatal; others are logged and the broker serves the rest.</td></tr>
+<tr><td><code>capability-policy = "off"</code></td><td>Skip the capability check entirely.</td></tr>
+<tr><td><code>missing: error</code> (per key)</td><td>Absent material aborts startup. The default: a required key can't go missing silently.</td></tr>
+<tr><td><code>missing: warn</code> (per key)</td><td>Log and continue; ops on that key fail until it exists.</td></tr>
+<tr><td><code>missing: generate</code> (per key)</td><td>Create the material at startup (within the limits in <a href="/configuration/catalog/">the catalog</a>).</td></tr>
+<tr><td><code>no-reconcile = true</code></td><td>Skip the existence probe entirely. A missing key then surfaces at request time instead of at boot.</td></tr>
+</tbody></table>
+<h2 id="mintable-key-types">Mintable key types&nbsp;<a class="anchor" href="#mintable-key-types">&#xE732;</a></h2>
+<p>Backends declare mintable transit key types with <code>mintKeyTypes</code>. Basil checks catalog <code>generate</code>,
+<code>import</code>, and <code>new_key</code> requests against that static list before it asks the backend to create
+material. A backend that only declares <code>ed25519</code> cannot mint <code>rsa-2048</code>, <code>ecdsa-p256</code>,
+<code>ecdsa-p384</code>, <code>ecdsa-p521</code>, <code>ed25519-nkey</code>, or PQC key types until its <code>mintKeyTypes</code> declaration
+includes them.</p>
+<p>This is a fail-closed startup guard. In <code>strict</code> mode an undeclared mint type aborts startup with the
+rest of the capability-policy report; in <code>degraded</code> mode it still follows the affected key's
+<code>missing</code> policy. Runtime dispatch keeps the same backstop, so a request never relies on a backend
+to discover an unsupported generated key type after policy has allowed it.</p>
+<div class="inset danger"><span class="label">🛑 These loosen fail-closed</span>
+
+<p><code>degraded</code>/<code>off</code> and <code>no-reconcile = true</code> trade a loud startup failure for a quiet runtime one.
+They're for recovery and known-divergent backends, not steady state. The runtime <code>UNSUPPORTED</code> backstop
+still catches an op that hits a missing capability, but you'd rather find out before traffic does.</p>
+
+</div><div class="inset best"><span class="label">✅ Best practice</span>
+
+<p>Production runs <code>capability-policy = "strict"</code> with reconcile on. If you need an escape hatch to
+recover, scope it tightly (a one-off invocation), record why, and remove it once the backend converges.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/catalog/">The catalog</a>: where each key's <code>missing</code> policy is set.</li>
+<li><a href="/operations/doctor/">Doctor</a>: preflight the environment before the daemon tries to unlock and bind.</li>
+<li><a href="/troubleshooting/incident-runbook/">Incident runbook</a>: using these hatches during recovery.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

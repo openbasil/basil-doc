@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Doctor (preflight checks) </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/operations/doctor/#doctor-preflight-checks">Doctor (preflight checks)</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/doctor/#the-subcommand-flags">The subcommand &amp; flags</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/doctor/#the-checks">The checks</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/doctor/#exit-codes">Exit codes</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/doctor/#json-schema-json">JSON schema (--json)</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/doctor/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="doctor-preflight-checks">Doctor (preflight checks)&nbsp;<a class="anchor" href="#doctor-preflight-checks">&#xE732;</a></h1>
+<p><code>basil doctor</code> answers "will the daemon even get off the ground here?" before you start it. It
+resolves the <em>same</em> config the daemon does (<code>-c</code>/<code>--config</code> TOML plus
+<code>--catalog</code>/<code>--policy</code>/<code>--bundle</code>/<code>--socket</code> overrides and the <code>BASIL_*</code> env vars), then runs a set of
+<strong>independent</strong> read-only diagnostics (backend binary &amp; reachability, socket sanity, sealed-bundle
+readability/permissions/freshness, catalog/policy validation, and cargo-feature compatibility) and
+reports each as <code>ok</code> / <code>warn</code> / <code>fail</code> with actionable remediation.</p>
+<p>It is the first-boot / pre-deploy companion to <code>basil config check</code>: <code>check</code> probes whether the <em>keys</em>
+exist in a reachable backend; default <code>doctor</code> probes whether the <em>environment</em> is wired up at all.
+When an operator explicitly adds <code>--check-keys</code>, doctor also unlocks the sealed bundle and runs the
+same authenticated read-only key-existence probe that powers <code>basil config check --require</code>.</p>
+<div class="inset note"><span class="label">📝 Read-only, non-mutating, secret-free by default</span>
+
+<p>Default doctor never unlocks the bundle, binds the socket, reconciles, generates a key, or writes
+the epoch sidecar. Every step handles its own error into a check result, so one failing check never
+aborts the rest. The bundle checks report readability, permissions, and freshness only: no bundle
+contents, key material, passphrases, or tokens ever reach stdout, the JSON, or an error string.
+<code>--check-keys</code> is the deliberate boundary crossing: it unlocks the bundle to build the backend
+manager, then performs only metadata/KV existence reads. It still never reconciles, generates,
+rotates, imports, or writes the epoch sidecar.</p>
+
+</div><h2 id="the-subcommand-flags">The subcommand &amp; flags&nbsp;<a class="anchor" href="#the-subcommand-flags">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> doctor -c /etc/basil/agent.toml</span><span style="color: #7C7F93;font-style: italic;">            # human-readable</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> doctor -c /etc/basil/agent.toml --json</span><span style="color: #7C7F93;font-style: italic;">     # stable machine output</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> doctor -c /etc/basil/agent.toml --check-keys --json</span></span></code></pre><table><thead><tr><th>Flag</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>-c</code> / <code>--config</code></td><td>The daemon TOML config to diagnose (same file <code>run</code> loads). Individual paths can also be supplied via <code>--catalog</code>/<code>--policy</code>/<code>--bundle</code>/<code>--socket</code> or <code>BASIL_*</code>.</td></tr>
+<tr><td><code>--json</code></td><td>Emit the stable, versioned JSON document instead of human-readable text.</td></tr>
+<tr><td><code>--check-keys</code></td><td>Opt in to the authenticated key-material probe: unlock the bundle, build the manager, and read-only-check every catalog key. Required missing keys fail; optional keys warn.</td></tr>
+</tbody></table>
+<h2 id="the-checks">The checks&nbsp;<a class="anchor" href="#the-checks">&#xE732;</a></h2>
+<table><thead><tr><th><code>name</code></th><th>What it means</th><th>fail / warn</th></tr></thead><tbody>
+<tr><td><code>catalog_policy</code></td><td>The catalog + policy load and validate via the same loader <code>check</code>/<code>run</code> use.</td><td><strong>fail</strong> if either does not load.</td></tr>
+<tr><td><code>feature_compatibility</code></td><td>The binary's enabled cargo features cover the optional unlock slots and backends the config declares.</td><td><strong>fail</strong> on any mismatch; it names the exact missing feature.</td></tr>
+<tr><td><code>backend_binary</code></td><td>For a <code>vault</code>-kind backend, <code>bao</code> or <code>vault</code> is on <code>PATH</code>.</td><td><strong>warn</strong> if neither is found (the daemon talks HTTP and does not strictly need the CLI).</td></tr>
+<tr><td><code>socket</code></td><td>Parent dir writable, mode not world-writable, <code>socket-group</code> resolves to a gid; the socket is <strong>not</strong> bound.</td><td><strong>fail</strong> on a bad parent or group; <strong>warn</strong> on a world-writable mode.</td></tr>
+<tr><td><code>bundle_readable</code></td><td>The sealed bundle exists at the configured path and is readable.</td><td><strong>fail</strong> if absent/unreadable.</td></tr>
+<tr><td><code>bundle_perms</code></td><td>The sealed bundle is strict <code>0600</code> (owner-only).</td><td><strong>fail</strong> on any broader mode.</td></tr>
+<tr><td><code>bundle_freshness</code></td><td>The bundle's epoch is not behind the <code>.epoch</code> sidecar (anti-rollback).</td><td><strong>fail</strong> if the epoch is behind or corrupt; <strong>warn</strong> if the sidecar is absent (first boot).</td></tr>
+<tr><td><code>backend_reachability</code></td><td>Each distinct <code>vault</code> address answers an unauthenticated <code>GET /v1/sys/health</code> within ~3s.</td><td><strong>fail</strong> on any unreachable address (it never hangs the run).</td></tr>
+<tr><td><code>key_material</code></td><td><code>--check-keys</code> only: probes every catalog key read-only, like startup reconcile; no writes.</td><td><strong>fail</strong> on an absent required key or probe error; <strong>warn</strong> on absent optional keys.</td></tr>
+</tbody></table>
+<p><code>feature_compatibility</code> checks the unlock-slot features (<code>unlock-bip39</code>, <code>unlock-age-yubikey</code>) and the
+backend features (<code>keystore-backend</code>, <code>aws-kms</code>, <code>gcp-kms</code>), naming any the binary lacks. A normal
+default build includes 1Password, BIP39, and <code>age</code>/YubiKey support; this check matters most for
+<code>--no-default-features</code>, cloud KMS, and other custom builds.</p>
+<h2 id="exit-codes">Exit codes&nbsp;<a class="anchor" href="#exit-codes">&#xE732;</a></h2>
+<table><thead><tr><th>Exit</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>0</code></td><td>No <code>fail</code> check. Advisory <code>warn</code>s alone still exit <code>0</code>.</td></tr>
+<tr><td><code>1</code></td><td>At least one <strong>blocking</strong> (<code>fail</code>) check: a misconfiguration that would prevent (or endanger) a clean start.</td></tr>
+</tbody></table>
+<h2 id="json-schema-json">JSON schema (<code>--json</code>)&nbsp;<a class="anchor" href="#json-schema-json">&#xE732;</a></h2>
+<p>The document is <strong>versioned and stable</strong>. Operators script against the field names and the <code>status</code>
+tokens.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schema_version</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 1</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">checks</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    { &quot;</span><span style="color: #1E66F5;">name</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;backend_reachability&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">status</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;fail&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">detail</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;1 of 1 vault backend address(es) unreachable: http://127.0.0.1:8200&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">remediation</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;Start/reach the backend (OpenBao/Vault) at the configured address, or fix `addr` …&quot;</span><span style="color: #7C7F93;"> }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  ],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">summary</span><span style="color: #7C7F93;">&quot;: { &quot;</span><span style="color: #1E66F5;">total</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 8</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">ok</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 6</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">warn</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 0</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">fail</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">blocking</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> true</span><span style="color: #7C7F93;"> }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>uint</td><td>Document schema version (currently <code>1</code>).</td></tr>
+<tr><td><code>checks[]</code></td><td>array</td><td>One object per check, in a deterministic order.</td></tr>
+<tr><td><code>checks[].name</code></td><td>string</td><td>Stable machine identifier (e.g. <code>backend_reachability</code>).</td></tr>
+<tr><td><code>checks[].status</code></td><td>string</td><td><code>ok</code> / <code>warn</code> / <code>fail</code>.</td></tr>
+<tr><td><code>checks[].detail</code></td><td>string</td><td>Human-readable finding (no secret bytes).</td></tr>
+<tr><td><code>checks[].remediation</code></td><td>string</td><td>Actionable fix for a non-<code>ok</code> result (empty for <code>ok</code>).</td></tr>
+<tr><td><code>summary.total</code> / <code>ok</code> / <code>warn</code> / <code>fail</code></td><td>uint</td><td>Per-status counts.</td></tr>
+<tr><td><code>summary.blocking</code></td><td>bool</td><td><code>true</code> iff any check is <code>fail</code>: the run exits <code>1</code>.</td></tr>
+</tbody></table>
+<div class="inset best"><span class="label">✅ Best practice</span>
+
+<p>Run <code>basil doctor</code> on every node as a pre-start gate (e.g. a systemd <code>ExecStartPre=</code> or a first-boot
+provisioning step) so a missing run dir, a wrong bundle mode, an unreachable backend, or a
+feature-mismatched binary is caught <em>before</em> the daemon tries to unlock and bind. Scrape the <code>--json</code>
+document if you orchestrate fleets: assert <code>summary.blocking == false</code>, or alert on any
+<code>checks[].status == "fail"</code>. Add <code>--check-keys</code> when the pre-start environment has access to the same
+unlock material as the daemon. Pair it with <a href="/operations/policy-explain/">policy explain</a> for full
+pre-deploy coverage.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>: what a clean start checks.</li>
+<li><a href="/operations/health-and-readiness/">Health &amp; readiness probes</a>: the <em>running</em> equivalents.</li>
+<li><a href="/operations/policy-explain/">Policy explain / dry-run</a>: preview authorization outcomes.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

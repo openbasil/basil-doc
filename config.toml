@@ -1,0 +1,38 @@
+# Basil documentation site - Zola configuration. Theme based on EasyDocs
+base_url = "https://docs.openbasil.org"
+title = "Basil"
+description = "Broker for Attestation, Secrets, Identity & Leases"
+
+compile_sass = true
+build_search_index = true
+generate_feeds = false
+
+theme = "easydocs"
+
+taxonomies = []
+
+[markdown]
+# Render footnotes inline at the bottom of the page.
+bottom_footnotes = true
+# Add a clickable anchor to the right of every heading, site-wide.
+insert_anchor_links = "right"
+
+[markdown.highlighting]
+# Syntax highlighting theme for fenced code blocks (light, to match the theme).
+theme = "catppuccin-latte"
+
+[extra]
+# Logo + favicon shown in the left nav. Local paths are resolved with get_url().
+logo = "/basil-logo.svg"
+favicon = "/favicon.svg"
+
+# TODO: The upstream theme fetches a GitHub "latest release" badge here. Basil is not
+# published yet, so the badge is disabled (leave unset). Re-enable once the repo
+# is public by pointing it at the releases API, e.g.:
+#   release = "https://api.github.com/repos/openbasil/basil/releases/latest"
+
+# Always let the logo link home, even on the landing page.
+easydocs_logo_always_clickable = true
+
+# Show the in-page heading outline once a page has at least this many headings.
+easydocs_heading_threshold = 3

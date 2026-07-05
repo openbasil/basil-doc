@@ -1,0 +1,571 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | The policy (authorization) </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/configuration/policy/#the-policy-authorization">The policy (authorization)</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#subjects">Subjects</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#source-vs-exported-policy">Source vs. exported policy</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#unauthenticated-subjects">Unauthenticated subjects</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#operation-specific-grants">Operation-specific grants</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#signature-key-subjects">Signature-key subjects</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/policy/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="the-policy-authorization">The policy (authorization)&nbsp;<a class="anchor" href="#the-policy-authorization">&#xE732;</a></h1>
+<p>The policy is a <strong>default-deny</strong> allow-list. Nothing is permitted until a rule grants it. A rule maps
+one or more <strong>subjects</strong> to an <em>action</em> (an op or a role) on a <em>target</em> (a key or key glob). Subjects
+are named identities resolved from authenticated evidence, such as a Unix uid/gid from <code>SO_PEERCRED</code>.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #1E66F5;">schemaVersion</span><span style="color: #179299;">:</span><span style="color: #FE640B;"> 2</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">subjects</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  svc.web</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    allOf</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      -</span><span style="color: #1E66F5;"> kind</span><span style="color: #179299;">:</span><span style="color: #40A02B;"> unix</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">        uid</span><span style="color: #179299;">:</span><span style="color: #FE640B;"> 9001</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;">roles</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  signer</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">   [</span><span style="color: #40A02B;">sign</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> verify</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> get_public_key</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  cryptor</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">  [</span><span style="color: #40A02B;">encrypt</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> decrypt</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  reader</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">   [</span><span style="color: #40A02B;">get</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> list</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> get_public_key</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  operator</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">set</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> rotate</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> import</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> new_key</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  minter</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">   [</span><span style="color: #40A02B;">mint</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  validator</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">validate</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  nats_minter</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">    [</span><span style="color: #40A02B;">mint</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> sign_nats_jwt</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  nats_validator</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">validate_nats_jwt</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  nats_box</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">       [</span><span style="color: #40A02B;">encrypt_nats_curve</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> decrypt_nats_curve</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  pqc_user</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">       [</span><span style="color: #40A02B;">sign</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> verify</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> encrypt</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> decrypt</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> new_key</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> use_software_custody</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;">rules</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  -</span><span style="color: #1E66F5;"> id</span><span style="color: #179299;">:</span><span style="color: #40A02B;"> web-can-sign</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    subjects</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">svc.web</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    action</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">    [</span><span style="color: #40A02B;">role:signer</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    target</span><span style="color: #179299;">:</span><span style="color: #7C7F93;">    [</span><span style="color: #40A02B;">web.tls.signing_key</span><span style="color: #7C7F93;">]</span></span></code></pre>
+<p>Basil reads the caller's real uid/gid from the kernel (<code>SO_PEERCRED</code>): there's no token to forge, and
+a process can't claim a uid it isn't running as. Runtime authorization resolves that evidence to a
+configured subject before the PDP evaluates any rule.</p>
+<h2 id="subjects">Subjects&nbsp;<a class="anchor" href="#subjects">&#xE732;</a></h2>
+<p>A policy declares its canonical subjects under <code>subjects</code>. Each subject defines exactly one matcher:
+<code>allOf</code> means every listed proof must match; <code>anyOf</code> means at least one proof may match. Empty
+<code>subjects</code>, empty <code>allOf</code>/<code>anyOf</code> lists, unsupported <code>kind</code> values, malformed uid/gid values, and
+malformed <code>signature-key</code> public material are rejected while loading the policy.</p>
+<table><thead><tr><th>Principal kind</th><th>Matches</th></tr></thead><tbody>
+<tr><td><code>unix</code> with <code>uid</code></td><td>the caller's attested uid</td></tr>
+<tr><td><code>unix</code> with <code>gid</code></td><td>a gid in the caller's configured full group set</td></tr>
+<tr><td><code>unauthenticated</code></td><td>only when <code>unauthenticatedSubject</code> names this subject</td></tr>
+<tr><td><code>signature-key</code></td><td>a configured signing key proof for sealed invocation flows</td></tr>
+</tbody></table>
+<p>Runtime authorization uses <code>unix</code> subjects (plus the explicit <code>unauthenticated</code> path).
+<code>signature-key</code> subjects authenticate sealed invocations: <code>ed25519</code> and <code>nats-nkey</code> public material
+authenticates a signed COSE message before the PDP evaluates the resulting subject.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">svc.web</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [{ &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unix&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">uid</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 9001</span><span style="color: #7C7F93;"> }]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">ops.wheel</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [{ &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unix&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">gid</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 10</span><span style="color: #7C7F93;"> }]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">breakglass.root</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">breakGlass</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> true</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [{ &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unix&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">uid</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 0</span><span style="color: #7C7F93;"> }]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">content.publisher</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">anyOf</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;signature-key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">algorithm</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;ed25519&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">public</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;BASE64URL_32_BYTE_ED25519_PUBLIC_KEY&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;signature-key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">algorithm</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;nats-nkey&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">public</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;UANATS_PUBLIC_NKEY&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">roles</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">signer</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;sign&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;verify&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;get_public_key&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">rules</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;web-can-sign&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;svc.web&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">action</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;role:signer&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">target</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;web.tls.signing_key&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  ],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">config</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">names</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">users</span><span style="color: #7C7F93;">&quot;: { &quot;</span><span style="color: #1E66F5;">9001</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;svc-web&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">0</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;root&quot;</span><span style="color: #7C7F93;"> },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">groups</span><span style="color: #7C7F93;">&quot;: { &quot;</span><span style="color: #1E66F5;">10</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;wheel&quot;</span><span style="color: #7C7F93;"> }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">memberships</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">9001</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #FE640B;">9001</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>A rule's action may name a role (<code>role:signer</code>) or an op directly (<code>op:sign</code>). A role must be defined
+in the <code>roles</code> table before a rule references it: the loader rejects a rule pointing at an undefined
+role, so the example above declares <code>signer</code> in <code>roles</code> for its <code>role:signer</code> rule to resolve.</p>
+<div class="inset note"><span class="label">📝 Why subjects are named</span>
+
+<p>Rules grant to stable names like <code>svc.web</code>, not directly to uid/gid predicates. The audit log can then
+say the actor was <code>svc.web</code> while still recording the presenter as <code>svc-web(9001)</code> and the proof as
+<code>unix_peercred:svc.web</code>.</p>
+
+</div><h2 id="source-vs-exported-policy">Source vs. exported policy&nbsp;<a class="anchor" href="#source-vs-exported-policy">&#xE732;</a></h2>
+<p>You write policy in a friendlier source form (typically Nix), where subject definitions can refer
+to local user/group names for convenience. The exporter resolves those names to numeric uid/gid values
+and emits the JSON Basil actually reads:</p>
+<ul>
+<li>every Unix subject matcher becomes numeric (<code>uid: 9001</code>, <code>gid: 10</code>);</li>
+<li>every rule names subjects with <code>subjects: ["name"]</code>;</li>
+<li>a <code>config.names</code> table records the numeric→name mapping;</li>
+<li><code>config.memberships</code> records the full uid→gid group set Basil uses for group subjects.</li>
+</ul>
+<p>At runtime, the kernel-attested uid/gid are authentication evidence. Basil resolves that evidence to a
+single subject, then rules grant to the subject. The loaded policy is rejected if a rule references an
+undefined subject, if a subject matcher is empty, or if the unauthenticated path is configured
+inconsistently.</p>
+<p>Export policy as <code>schemaVersion: 2</code>, declare subjects once
+under <code>subjects</code>, and list those names from every rule with <code>subjects: [...]</code>.</p>
+<p>In Nix, declare canonical subjects directly with <code>services.basil.policy.subjects</code> and refer to those
+names from <code>services.basil.policy.rules[*].subjects</code>. Use <code>policy.unixSubjects</code> only as a source-level
+shortcut for generated Unix uid/gid subjects; the JSON export still contains <code>schemaVersion: 2</code>,
+numeric <code>unix</code> principals, <code>subjects</code>, <code>rules[*].subjects</code>, <code>config.names</code>, and
+<code>config.memberships</code>.</p>
+<div class="inset note"><span class="label">📝 Note</span>
+
+<p>This means a host's name→uid mapping is fixed at export time. If you rename a service or its uid
+changes, re-export the policy so the numeric subject matchers (and the presenter names in your logs)
+stay in sync with the system.</p>
+
+</div><h2 id="unauthenticated-subjects">Unauthenticated subjects&nbsp;<a class="anchor" href="#unauthenticated-subjects">&#xE732;</a></h2>
+<p>Anonymous access is disabled unless policy opts in with <code>unauthenticatedSubject</code>. The configured name
+must refer to a subject whose matcher contains <code>kind: "unauthenticated"</code>; the loader rejects an
+unauthenticated principal anywhere else.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">unauthenticatedSubject</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;guest&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">guest</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">anyOf</span><span style="color: #7C7F93;">&quot;: [{ &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unauthenticated&quot;</span><span style="color: #7C7F93;"> }]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">rules</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;guest-can-read-public-identities&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;guest&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">action</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;op:get_public_key&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">target</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;identity.public.**&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre><div class="inset best"><span class="label">✅ One uid per workload</span>
+
+<p>A workload's subject is usually resolved from its uid. Give each service its own uid (and/or gid) via
+systemd <code>User=</code>/<code>Group=</code> (or <code>DynamicUser=</code>). Two services that share the same subject proof share
+every grant; use distinct subject definitions so the audit trail can distinguish them.</p>
+
+</div><div class="inset caution"><span class="label">⚠️ The * (any-key) target</span>
+
+<p>A rule whose target is <code>*</code> must grant only to subjects marked <code>breakGlass: true</code>. Basil rejects an
+any-key grant when any referenced subject lacks that marker. Keep break-glass subjects to genuine
+operator recovery, and prefer naming the exact keys.</p>
+
+</div><h2 id="operation-specific-grants">Operation-specific grants&nbsp;<a class="anchor" href="#operation-specific-grants">&#xE732;</a></h2>
+<p>NATS has dedicated op tokens because minting a user JWT, validating a presented JWT, and decrypting a
+NATS curve box are different authorities. Grant <code>sign_nats_jwt</code> on issuer keys, <code>validate_nats_jwt</code>
+on catalog signers used as trust roots, and <code>encrypt_nats_curve</code> / <code>decrypt_nats_curve</code> on
+<code>class=sealing</code>, <code>keyType=x25519</code> xkeys.</p>
+<p>The NATS bridge presenter is not policy-gated. There is no <code>invoke</code> op (a policy naming one fails to
+load), and <code>InvocationService.Invoke</code> authorizes the <strong>actor</strong> inside the sealed message, not the Unix
+process that couriered it. The actor is the <code>signature-key</code> subject that signed the COSE request; it
+needs <code>op:decrypt</code> on the broker's request-encryption key to open the sealed request, plus whatever op
+the inner operation requires on its own target key (for example <code>op:sign</code> on a signing key). "invoke"
+survives only as an audit label on the resulting decision.</p>
+<p>Software-custodied PQC keys require <code>op:use_software_custody</code> in addition to the underlying
+operation. The op is intentionally excluded from wildcard expansion, so a root <code>*/*</code> rule does not
+silently grant authority to materialize PQC private seeds in the broker process. Add it only on the
+specific ML-DSA/ML-KEM keys whose software custody you intend to use.</p>
+<h2 id="signature-key-subjects">Signature-key subjects&nbsp;<a class="anchor" href="#signature-key-subjects">&#xE732;</a></h2>
+<p><code>signature-key</code> subjects authenticate bridged sealed invocation COSE messages. The public key
+material lives in policy, not in the catalog, because the proof identifies the actor; catalog keys
+still own the operation target and custody.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">content.publisher</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;signature-key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">algorithm</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;ed25519&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">public</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;BASE64URL_32_BYTE_ED25519_PUBLIC_KEY&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">rules</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;publisher-can-use-sealed-signing&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;content.publisher&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">action</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;op:decrypt&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;op:sign&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">target</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;broker.request_encryption.2026q3&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;publisher.signing.2026q3&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>Use <code>algorithm: "ed25519"</code> with a base64url raw Ed25519 public key, or
+<code>algorithm: "nats-nkey"</code> with a public NATS NKey. Basil rejects malformed public material at load
+time. See <a href="/clients/sealed-invocations/">Sealed invocations</a> for the COSE profile, replay, expiry, and
+audience checks that happen before policy evaluation.</p>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/operations/policy-explain/">Policy explain / dry-run</a>: preview "would this be allowed, and why?".</li>
+<li><a href="/clients/sealed-invocations/">Sealed invocations</a>: the signature-key actor and its COSE preflight.</li>
+<li><a href="/clients/nats/">NATS integration</a>: the NATS-specific op tokens and client calls.</li>
+<li><a href="/configuration/approvals/">Approvals &amp; change control</a>: the <code>writable</code> hard cap above the allow-list.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

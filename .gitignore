@@ -1,0 +1,9 @@
+# Zola build output
+/public
+
+# Zola's processed-images cache (generated from static/ on build)
+/static/processed_images
+
+# Editor / OS noise
+*.swp
+.DS_Store

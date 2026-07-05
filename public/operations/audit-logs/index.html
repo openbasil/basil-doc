@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Audit logs </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/operations/audit-logs/#audit-logs">Audit logs</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/audit-logs/#record-shape">Record shape</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/audit-logs/#sinks">Sinks</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/audit-logs/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="audit-logs">Audit logs&nbsp;<a class="anchor" href="#audit-logs">&#xE732;</a></h1>
+<p>With config key <code>audit-log = "&lt;FILE&gt;"</code>, Basil appends one JSON line per authorization decision. The
+file is opened <code>O_APPEND|O_CREATE</code> at <code>0600</code> once at startup; if it can't be opened, startup aborts
+(fail closed: you don't run blind). Decisions are also emitted via <code>tracing</code> when no file is set.</p>
+<h2 id="record-shape">Record shape&nbsp;<a class="anchor" href="#record-shape">&#xE732;</a></h2>
+<table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>event_kind</code> / <code>event_version</code></td><td>Stable event identity: <code>basil.audit.authz</code> version <code>2</code>.</td></tr>
+<tr><td><code>occurred_at</code></td><td>UTC timestamp for the decision record.</td></tr>
+<tr><td><code>generation</code></td><td>Policy/catalog generation that made the decision.</td></tr>
+<tr><td><code>op</code></td><td>The gated operation (<code>sign</code>, <code>mint</code>, <code>rotate</code>, …).</td></tr>
+<tr><td><code>target_kind</code> / <code>target_id</code></td><td>The target type (<code>catalog_key</code>) and dotted catalog key.</td></tr>
+<tr><td><code>actor_kind</code> / <code>actor_id</code></td><td>The actor Basil authorized. Today this is a policy <code>subject</code>, such as <code>svc.nats</code>.</td></tr>
+<tr><td><code>authenticated_by</code></td><td>Evidence summaries that established the actor, such as <code>unix_peercred:svc.nats</code> or a <code>signature-key</code> proof for a sealed invocation.</td></tr>
+<tr><td><code>presenter_kind</code> / <code>presenter_id</code></td><td>The immediate presenter, such as <code>unix_peercred</code> and <code>svc-nats(9002)</code>. For bridged requests this is the bridge process, not the signed actor.</td></tr>
+<tr><td><code>decision</code> / <code>outcome</code></td><td><code>allow</code> or <code>deny</code>. <code>decision</code> is present for consumers that treat authz as a decision stream; <code>outcome</code> is retained as the audit outcome spelling.</td></tr>
+<tr><td><code>reason</code></td><td>A short stable token: on allow, <em>what</em> granted it (<code>subject:&lt;name&gt;</code> / <code>public_class</code>); on deny, <em>which</em> check failed (<code>unknown_key</code> / <code>not_writable</code> / <code>not_permitted</code>).</td></tr>
+</tbody></table>
+<p>Example:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">event_kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;basil.audit.authz&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">event_version</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">occurred_at</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;2026-06-30T00:00:00Z&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">generation</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 3</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">op</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;sign&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">target_kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;catalog_key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">target_id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;nats.account&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">actor_kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;subject&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">actor_id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;svc.nats&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">authenticated_by</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;unix_peercred:svc.nats&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">presenter_kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unix_peercred&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">presenter_id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;svc-nats(9002)&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">decision</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;allow&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">outcome</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;allow&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">reason</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;subject:svc.nats&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre><div class="inset best"><span class="label">✅ Best practice</span>
+
+<p>Ship the audit file to an append-only store and alert on <code>deny</code> spikes and on any <code>operator</code>-role
+<code>allow</code> (rotate/import/set). The record answers "who asked for what, on which key, and were they
+allowed", and it never contains key material, so it's safe to forward and back up.</p>
+
+</div>
+<p>For sealed or bridged invocation, treat <code>actor_*</code> as the authorized subject and <code>presenter_*</code> as the
+transport process that delivered the request. The bridge's Unix subject is useful operational context,
+but it does not inherit the actor's data-plane grants and cannot make an unsigned COSE message
+authorize.
+For the NATS bridge, <code>authenticated_by</code> summarizes the sealed <code>signature-key</code> actor proof, while
+<code>presenter_id</code> names the bridge process that delivered the message (presenting needs no policy
+grant of its own).</p>
+<h2 id="sinks">Sinks&nbsp;<a class="anchor" href="#sinks">&#xE732;</a></h2>
+<table><thead><tr><th>Sink</th><th>Status</th></tr></thead><tbody>
+<tr><td>Local JSONL file (<code>audit-log</code>)</td><td><span class="pill impl">implemented</span></td></tr>
+<tr><td>OTLP / OpenTelemetry</td><td><span class="pill impl">implemented</span></td></tr>
+<tr><td>journald</td><td><span class="pill impl">implemented</span></td></tr>
+<tr><td>syslog</td><td><span class="pill gap">roadmap</span></td></tr>
+<tr><td>NATS</td><td><span class="pill gap">roadmap</span></td></tr>
+<tr><td>Prometheus metrics</td><td><span class="pill gap">roadmap</span></td></tr>
+</tbody></table>
+<p>Configure runtime tracing sinks under <code>[logging]</code>. <code>stdout</code> and <code>journald</code> are enabled by default;
+disable either with <code>[logging.stdout].enable = false</code> or <code>[logging.journald].enable = false</code>.</p>
+<p>OTLP log export is compiled behind the default-off <code>otlp</code> cargo feature. A binary built with that
+feature accepts:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="toml"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span>logging.opentelemetry</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>enable</span><span style="color: #179299;"> =</span><span style="color: #FE640B;"> true</span></span>
+<span class="giallo-l"><span>endpoint</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;http://localhost:4317&quot;</span></span>
+<span class="giallo-l"><span>protocol</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;grpc&quot;</span><span style="color: #7C7F93;font-style: italic;"> # &quot;grpc&quot;, &quot;http-binary&quot;, or &quot;http-json&quot;</span></span></code></pre>
+<p>If <code>logging.opentelemetry.enable = true</code> is set on a binary built without <code>otlp</code>, startup fails
+closed instead of silently dropping telemetry.</p>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/troubleshooting/incident-runbook/">Incident runbook</a>: using the audit trail during a response.</li>
+<li><a href="/configuration/policy/">The policy</a>: how subjects and <code>reason</code> map to grants.</li>
+<li><a href="/clients/nats-bridge/">NATS bridge</a>: bridge-specific actor and presenter semantics.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

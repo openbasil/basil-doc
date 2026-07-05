@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Streaming encryption </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/clients/stream/#streaming-encryption">Streaming encryption</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#suites">Suites</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#container-format">Container format</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#rust">Rust</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#go">Go</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#interop">Interop</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/stream/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="streaming-encryption">Streaming encryption&nbsp;<a class="anchor" href="#streaming-encryption">&#xE732;</a></h1>
+<p>Streaming encryption is the client-side format for files and large payloads. It encrypts an
+<code>AsyncRead</code> / <code>io.Reader</code> into an <code>AsyncWrite</code> / <code>io.Writer</code> without buffering the whole source, while
+keeping Basil's nonce rule intact: callers choose the suite and key source, but never provide nonces.</p>
+<p>Rust exposes it as <code>basil::stream</code>; Go exposes a wire-identical <code>stream</code> subpackage. The byte format is
+specified in the normative Basil repo spec, <code>docs/specs/streaming-encryption-format.md</code>.</p>
+<h2 id="suites">Suites&nbsp;<a class="anchor" href="#suites">&#xE732;</a></h2>
+<table><thead><tr><th>Suite</th><th>Chunk AEAD</th><th>Key establishment</th></tr></thead><tbody>
+<tr><td><code>AeadSuite::Aes256Gcm</code> / <code>stream.SuiteAES256GCM</code></td><td>AES-256-GCM</td><td>Symmetric 32-byte CEK, generated or caller-provided.</td></tr>
+<tr><td><code>AeadSuite::ChaCha20Poly1305</code> / <code>stream.SuiteChaCha20Poly1305</code></td><td>ChaCha20-Poly1305</td><td>Symmetric 32-byte CEK, generated or caller-provided.</td></tr>
+<tr><td><code>MlKemSuite::MlKem512</code> / <code>stream.SuiteMLKEM512</code></td><td>AES-256-GCM</td><td>Fresh CEK wrapped once to an ML-KEM-512 public encapsulation key.</td></tr>
+<tr><td><code>MlKemSuite::MlKem768</code> / <code>stream.SuiteMLKEM768</code></td><td>AES-256-GCM</td><td>Fresh CEK wrapped once to an ML-KEM-768 public encapsulation key.</td></tr>
+<tr><td><code>MlKemSuite::MlKem1024</code> / <code>stream.SuiteMLKEM1024</code></td><td>AES-256-GCM</td><td>Fresh CEK wrapped once to an ML-KEM-1024 public encapsulation key.</td></tr>
+</tbody></table>
+<p>The ML-KEM suites need only the recipient's public encapsulation key to encrypt. Decryption recovers
+the once-wrapped CEK through a <code>CekRecovery</code> / <code>CEKRecovery</code> seam: production uses the broker's
+<code>UnwrapEnvelope</code> RPC (<code>BrokerCekRecovery</code> / <code>NewBrokerCEKRecovery</code>), while tests and tools can use a
+raw seed (<code>LocalSeedCekRecovery</code> / <code>NewLocalSeedCEKRecovery</code>).</p>
+<h2 id="container-format">Container format&nbsp;<a class="anchor" href="#container-format">&#xE732;</a></h2>
+<p>Every stream starts with a fixed 61-byte header:</p>
+<table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>magic</code></td><td>ASCII <code>BSLSTR</code>.</td></tr>
+<tr><td><code>version</code></td><td><code>1</code>.</td></tr>
+<tr><td><code>suite_id</code></td><td>The selected suite.</td></tr>
+<tr><td><code>flags</code></td><td>Reserved; must be zero.</td></tr>
+<tr><td><code>chunk_size</code></td><td>Plaintext chunk size, <code>1..=1048576</code>.</td></tr>
+<tr><td><code>stream_id</code></td><td>Random 16-byte stream id.</td></tr>
+<tr><td><code>stream_salt</code></td><td>Random 32-byte HKDF salt.</td></tr>
+</tbody></table>
+<p>ML-KEM streams then carry one KEM header containing the ML-KEM encapsulated key, CEK-wrap nonce, and
+wrapped CEK. The CEK wrap is byte-compatible with <code>basil-core</code>'s <code>ml_kem_envelope</code>, so the broker can
+recover it through <code>UnwrapEnvelope</code>; clients send <code>key_version = 0</code> for software custody and the broker
+uses the latest custody record.</p>
+<p>The body is a sequence of length-prefixed AEAD records. Each chunk uses a counter nonce under a
+per-stream message key derived by HKDF-SHA256 from the CEK, <code>stream_salt</code>, suite id, and <code>stream_id</code>.
+Per-chunk AAD binds the version, suite, <code>stream_id</code>, chunk index, final marker, plaintext length, and
+declared chunk size. Decryption fails closed on malformed headers, bad chunk order, truncation,
+downgrade, or AEAD authentication failure.</p>
+<h2 id="rust">Rust&nbsp;<a class="anchor" href="#rust">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="rust"><span class="giallo-l"><span style="color: #8839EF;">use</span><span style="color: #DF8E1D;"> basil</span><span style="color: #179299;">::</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #DF8E1D;font-style: italic;">    AeadSuite</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> CekSource</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> DEFAULT_CHUNK_SIZE</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> MlKemSuite</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    decrypt_aead</span><span style="color: #7C7F93;">,</span><span> decrypt_ml_kem</span><span style="color: #7C7F93;">,</span><span> encrypt_aead</span><span style="color: #7C7F93;">,</span><span> encrypt_ml_kem</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">};</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># </span><span style="color: #8839EF;">async fn</span><span style="color: #1E66F5;font-style: italic;"> run</span><span style="color: #04A5E5;">&lt;</span><span style="color: #DF8E1D;font-style: italic;">R</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> W</span><span style="color: #04A5E5;">&gt;</span><span style="color: #7C7F93;">(</span><span style="color: #E64553;">plain</span><span style="color: #179299;">:</span><span style="color: #DF8E1D;font-style: italic;"> R</span><span style="color: #7C7F93;">,</span><span style="color: #E64553;"> encrypted</span><span style="color: #179299;">:</span><span style="color: #DF8E1D;font-style: italic;"> W</span><span style="color: #7C7F93;">,</span><span style="color: #E64553;"> recipient_pub</span><span style="color: #179299;">: &amp;</span><span style="color: #7C7F93;">[</span><span style="color: #8839EF;">u8</span><span style="color: #7C7F93;">])</span><span style="color: #179299;"> -&gt;</span><span style="color: #DF8E1D;"> basil</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;">stream</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">StreamResult</span><span style="color: #04A5E5;">&lt;</span><span style="color: #7C7F93;">()</span><span style="color: #04A5E5;">&gt;</span></span>
+<span class="giallo-l"><span># </span><span style="color: #8839EF;">where</span></span>
+<span class="giallo-l"><span>#     </span><span style="color: #DF8E1D;font-style: italic;">R</span><span style="color: #179299;">:</span><span style="color: #DF8E1D;"> tokio</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;">io</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">AsyncRead</span><span style="color: #179299;"> +</span><span style="color: #DF8E1D;font-style: italic;"> Unpin</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>#     </span><span style="color: #DF8E1D;font-style: italic;">W</span><span style="color: #179299;">:</span><span style="color: #DF8E1D;"> tokio</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;">io</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">AsyncWrite</span><span style="color: #179299;"> +</span><span style="color: #DF8E1D;font-style: italic;"> Unpin</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span># </span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">let</span><span> cek</span><span style="color: #179299;"> =</span><span style="color: #1E66F5;font-style: italic;"> encrypt_aead</span><span style="color: #7C7F93;">(</span></span>
+<span class="giallo-l"><span>    plain</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    encrypted</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #DF8E1D;">    AeadSuite</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">Aes256Gcm</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #DF8E1D;">    CekSource</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">Generate</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #FE640B;">    DEFAULT_CHUNK_SIZE</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #179299;">.</span><span style="color: #8839EF;">await</span><span style="color: #179299;">?</span><span style="color: #7C7F93;">;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;">// Store `cek` wherever your application stores file-encryption metadata.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;">// ML-KEM encryption needs only the public encapsulation key.</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;">// let recovery = basil::BrokerCekRecovery::new(client, &quot;app.kem_key&quot;, MlKemSuite::MlKem768);</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;">// encrypt_ml_kem(src, dst, MlKemSuite::MlKem768, recipient_pub, DEFAULT_CHUNK_SIZE).await?;</span></span>
+<span class="giallo-l"><span># </span><span style="color: #8839EF;">let</span><span> _</span><span style="color: #179299;"> =</span><span style="color: #7C7F93;"> (</span><span>cek</span><span style="color: #7C7F93;">,</span><span> recipient_pub</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> MlKemSuite</span><span style="color: #179299;">::</span><span style="color: #DF8E1D;font-style: italic;">MlKem768</span><span style="color: #7C7F93;">);</span></span>
+<span class="giallo-l"><span># </span><span style="color: #DF8E1D;font-style: italic;">Ok</span><span style="color: #7C7F93;">(())</span></span>
+<span class="giallo-l"><span># </span><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>The Rust reference CLI is useful for interop tests:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">cargo</span><span style="color: #40A02B;"> build -p basil --example stream_cli</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">target/debug/examples/stream_cli</span><span style="color: #40A02B;"> encrypt --suite aes256gcm --key</span><span style="color: #179299;"> &lt;</span><span style="color: #40A02B;">hex3</span><span style="color: #179299;">2&gt; &lt;</span><span style="color: #40A02B;"> plain</span><span style="color: #179299;"> &gt;</span><span style="color: #40A02B;"> encrypted.bsl</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">target/debug/examples/stream_cli</span><span style="color: #40A02B;"> decrypt --key</span><span style="color: #179299;"> &lt;</span><span style="color: #40A02B;">hex3</span><span style="color: #179299;">2&gt; &lt;</span><span style="color: #40A02B;"> encrypted.bsl</span><span style="color: #179299;"> &gt;</span><span style="color: #40A02B;"> plain.out</span></span></code></pre><h2 id="go">Go&nbsp;<a class="anchor" href="#go">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span style="color: #8839EF;">import</span><span style="color: #40A02B;"> &quot;github.com/openbasil/basil-go/stream&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>cek</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">EncryptAEAD</span><span style="color: #7C7F93;">(</span><span>dst</span><span style="color: #7C7F93;">,</span><span> src</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteAES256GCM</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">GenerateCEK</span><span style="color: #7C7F93;">(),</span><span> stream</span><span style="color: #7C7F93;">.</span><span>DefaultChunkSize</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">DecryptAEAD</span><span style="color: #7C7F93;">(</span><span>out</span><span style="color: #7C7F93;">,</span><span> encrypted</span><span style="color: #7C7F93;">,</span><span> cek</span><span style="color: #7C7F93;">);</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">EncryptMLKEM</span><span style="color: #7C7F93;">(</span><span>dst</span><span style="color: #7C7F93;">,</span><span> src</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteMLKEM768</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    recipientPublicKey</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>DefaultChunkSize</span><span style="color: #7C7F93;">);</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"><span>rec</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">NewBrokerCEKRecovery</span><span style="color: #7C7F93;">(</span><span>client</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.kem_key&quot;</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteMLKEM768</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">DecryptMLKEM</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span> out</span><span style="color: #7C7F93;">,</span><span> encrypted</span><span style="color: #7C7F93;">,</span><span> rec</span><span style="color: #7C7F93;">);</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>The Go <code>stream</code> package is isolated from the lean root package, so the post-quantum dependencies are
+linked only by callers that import it.</p>
+<h2 id="interop">Interop&nbsp;<a class="anchor" href="#interop">&#xE732;</a></h2>
+<p>Rust and Go prove the format both directions for AES-256-GCM, ChaCha20-Poly1305, and ML-KEM-768. The
+Go test drives the Rust reference CLI:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">cargo</span><span style="color: #40A02B;"> build -p basil --example stream_cli</span></span>
+<span class="giallo-l"><span>BASIL_STREAM_RUST_CLI</span><span style="color: #179299;">=</span><span style="color: #40A02B;">&quot;</span><span>$PWD</span><span style="color: #40A02B;">/target/debug/examples/stream_cli&quot;</span><span style="color: #1E66F5;font-style: italic;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  go test -tags interop -run Interop ./stream/...</span></span></code></pre>
+<p>The published Rust client keeps only pure-Rust RustCrypto dependencies for this feature
+(<code>aes-gcm</code>, <code>chacha20poly1305</code>, <code>ml-kem</code>, <code>hkdf</code>, <code>sha2</code>, <code>rand</code>, <code>zeroize</code>). It does not pull
+OpenBao, tonic server code, <code>age</code>, or <code>argon2</code> into client applications.</p>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/clients/rust/">Rust client</a> and <a href="/clients/go/">Go client</a>: the language-specific surfaces.</li>
+<li><a href="/operations/crypto/">Crypto operations</a>: broker-side key custody and envelope operations.</li>
+<li><a href="/reference/feature-matrix/">Feature matrix</a>: implemented vs. roadmap.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

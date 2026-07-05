@@ -1,0 +1,18 @@
+# typos (spell checker) configuration
+
+[files]
+# ignore these files
+extend-exclude = [
+  "logo.svg",
+]
+
+[default]
+extend-ignore-identifiers-re = [
+  ".*(cose|Cose|COSE).*",
+  ".*Encrypter.*",
+]
+
+[default.extend-identifiers]
+# overrides: if right side of equals is same as left side, no change is made
+HashiCorp = "HashiCorp"
+PNGs = "PNGs"

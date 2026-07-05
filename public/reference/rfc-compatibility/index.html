@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | RFC compatibility </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/reference/rfc-compatibility/#rfc-compatibility">RFC compatibility</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#cose-and-cbor">COSE and CBOR</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#json-tokens-jose">JSON tokens (JOSE)</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#signature-algorithms-and-keys">Signature algorithms and keys</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#key-derivation-and-encryption">Key derivation and encryption</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#encodings-and-formats">Encodings and formats</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/reference/rfc-compatibility/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="rfc-compatibility">RFC compatibility&nbsp;<a class="anchor" href="#rfc-compatibility">&#xE732;</a></h1>
+<p>Basil builds on open, published standards, so its issued tokens, sealed envelopes, and wire
+structures interoperate with tooling you already trust. This page lists the RFCs Basil implements or
+interoperates with, grouped by area. Where a standard leaves flexibility or ambiguity, the notes
+below record where Basil takes the stricter, more secure interpretation.</p>
+<p>Every entry below is <span class="pill impl">implemented</span> in the current tree unless it is
+marked <span class="pill gap">roadmap</span>. Basil is under active development, so treat this list
+as the standards Basil targets today, not a frozen contract.</p>
+<p><a href="https://docs.openbasil.org/reference/rfc-compatibility/#cose-and-cbor">COSE &amp; CBOR</a> · <a href="https://docs.openbasil.org/reference/rfc-compatibility/#json-tokens-jose">JSON tokens</a> · <a href="https://docs.openbasil.org/reference/rfc-compatibility/#signature-algorithms-and-keys">Signatures &amp; keys</a> · <a href="https://docs.openbasil.org/reference/rfc-compatibility/#key-derivation-and-encryption">Key derivation &amp; encryption</a> · <a href="https://docs.openbasil.org/reference/rfc-compatibility/#encodings-and-formats">Encodings &amp; formats</a></p>
+<h2 id="cose-and-cbor">COSE and CBOR&nbsp;<a class="anchor" href="#cose-and-cbor">&#xE732;</a></h2>
+<p>Basil's sealed invocation protocol is a strict, deterministic profile of COSE: a <code>COSE_Sign1</code> over
+an embedded tagged <code>COSE_Encrypt</code>, so a courier can route a message it cannot read while a recipient
+verifies the signature before decrypting.</p>
+<ul>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc9052">RFC 9052</a></strong> CBOR Object Signing and Encryption (COSE):
+Structures and Process. <code>COSE_Sign1</code> over an embedded tagged <code>COSE_Encrypt</code> carries every sealed
+request and response.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc9053">RFC 9053</a></strong> COSE: Initial Algorithms. Fixes the v1
+suite: <code>EdDSA</code> or <code>ES256</code> signatures, <code>ECDH-ES + HKDF-256</code> (X25519) key agreement, <code>A256GCM</code>
+content (<code>ChaCha20-Poly1305</code> is also supported).</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc8949">RFC 8949</a></strong> Concise Binary Object Representation
+(CBOR). The codec re-encodes every message on decode and requires byte-for-byte equality,
+enforcing the §4.2 deterministic form on release builds.</li>
+</ul>
+<div class="inset note"><span class="label">📝 Basil is a strict COSE profile, not a general COSE verifier</span>
+
+<p>Basil's interop suite checks its codec against the COSE Working Group's published example vectors,
+the corpus RFC 9052 and RFC 9053 reference. Basil deliberately <strong>rejects</strong> generic, RFC-valid COSE
+that falls outside its profile. It requires <code>EdDSA</code> or <code>ES256</code>, the signing <code>alg</code> and <code>kid</code> in the
+<em>protected</em> header with an empty unprotected header, a tagged <code>COSE_Encrypt</code> as the <code>COSE_Sign1</code>
+payload (the sign-over-encrypt nesting), and the Basil <code>crit</code> labels plus CWT claims. The private
+request-hash claim uses <code>SHA3-256</code> where the RFCs leave the primitive open. Unknown or duplicate
+labels, indefinite lengths, non-deterministic encodings, and claims in unprotected headers are all
+rejected. This is secure-by-default: anything the profile does not explicitly allow fails closed.</p>
+
+</div><h2 id="json-tokens-jose">JSON tokens (JOSE)&nbsp;<a class="anchor" href="#json-tokens-jose">&#xE732;</a></h2>
+<p>Basil issues workload and messaging credentials as JSON Web Tokens, signed and described with the
+JOSE family. The keys stay in the vault; Basil brokers the signature, so the private issuer key is
+never handed out.</p>
+<ul>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc7519">RFC 7519</a></strong> JSON Web Token (JWT). JWT-SVIDs and NATS
+user, account, operator, server, and signer JWTs are RFC 7519 tokens.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc7515">RFC 7515</a></strong> JSON Web Signature (JWS). Every issued JWT
+is signed as a compact JWS.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc7518">RFC 7518</a></strong> JSON Web Algorithms (JWA). Issuer signing
+algorithms <code>RS256</code>, <code>ES256</code>, and <code>ES384</code> for the generic <code>mint-jwt</code> and JWT-SVID issuer paths
+(<code>ES512</code>/P-521 is generic-signing only, not a JWT issuer).</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc8037">RFC 8037</a></strong> CFRG ECDH and Signatures in JOSE. The
+<code>EdDSA</code> (raw Ed25519) JOSE algorithm for Ed25519 JWT-SVID issuers and NATS NKey JWTs.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc7517">RFC 7517</a></strong> JSON Web Key (JWK). The JWKS HTTP endpoint
+publishes issuer public keys as an unauthenticated, world-readable JWK Set.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc8414">RFC 8414</a></strong> OAuth 2.0 Authorization Server Metadata.
+The OIDC discovery document (<code>/.well-known/openid-configuration</code>) advertises the issuer and
+<code>jwks_uri</code> for non-SPIFFE verifiers.</li>
+</ul>
+<h2 id="signature-algorithms-and-keys">Signature algorithms and keys&nbsp;<a class="anchor" href="#signature-algorithms-and-keys">&#xE732;</a></h2>
+<ul>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc8032">RFC 8032</a></strong> Edwards-Curve Digital Signature Algorithm
+(EdDSA). Ed25519 signing for COSE envelopes, NATS NKeys, and Ed25519 SVIDs; a known-answer test in
+the test suite pins the RFC 8032 §7.1 vector.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc6979">RFC 6979</a></strong> Deterministic Usage of DSA and ECDSA. Local
+<code>ES256</code> COSE signing uses deterministic ECDSA over P-256 and normalizes low <code>S</code>, so the signed
+<code>COSE_Sign1</code> fixture is byte-stable.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc8410">RFC 8410</a></strong> Algorithm Identifiers for Ed25519, Ed448,
+X25519, X448 in X.509. The fixed PKCS#8 DER prefix that wraps an Ed25519 seed on transit BYOK
+import.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc5958">RFC 5958</a></strong> Asymmetric Key Packages (PKCS#8). The
+<code>OneAsymmetricKey</code> version field for PKCS#8-wrapped private keys.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc7468">RFC 7468</a></strong> Textual Encodings of PKIX, PKCS, and CMS
+Structures (PEM). PEM output wraps the Base64 body at 64 columns.</li>
+</ul>
+<h2 id="key-derivation-and-encryption">Key derivation and encryption&nbsp;<a class="anchor" href="#key-derivation-and-encryption">&#xE732;</a></h2>
+<ul>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc5869">RFC 5869</a></strong> HMAC-based Extract-and-Expand Key
+Derivation Function (HKDF). HKDF-SHA256 derives content keys in COSE and sealed-box envelopes and
+in the streaming encryption format.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc3218">RFC 3218</a></strong> Preventing the Million Message Attack on
+CMS (RSA-OAEP). RSA-OAEP(SHA-256) wraps the ephemeral AES key when importing an RSA BYOK key into
+transit.</li>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc9180">RFC 9180</a></strong> Hybrid Public Key Encryption (HPKE)
+<span class="pill gap">roadmap</span>. A planned envelope-encryption alternative; not yet
+implemented.</li>
+</ul>
+<h2 id="encodings-and-formats">Encodings and formats&nbsp;<a class="anchor" href="#encodings-and-formats">&#xE732;</a></h2>
+<ul>
+<li><strong><a rel="external" href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a></strong> Date and Time on the Internet: Timestamps.
+Audit-log timestamps render as RFC 3339 UTC, <code>YYYY-MM-DDThh:mm:ssZ</code> at seconds precision.</li>
+</ul>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/reference/feature-matrix/">Feature matrix</a>: what is implemented versus roadmap, per feature.</li>
+<li><a href="/clients/sealed-invocations/">Sealed invocations</a>: the COSE request and response protocol in detail.</li>
+<li><a href="/reference/glossary/">Glossary</a>: the terms these standards share.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

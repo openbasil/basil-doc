@@ -1,0 +1,68 @@
+name: Deploy docs
+
+# Builds the Zola site with a PINNED Zola version and deploys it to Cloudflare
+# Pages. Production deploys on push to main; pull requests get a preview
+# deployment at <branch>.<project>.pages.dev.
+#
+# Required repository secrets:
+#   CLOUDFLARE_API_TOKEN   - token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  - your Cloudflare account id
+#
+# One-time setup (outside this workflow):
+#   1. Create the Pages project once (name must match --project-name below):
+#        wrangler pages project create basil-docs --production-branch=main
+#      (or create it in the dashboard).
+#   2. Add the custom domain docs.openbasil.org to the Pages project; because
+#      Cloudflare hosts the DNS, this creates the CNAME and cert automatically.
+#   3. Set base_url = "https://docs.openbasil.org" in config.toml (done).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write   # let the deploy action comment the preview URL on PRs
+  deployments: write
+
+env:
+  ZOLA_VERSION: "0.22.1"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Zola ${{ env.ZOLA_VERSION }}
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -sSfL "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin" zola
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Zola version
+        run: zola --version
+
+      - name: Build
+        run: zola build
+
+      # Link check is informational: external github.com/openbasil/* links 404
+      # until the org is public, so a failure here must not block the deploy.
+      - name: Check links (non-blocking)
+        run: zola check || true
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # On push to main -> branch "main" -> production (docs.openbasil.org).
+          # On a PR -> the head branch -> a preview *.pages.dev deployment.
+          command: pages deploy public --project-name=basil-docs --branch=${{ github.head_ref || github.ref_name }}

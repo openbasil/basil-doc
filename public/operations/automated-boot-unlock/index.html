@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Automated boot unlock </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/operations/automated-boot-unlock/#automated-boot-unlock">Automated boot unlock</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/automated-boot-unlock/#unit-shape">Unit shape</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/automated-boot-unlock/#read-only-credential-files">Read-only credential files</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/automated-boot-unlock/#preflight-and-expiry-monitoring">Preflight and expiry monitoring</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/automated-boot-unlock/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="automated-boot-unlock">Automated boot unlock&nbsp;<a class="anchor" href="#automated-boot-unlock">&#xE732;</a></h1>
+<p>Some hosts need Basil to start without an operator at the console. The production passphrase slot is
+the intended automation hook: an external trust root fetches the passphrase at boot, writes it to a
+local file or systemd credential, and <code>basil agent</code> opens the sealed bundle from that file. If the
+fetch fails, the unit fails and the bundle stays sealed.</p>
+<p>This does not make the upstream secret store part of Basil. It makes it the trust root for boot
+unlock, so scope and monitor it with the same care as the bundle itself.</p>
+<div class="inset note"><span class="label">📝 TPM-sealed slot: no external trust root</span>
+
+<p>On a host with a TPM 2.0, a TPM-sealed unlock slot removes the external fetcher entirely: the slot key
+is sealed to the host's PCRs and unsealed at boot, so no operator secret or upstream store sits on the
+unlock path. It is feature-gated behind the off-by-default <code>unlock-tpm</code> build. Create the slot with
+<code>basil bundle create --slot tpm:pcrs=0,2,4,7</code>, scaffold config with <code>basil config init --unlock tpm</code>,
+and set <code>[unlock] unlock-tpm = true</code>. The passphrase-fetch pattern below suits hosts without a usable
+TPM.</p>
+
+</div><h2 id="unit-shape">Unit shape&nbsp;<a class="anchor" href="#unit-shape">&#xE732;</a></h2>
+<p>This example uses a 1Password service-account token delivered as a systemd credential. The token is
+not baked into the unit environment; <code>ExecStartPre</code> reads it from <code>$CREDENTIALS_DIRECTORY</code>, fetches the
+passphrase, verifies the bundle opens, and leaves the file for <code>basil agent</code> to consume.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="ini"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Unit</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Description</span><span style="color: #179299;">=</span><span>Basil agent</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">After</span><span style="color: #179299;">=</span><span>network-online.target</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Wants</span><span style="color: #179299;">=</span><span>network-online.target</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Service</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Type</span><span style="color: #179299;">=</span><span>simple</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">User</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Group</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">RuntimeDirectory</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">StateDirectory</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">ConfigurationDirectory</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">LoadCredential</span><span style="color: #179299;">=</span><span>op-token:/etc/basil/op-service-token</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">ExecStartPre</span><span style="color: #179299;">=</span><span>/usr/bin/env bash -euc </span><span style="color: #40A02B;">&#39;umask 077; export OP_SERVICE_ACCOUNT_TOKEN=&quot;$(cat &quot;$CREDENTIALS_DIRECTORY/op-token&quot;)&quot;; op read &quot;op://platform/basil-unlock/passphrase&quot; &gt; /run/basil/unlock-passphrase; basil bundle verify /var/lib/basil/bundle.sealed --open passphrase:file=/run/basil/unlock-passphrase&#39;</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">ExecStart</span><span style="color: #179299;">=</span><span>/usr/bin/basil agent --config /etc/basil/agent.toml</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Restart</span><span style="color: #179299;">=</span><span>on-failure</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Install</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">WantedBy</span><span style="color: #179299;">=</span><span>multi-user.target</span></span></code></pre>
+<p>The matching agent config points at the fetched file:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="toml"><span class="giallo-l"><span>bundle</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;/var/lib/basil/bundle.sealed&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span>unlock</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>unlock-passphrase-file</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;/run/basil/unlock-passphrase&quot;</span></span>
+<span class="giallo-l"><span>strict-bundle-perms</span><span style="color: #179299;"> =</span><span style="color: #FE640B;"> true</span></span></code></pre>
+<p>By default Basil overwrites and removes <code>unlock-passphrase-file</code> after startup reads it. That is the
+right behavior for a writable tmpfs file such as <code>/run/basil/unlock-passphrase</code>.</p>
+<h2 id="read-only-credential-files">Read-only credential files&nbsp;<a class="anchor" href="#read-only-credential-files">&#xE732;</a></h2>
+<p>If the passphrase itself is supplied as a systemd credential, <code>$CREDENTIALS_DIRECTORY</code> may be
+read-only. In that case configure Basil not to wipe it:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="toml"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span>unlock</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>unlock-passphrase-file</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;/run/credentials/basil.service/basil-unlock-passphrase&quot;</span></span>
+<span class="giallo-l"><span>unlock-passphrase-no-wipe</span><span style="color: #179299;"> =</span><span style="color: #FE640B;"> true</span></span></code></pre>
+<p>Use <code>unlock-passphrase-no-wipe</code> only for read-only credential mounts or other stores whose lifecycle is
+owned outside Basil. For normal files, let Basil wipe after read.</p>
+<h2 id="preflight-and-expiry-monitoring">Preflight and expiry monitoring&nbsp;<a class="anchor" href="#preflight-and-expiry-monitoring">&#xE732;</a></h2>
+<p>Run the same fetch plus <code>bundle verify</code> path on a timer so an expired upstream token is caught before a
+restart turns it into an outage.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="ini"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Unit</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Description</span><span style="color: #179299;">=</span><span>Verify Basil automated unlock</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Service</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Type</span><span style="color: #179299;">=</span><span>oneshot</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">User</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Group</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">RuntimeDirectory</span><span style="color: #179299;">=</span><span>basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">LoadCredential</span><span style="color: #179299;">=</span><span>op-token:/etc/basil/op-service-token</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">ExecStart</span><span style="color: #179299;">=</span><span>/usr/bin/env bash -euc </span><span style="color: #40A02B;">&#39;umask 077; export OP_SERVICE_ACCOUNT_TOKEN=&quot;$(cat &quot;$CREDENTIALS_DIRECTORY/op-token&quot;)&quot;; op read &quot;op://platform/basil-unlock/passphrase&quot; &gt; /run/basil/unlock-passphrase.check; basil bundle verify /var/lib/basil/bundle.sealed --open passphrase:file=/run/basil/unlock-passphrase.check; rm -f /run/basil/unlock-passphrase.check&#39;</span></span></code></pre><pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="ini"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Unit</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Description</span><span style="color: #179299;">=</span><span>Periodic Basil automated unlock verification</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Timer</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">OnBootSec</span><span style="color: #179299;">=</span><span>10min</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">OnUnitActiveSec</span><span style="color: #179299;">=</span><span>6h</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">Persistent</span><span style="color: #179299;">=</span><span>true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Install</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">WantedBy</span><span style="color: #179299;">=</span><span>timers.target</span></span></code></pre><div class="inset caution"><span class="label">⚠️ The fetcher token is unlock authority</span>
+
+<p>For 1Password, scope the service-account token to the single item that holds the passphrase, keep it
+short-lived where your process allows, and rotate it on a schedule. A token that can fetch the slot
+passphrase can unlock the Basil bundle.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>: slot ranking and bundle commands.</li>
+<li><a href="/configuration/overview/">Configuration overview</a>: where <code>[unlock]</code> lives in the agent TOML.</li>
+<li><a href="/troubleshooting/incident-runbook/">Incident runbook</a>: lost unlock secrets and rollback recovery.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | NATS bridge </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/clients/nats-bridge/#nats-bridge">NATS bridge</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#binary-and-config">Binary and config</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#message-flow">Message flow</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#opaque-payloads">Opaque payloads</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#policy-grant">Policy grant</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#audit-semantics">Audit semantics</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#bridge-error-headers">Bridge error headers</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#current-boundaries">Current boundaries</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/nats-bridge/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="nats-bridge">NATS bridge&nbsp;<a class="anchor" href="#nats-bridge">&#xE732;</a></h1>
+<p>The <code>basil-nats-bridge</code> binary lets NATS request/reply callers reach Basil's sealed invocation
+service without making the bridge a trusted actor. It is a <strong>courier</strong>: it moves raw tagged COSE
+bytes between NATS and <code>InvocationService.Invoke</code>, and Basil does the identity, policy, decryption,
+operation execution, response signing, and response encryption.</p>
+<p>Use this path when a workload can publish to NATS but should still authorize as the subject proved by
+its sealed COSE request. The bridge process is only the local Unix-socket presenter. It must not
+decrypt request or response bodies, rewrite subjects, delegate, impersonate, or fabricate operation
+results.</p>
+<h2 id="binary-and-config">Binary and config&nbsp;<a class="anchor" href="#binary-and-config">&#xE732;</a></h2>
+<p><code>basil-nats-bridge</code> is a separate Rust binary from the <code>basil</code> agent. Run it as its own service user
+and point it at both NATS and the local Basil Unix socket:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="toml"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span>nats</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>url</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;nats://127.0.0.1:4222&quot;</span></span>
+<span class="giallo-l"><span>creds</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;/run/credentials/basil-nats-bridge/nats.creds&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span>basil</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>socket</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;/run/basil/basil.sock&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;">[</span><span>bridge</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span>request-subject</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;basil.invocation.v1&quot;</span></span>
+<span class="giallo-l"><span>queue-group</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;basil-nats-bridge&quot;</span></span>
+<span class="giallo-l"><span>max-message-bytes</span><span style="color: #179299;"> =</span><span style="color: #FE640B;"> 1048576</span></span></code></pre><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>nats.url</code></td><td>NATS server URL.</td></tr>
+<tr><td><code>nats.creds</code></td><td>Optional NATS credentials file. Omit it for unauthenticated local NATS deployments.</td></tr>
+<tr><td><code>basil.socket</code></td><td>Basil agent Unix socket used for <code>InvocationService.Invoke</code>.</td></tr>
+<tr><td><code>bridge.request-subject</code></td><td>NATS subject that accepts sealed invocation request bytes.</td></tr>
+<tr><td><code>bridge.queue-group</code></td><td>Optional NATS queue group for multiple bridge workers.</td></tr>
+<tr><td><code>bridge.max-message-bytes</code></td><td>Required maximum accepted NATS payload size, in bytes. Oversized requests get a bridge error.</td></tr>
+</tbody></table>
+<p>The NATS request payload is the complete tagged request <code>COSE_Sign1</code>. The NATS reply payload is the
+complete tagged response <code>COSE_Sign1</code> when Basil returns a protected response. NATS inboxes provide
+transport correlation, but callers must still verify the signed response, check the response claims,
+and decrypt the body before trusting any status or result.</p>
+<h2 id="message-flow">Message flow&nbsp;<a class="anchor" href="#message-flow">&#xE732;</a></h2>
+<ol>
+<li>A caller builds a sealed invocation request with the <a href="/clients/sealed-invocations/">sealed invocation</a>
+helper or the fixture-compatible COSE wire rules.</li>
+<li>The caller publishes raw tagged request <code>COSE_Sign1</code> bytes to <code>bridge.request-subject</code> using NATS
+request/reply.</li>
+<li>The bridge checks only transport shape: reply subject and payload size.</li>
+<li>The bridge wraps the bytes as <code>SealedRequest { message }</code> and forwards them to Basil over
+<code>InvocationService.Invoke</code> on the configured Unix socket.</li>
+<li>Basil authenticates the sealed actor from the COSE <code>signature-key</code> proof, authorizes the
+operation-specific policy grants, executes the operation, and returns <code>SealedResponse { message, response_subject }</code>.</li>
+<li>The bridge publishes <code>SealedResponse.message</code> bytes unchanged to <code>SealedResponse.response_subject</code>
+when present, or otherwise to the NATS reply subject.</li>
+<li>The caller verifies the broker response signature, checks request binding, decrypts with its
+selected response key, and reads the protected response body.</li>
+</ol>
+<h2 id="opaque-payloads">Opaque payloads&nbsp;<a class="anchor" href="#opaque-payloads">&#xE732;</a></h2>
+<p>The bridge never sees <code>Sign</code>, minting, or response plaintext. The operation body is inside the
+embedded <code>COSE_Encrypt</code> payload and remains encrypted.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="plain"><span class="giallo-l"><span>NATS request payload: &lt;tagged COSE_Sign1 request bytes&gt;</span></span>
+<span class="giallo-l"><span>NATS reply payload:   &lt;tagged COSE_Sign1 response bytes&gt;</span></span></code></pre>
+<p>The bridge does not inspect COSE protected headers, claims, content types, signatures, ciphertexts,
+or request/response correlation claims. It is a byte courier between NATS and Basil's local
+invocation gRPC service.</p>
+<h2 id="policy-grant">Policy grant&nbsp;<a class="anchor" href="#policy-grant">&#xE732;</a></h2>
+<p>The bridge process itself needs <strong>no policy grant</strong>. There is no transport-level <code>op:invoke</code> action
+in the policy language (a policy naming one fails to load). Basil authorizes the <em>actor</em> inside each
+sealed message, never the process that delivered it: the actor proof (the request's <code>signature-key</code>
+subject) must verify, the actor needs <code>op:decrypt</code> on the request-encryption key, and the actor
+needs the operation-specific grant for the inner request. The bridge's Unix identity is recorded in
+the audit log as the presenter for context, but it holds no data-plane authority.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">content.publisher</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;signature-key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">algorithm</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;nats-nkey&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">          &quot;</span><span style="color: #1E66F5;">public</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;UANATS_PUBLIC_NKEY&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">        }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">rules</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;publisher-can-use-invocation-signing&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;content.publisher&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">action</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;op:decrypt&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;op:sign&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">target</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;broker.request_encryption.2026q3&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;publisher.signing.2026q3&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  ]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>The first rule authorizes the presenter to reach <code>Invoke</code>. The second rule is the actor's real
+authority: Basil resolves it from the sealed COSE proof and applies it to the requested operation and
+target. A bridge uid/gid grant cannot make an unsigned or invalid message authorize.</p>
+<h2 id="audit-semantics">Audit semantics&nbsp;<a class="anchor" href="#audit-semantics">&#xE732;</a></h2>
+<p>Bridged audit records deliberately separate actor and presenter:</p>
+<table><thead><tr><th>Field</th><th>Bridged meaning</th></tr></thead><tbody>
+<tr><td><code>actor_kind</code> / <code>actor_id</code></td><td>The sealed invocation subject proved by the message, such as <code>content.publisher</code>.</td></tr>
+<tr><td><code>authenticated_by</code></td><td>The actor proof summary, such as a <code>signature-key</code> proof.</td></tr>
+<tr><td><code>presenter_kind</code> / <code>presenter_id</code></td><td>The bridge process attested by <code>SO_PEERCRED</code>, such as <code>svc-nats-bridge(9100)</code>.</td></tr>
+<tr><td><code>generation</code>, <code>op</code>, <code>target_id</code>, <code>decision</code>, <code>reason</code></td><td>The policy generation, operation target, and PDP outcome for the actor.</td></tr>
+</tbody></table>
+<p>This makes incident review explicit: the bridge delivered the request, but Basil authorized the
+sealed actor. If actor proof fails, Basil emits a denied audit record without treating the bridge as
+the actor.</p>
+<h2 id="bridge-error-headers">Bridge error headers&nbsp;<a class="anchor" href="#bridge-error-headers">&#xE732;</a></h2>
+<p>When Basil returns sealed response bytes, the bridge forwards them unchanged and does not add bridge
+error headers. When the bridge cannot obtain a sealed Basil response, it replies with an empty payload
+and these NATS headers:</p>
+<table><thead><tr><th>Header</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>Basil-Bridge-Error</code></td><td>Stable bridge-level token.</td></tr>
+<tr><td><code>Basil-Bridge-Message</code></td><td>Operator-facing detail suitable for logs.</td></tr>
+<tr><td><code>Basil-Bridge-Retryable</code></td><td><code>true</code> only when retrying the same request may succeed.</td></tr>
+</tbody></table>
+<p>Stable error tokens are <code>MALFORMED_REQUEST</code>, <code>MESSAGE_TOO_LARGE</code>, <code>BASIL_UNAVAILABLE</code>,
+<code>BASIL_REJECTED</code>, <code>TIMEOUT</code>, and <code>INTERNAL</code>.</p>
+<table><thead><tr><th>Token</th><th>Typical cause</th></tr></thead><tbody>
+<tr><td><code>MALFORMED_REQUEST</code></td><td>Missing NATS reply subject.</td></tr>
+<tr><td><code>MESSAGE_TOO_LARGE</code></td><td>Payload exceeds <code>bridge.max-message-bytes</code>.</td></tr>
+<tr><td><code>BASIL_UNAVAILABLE</code></td><td>The Unix socket cannot be reached or Basil is not serving.</td></tr>
+<tr><td><code>BASIL_REJECTED</code></td><td>Basil rejected the request before producing a sealed response.</td></tr>
+<tr><td><code>TIMEOUT</code></td><td>Basil did not respond before the bridge deadline.</td></tr>
+<tr><td><code>INTERNAL</code></td><td>Unexpected bridge-side failure.</td></tr>
+</tbody></table>
+<p>Do not treat a bridge error as a denied operation result. It means there is no trusted sealed Basil
+response. Retry only when <code>Basil-Bridge-Retryable: true</code> and your message id and expiry strategy
+still satisfy replay and TTL rules.</p>
+<h2 id="current-boundaries">Current boundaries&nbsp;<a class="anchor" href="#current-boundaries">&#xE732;</a></h2>
+<p>The bridge has no delegation, no impersonation, no metadata auth shortcut, and no migration mode for
+legacy unsigned requests. All successful operation results stay inside signed and encrypted COSE
+responses.</p>
+<p>The Go <code>sealedinvocation</code> package (<code>github.com/openbasil/basil-go/sealedinvocation</code>) ships a
+fixture-compatible <code>BuildRequest</code>/<code>OpenResponse</code> helper, so Go callers can build and open sealed COSE
+invocations broker-free rather than hand-assembling bytes. The bridge itself stays a byte courier: it
+never builds or opens the COSE messages it carries.</p>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/clients/sealed-invocations/">Sealed invocations</a>: the COSE profile and response verification contract.</li>
+<li><a href="/configuration/policy/">The policy</a>: <code>signature-key</code> subjects and the actor grants behind sealed invocations.</li>
+<li><a href="/operations/audit-logs/">Audit logs</a>: actor-vs-presenter fields for bridged requests.</li>
+<li><a href="/clients/nats/">NATS integration</a>: NATS identity minting, JWT signing, validation, and xkey boxes.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

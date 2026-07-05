@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Health &amp; readiness probes </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/operations/health-and-readiness/#health-readiness-probes">Health &amp; readiness probes</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/health-and-readiness/#cli-surface">CLI surface</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/health-and-readiness/#exit-codes">Exit codes</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/health-and-readiness/#basil-ready-json-schema">basil ready --json schema</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/health-and-readiness/#wiring-it-into-your-supervisor">Wiring it into your supervisor</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/health-and-readiness/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="health-readiness-probes">Health &amp; readiness probes&nbsp;<a class="anchor" href="#health-readiness-probes">&#xE732;</a></h1>
+<p>Basil exposes two probes over its existing peer-cred-attested Unix-socket admin gRPC surface; no
+extra port is opened. They are deliberately distinct:</p>
+<ul>
+<li><strong>Health (liveness)</strong> - is the broker <em>process</em> up and serving the socket? Cheap,
+always-answerable, and does <strong>no backend I/O</strong>. Reaching the handler means the accept loop and gRPC
+stack are alive. It says nothing about whether data-plane ops can succeed.</li>
+<li><strong>Readiness</strong> - can the broker actually <em>serve</em>? It runs the read-only existence probe over every
+catalog key and reports whether serving would <strong>fail closed</strong>: an unreachable/rejecting backend, or
+a <code>missing=error</code> key whose material is absent. Either makes the broker not ready. The probe
+result is cached for a short window (a couple of seconds); a hot reload (generation change)
+invalidates the cache immediately.</li>
+</ul>
+<p>Both probes are <strong>ungated</strong> for any socket peer. Readiness returns a non-secret summary only:
+counts, a coarse reason category, and the active generation id. It never returns key names, key
+material, or the catalog inventory, so it cannot be used to enumerate secrets.</p>
+<h2 id="cli-surface">CLI surface&nbsp;<a class="anchor" href="#cli-surface">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Liveness: exit 0 if the agent answers, nonzero on connect/RPC failure.</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> health</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> health --json</span><span style="color: #7C7F93;font-style: italic;">     # {&quot;alive&quot;:true,&quot;version&quot;:&quot;0.1.0&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Readiness: exit 0 if ready, 1 if not ready, other nonzero on connect/RPC failure.</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> ready</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> ready --json</span><span style="color: #7C7F93;font-style: italic;">      # one-line JSON object (schema below)</span></span></code></pre><h2 id="exit-codes">Exit codes&nbsp;<a class="anchor" href="#exit-codes">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Exit 0</th><th>Exit 1</th><th>Other nonzero</th></tr></thead><tbody>
+<tr><td><code>basil health</code></td><td>Process alive (answered)</td><td>-</td><td>Connect/RPC failure (socket gone, daemon down)</td></tr>
+<tr><td><code>basil ready</code></td><td>Ready to serve</td><td><strong>Not ready</strong> (backend unreachable or a required key absent)</td><td>Connect/RPC failure</td></tr>
+</tbody></table>
+<p>The "not ready" (exit 1) and "cannot reach the agent" (other nonzero) cases are distinct, so a probe
+can tell a broker that is <em>up but not ready</em> from one that is <em>down</em>.</p>
+<h2 id="basil-ready-json-schema"><code>basil ready --json</code> schema&nbsp;<a class="anchor" href="#basil-ready-json-schema">&#xE732;</a></h2>
+<table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>ready</code></td><td>bool</td><td><code>true</code> iff serving would not fail closed for any key and every backend is reachable.</td></tr>
+<tr><td><code>reason</code></td><td>string</td><td>Coarse category: <code>ready</code>, <code>backend_unreachable</code>, or <code>required_key_missing</code>.</td></tr>
+<tr><td><code>generation</code></td><td>uint</td><td>The currently serving catalog/policy generation id (bumped on each hot reload).</td></tr>
+<tr><td><code>keys_total</code></td><td>uint</td><td>Total catalog keys probed (<code>0</code> when the backend was unreachable before any per-key detail).</td></tr>
+<tr><td><code>keys_present</code></td><td>uint</td><td>Keys whose material is present.</td></tr>
+<tr><td><code>keys_required_missing</code></td><td>uint</td><td>Absent <code>missing=error</code> keys (ops fail closed). Non-zero ⇒ not ready.</td></tr>
+<tr><td><code>keys_optional_missing</code></td><td>uint</td><td>Absent <code>warn</code>/<code>generate</code> keys (reported; do not block readiness).</td></tr>
+</tbody></table>
+<p><code>basil health --json</code> emits <code>{"alive":&lt;bool&gt;,"version":"&lt;build&gt;"}</code>.</p>
+<h2 id="wiring-it-into-your-supervisor">Wiring it into your supervisor&nbsp;<a class="anchor" href="#wiring-it-into-your-supervisor">&#xE732;</a></h2>
+<p><strong>systemd</strong> - gate startup on readiness, and keep a liveness check:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="ini"><span class="giallo-l"><span style="color: #7C7F93;">[</span><span style="color: #DF8E1D;">Service</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Block &quot;started&quot; until the broker can actually serve (readiness).</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">ExecStartPost</span><span style="color: #179299;">=</span><span>/usr/bin/basil ready</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Optional periodic liveness check via a companion timer/healthcheck:</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># ExecCondition or a timer calling: /usr/bin/basil health</span></span></code></pre>
+<p><strong>Container <code>HEALTHCHECK</code></strong> - readiness as the health signal:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="docker"><span class="giallo-l"><span style="color: #8839EF;">HEALTHCHECK</span><span> --interval=10s --timeout=3s --start-period=20s \</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">  CMD</span><span> basil ready || exit 1</span></span></code></pre>
+<p><strong>Kubernetes</strong> - map each probe to its kind via an <code>exec</code> probe. The probes have no HTTP port, so use
+the CLI against the mounted socket. The only HTTP surface is the opt-in
+<a href="/configuration/jwks/">JWKS endpoint</a>, which requires an <code>http</code> build and <code>jwks.enable = true</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #1E66F5;">livenessProbe</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  exec</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    command</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">&quot;basil&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;health&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  periodSeconds</span><span style="color: #179299;">:</span><span style="color: #FE640B;"> 10</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">readinessProbe</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  exec</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    command</span><span style="color: #179299;">:</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;">&quot;basil&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;ready&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  periodSeconds</span><span style="color: #179299;">:</span><span style="color: #FE640B;"> 10</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  failureThreshold</span><span style="color: #179299;">:</span><span style="color: #FE640B;"> 3</span></span></code></pre><div class="inset note"><span class="label">📝 Run the CLI under a peer with socket access</span>
+
+<p>The probe CLI connects over the same attested Unix socket as every client, so the probe process must
+be able to reach it (socket mode/group, see <a href="/configuration/overview/">Configuration overview</a>). The
+probes are ungated, so any peer that can open the socket can run them; they return only the non-secret
+summary above.</p>
+
+</div><div class="inset best"><span class="label">✅ Best practice</span>
+
+<p>Use readiness (not liveness) for traffic gating and rollout health: a broker can be alive yet not
+ready (backend still warming, a required key not yet provisioned). Reserve liveness for "is the
+process wedged?" so a transient backend blip does not trigger a restart loop. A <code>backend_unreachable</code>
+readiness is usually transient infra; a persistent <code>required_key_missing</code> is a provisioning gap.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/operations/doctor/">Doctor (preflight checks)</a>: diagnose the environment <em>before</em> startup.</li>
+<li><a href="/operations/hot-reload/">Hot reload</a>: the generation id readiness reports.</li>
+<li><a href="/troubleshooting/incident-runbook/">Incident runbook</a>: backend-unreachable response.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

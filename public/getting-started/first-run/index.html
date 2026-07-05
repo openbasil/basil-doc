@@ -1,0 +1,426 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | First run: basil config init </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/getting-started/first-run/#first-run-basil-config-init">First run: basil config init</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/getting-started/first-run/#what-it-writes">What it writes</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/getting-started/first-run/#the-full-new-user-flow">The full new-user flow</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/getting-started/first-run/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="first-run-basil-config-init">First run: <code>basil config init</code>&nbsp;<a class="anchor" href="#first-run-basil-config-init">&#xE732;</a></h1>
+<p>Starting from nothing? <code>basil config init</code> scaffolds a minimal, valid, <strong>least-privilege</strong> starter set
+into a target directory so you don't hand-author JSON/TOML from scratch. It writes <strong>configuration
+only</strong>: never secret material, and <strong>not</strong> the sealed bundle (which needs interactive unlock
+material). It prints the bundle command shape for your chosen unlock method instead.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># OpenBao + a BIP39 break-glass slot, scaffolded under ./basil</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> config init --backend openbao --unlock bip39 --dir ./basil</span></span></code></pre><h2 id="what-it-writes">What it writes&nbsp;<a class="anchor" href="#what-it-writes">&#xE732;</a></h2>
+<p>Into the target dir (refusing to overwrite an existing file unless <code>--force</code>):</p>
+<ul>
+<li><strong><code>catalog.json</code></strong> holds one working example <code>example.signing_key</code>: an Ed25519 signing key with
+<code>missing: generate</code>, so the broker's startup reconcile creates it in place on the first run.</li>
+<li><strong><code>policy.json</code></strong> grants only the uid that ran <code>init</code> a narrow signer role
+(<code>sign</code> / <code>verify</code> / <code>get_public_key</code>) over only that one key. Everything else is default-deny.</li>
+<li><strong><code>basil-agent.toml</code></strong> is a commented config pointing at the catalog/policy/bundle/socket paths, with
+socket mode <code>0600</code> (owner-only) by default and the placeholders you must fill clearly marked.</li>
+</ul>
+<table><thead><tr><th>Flag</th><th>Meaning</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>--backend</code></td><td><code>openbao</code> | <code>vault</code> | <code>keystore</code>: picks the backend kind and starter config.</td><td><code>openbao</code></td></tr>
+<tr><td><code>--unlock</code></td><td><code>bip39</code> | <code>passphrase</code> | <code>tpm</code> | <code>age-yubikey</code>: which <code>bundle create</code> slot the next steps print (init never seals); <code>bip39</code> and <code>age-yubikey</code> are in default builds, while <code>tpm</code> needs an <code>unlock-tpm</code> build.</td><td><code>bip39</code></td></tr>
+<tr><td><code>--dir</code></td><td>Target directory (created if absent).</td><td><code>./basil</code></td></tr>
+<tr><td><code>--addr</code></td><td>Backend HTTP URL (vault/openbao only).</td><td><code>http://127.0.0.1:8200</code></td></tr>
+<tr><td><code>--transit-mount</code></td><td>Transit mount the example key lives under (vault/openbao only).</td><td><code>transit</code></td></tr>
+<tr><td><code>--passphrase-file</code></td><td>Existing <code>0600</code> passphrase file to bake into the config and the printed <code>bundle create</code> command. Only valid with <code>--unlock passphrase</code> (see below).</td><td>placeholder</td></tr>
+<tr><td><code>--force</code></td><td>Overwrite existing target files (otherwise init refuses and names them).</td><td>off</td></tr>
+</tbody></table>
+<p>The catalog/policy are produced by serializing the real schema types, so the output is valid by
+construction and passes the same loader <code>check</code>/<code>run</code> use (init re-validates the pair before writing).</p>
+<h2 id="the-full-new-user-flow">The full new-user flow&nbsp;<a class="anchor" href="#the-full-new-user-flow">&#xE732;</a></h2>
+<ol>
+<li>
+<p><strong>Scaffold:</strong> <code>basil config init --backend openbao --unlock bip39 --dir ./basil</code>.</p>
+</li>
+<li>
+<p><strong>Fill inputs &amp; create the bundle</strong> (init prints the exact command). For OpenBao with a BIP39 slot
+and a dev token:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #D20F39;font-style: italic;">printf</span><span style="color: #40A02B;"> &#39;%s\n&#39; &#39;&lt;backend-token&gt;&#39;</span><span style="color: #179299;"> &gt;</span><span style="color: #40A02B;"> ./basil/backend-token</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">chmod</span><span style="color: #FE640B;"> 600</span><span style="color: #40A02B;"> ./basil/backend-token</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> bundle create ./basil/bundle.sealed</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">    --slot bip39</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">    --backend id=primary,type=openbao,addr=http://127.0.0.1:8200,token-file=./basil/backend-token</span></span></code></pre>
+<p>Point <code>bip39-phrase-file</code> in the TOML at a <code>0600</code> file holding the 24-word phrase init showed once.
+(For a dev backend: <code>bao secrets enable transit</code>, then reconcile creates <code>example.signing_key</code>
+on first run.)</p>
+</li>
+<li>
+<p><strong>Validate:</strong> <code>basil config check -c ./basil/basil-agent.toml</code>.</p>
+</li>
+<li>
+<p><strong>Run:</strong> <code>basil agent -c ./basil/basil-agent.toml</code>.</p>
+</li>
+<li>
+<p><strong>Exercise:</strong> <code>basil --socket ./basil/basil.sock sign --key-id example.signing_key 'hello basil'</code>.</p>
+</li>
+</ol>
+<p>This whole chain (<code>init</code> → <code>bundle create</code> → <code>check</code> → <code>run</code> → sign with the scaffolded
+<code>example.signing_key</code>) is covered end to end against a live dev OpenBao and Vault, so the starter
+set is proven usable, not just loadable.</p>
+<p>For unattended startup, choose <code>--unlock passphrase</code>. By default <code>init</code> writes an
+<code>unlock-passphrase-file</code> placeholder into the config and prints a matching
+<code>basil bundle create --slot passphrase:file=…</code> placeholder. Both need a hand-edit before
+<code>check</code>/<code>run</code> will work.
+Add <code>--passphrase-file &lt;PATH&gt;</code> (only valid with <code>--unlock passphrase</code>) to bake an existing <code>0600</code>
+passphrase file into both the generated <code>unlock-passphrase-file</code> line <em>and</em> the printed
+<code>basil bundle create</code> shape, so the passphrase starter set is runnable with no hand-edit.</p>
+<div class="inset note"><span class="label">📝 Note</span>
+
+<p>The <code>keystore</code> backend scaffolds a local db-keystore (no external server) and emits a
+<code>db-keystore-cipher</code> config line; build the agent with <code>--features db-keystore</code> to run it. The
+<code>age-yubikey</code> unlock has no generated slot secret, so the printed command falls back to a BIP39
+break-glass slot, and the hardware slot is enrolled out of band.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>: the full backend setup this first run assumes.</li>
+<li><a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>: the credential the bundle holds.</li>
+<li><a href="/configuration/catalog/">The catalog</a> and <a href="/configuration/policy/">the policy</a>: what <code>init</code> scaffolds.</li>
+<li><a href="/cli/command-reference/">CLI command reference</a>: every subcommand.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

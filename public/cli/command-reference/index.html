@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Command reference </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/cli/command-reference/#command-reference">Command reference</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#daemon-offline">Daemon &amp; offline</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#status-probes">Status &amp; probes</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#keys">Keys</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#crypto">Crypto</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#secrets-values">Secrets &#x2F; values</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#minting-identity">Minting &amp; identity</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#admin-permission-gated">Admin (permission-gated)</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/cli/command-reference/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="command-reference">Command reference&nbsp;<a class="anchor" href="#command-reference">&#xE732;</a></h1>
+<p>Every client command takes a global <code>--socket &lt;path&gt;</code>. Basil authenticates the caller from kernel
+uid/gid evidence and resolves that evidence to a policy subject before authorization.
+Daemon/offline commands operate on config files and don't need a running broker.</p>
+<h2 id="daemon-offline">Daemon &amp; offline&nbsp;<a class="anchor" href="#daemon-offline">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>basil agent -c &lt;toml&gt;</code></td><td>Run the broker daemon from a TOML startup config. See <a href="/configuration/overview/">Configuration overview</a>.</td></tr>
+<tr><td><code>basil config init --backend … --unlock … --dir …</code></td><td>Scaffold a least-privilege starter catalog + policy + config.</td></tr>
+<tr><td><code>basil config check -c &lt;toml&gt;</code> (<code>--require</code>)</td><td>Validate catalog + policy, enforce capability requirements, probe the backend for declared keys. <code>--require</code> exits non-zero on an absent required key.</td></tr>
+<tr><td><code>basil bundle create &lt;bundle&gt; --slot …</code></td><td>Create a sealed bundle with <code>--slot</code>/<code>--backend</code>. <code>--deposit-key &lt;OUT&gt;</code> adds a public deposit recipient; <code>--from &lt;FILE&gt;</code> loads a <code>[[slot]]</code>/<code>[[backend]]</code> TOML manifest.</td></tr>
+<tr><td><code>basil bundle add-slot &lt;bundle&gt; --slot … --open …</code></td><td>Add an unlock slot to an existing bundle.</td></tr>
+<tr><td><code>basil bundle set-backend &lt;bundle&gt; --backend … --open …</code></td><td>Replace one backend credential in the sealed payload.</td></tr>
+<tr><td><code>basil bundle deposit &lt;bundle&gt; --backend … -r &lt;recipient&gt; -i &lt;identity&gt;</code></td><td>Append a signed credential deposit without opening the bundle.</td></tr>
+<tr><td><code>basil bundle allow &lt;bundle&gt; --contributor … --backend … --open …</code></td><td>Allow a contributor signing key to deposit selected backend ids.</td></tr>
+<tr><td><code>basil bundle promote &lt;bundle&gt; [--dry-run] [--backend …] [--contributor …] --open …</code></td><td>Review or fold authorized deposits into the sealed payload.</td></tr>
+<tr><td><code>basil bundle deposit-key &lt;bundle&gt; --out … --open …</code></td><td>Export or create the bundle's public deposit recipient.</td></tr>
+<tr><td><code>basil bundle verify &lt;bundle&gt; --open …</code> / <code>show &lt;bundle&gt; [--open …]</code></td><td>Verify unlock or inspect non-secret bundle metadata.</td></tr>
+<tr><td><code>basil config explain --catalog … --policy … --subject … (--op … --key … | --effective) [--json]</code></td><td>Offline policy dry-run; <code>--effective</code> previews every grant. See <a href="/operations/policy-explain/">Policy explain</a>.</td></tr>
+<tr><td><code>basil doctor -c &lt;toml&gt; [--json] [--check-keys]</code></td><td>Preflight environment diagnostics. See <a href="/operations/doctor/">Doctor</a>.</td></tr>
+</tbody></table>
+<h2 id="status-probes">Status &amp; probes&nbsp;<a class="anchor" href="#status-probes">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>status</code></td><td>Agent backend, version, protocol.</td></tr>
+<tr><td><code>health [--json]</code></td><td>Liveness probe (no backend I/O). Exit 0 = alive.</td></tr>
+<tr><td><code>ready [--json]</code></td><td>Readiness probe (non-secret summary). Exit 0 = ready, 1 = not ready.</td></tr>
+</tbody></table>
+<p>See <a href="/operations/health-and-readiness/">Health &amp; readiness probes</a>.</p>
+<h2 id="keys">Keys&nbsp;<a class="anchor" href="#keys">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>new-key [--key-id …] [--key-type …]</code></td><td>Create an asymmetric or KEM key. <code>--key-id</code> defaults to <code>example.signing_key</code>; <code>--key-type</code> defaults to <code>ed25519</code> (accepted values below).</td></tr>
+<tr><td><code>import --key-id … --key-type … [--seed-hex …|--pkcs8-file …] [--check]</code></td><td>BYOK a single key; raw seed Ed25519-only, PKCS#8 DER for Ed25519/RSA/P-256. <code>--check</code> validates locally.</td></tr>
+<tr><td><code>import-set --file … [--check]</code></td><td>BYOK a batch, all-or-nothing. <code>--check</code> validates the manifest locally.</td></tr>
+<tr><td><code>rotate --key-id …</code></td><td>Rotate a key; prints the new version.</td></tr>
+<tr><td><code>list [--prefix …]</code></td><td>Value-free key inventory (visible to you); <code>--prefix</code> filters by key-id prefix.</td></tr>
+</tbody></table>
+<p><code>--key-type</code> accepts the catalog <code>keyType</code> values: <code>ed25519</code>, <code>ed25519-nkey</code>, <code>rsa-2048</code>, <code>ecdsa-p256</code>,
+<code>ecdsa-p384</code>, <code>ecdsa-p521</code>, <code>ml-dsa-44</code>/<code>ml-dsa-65</code>/<code>ml-dsa-87</code> (signing), and
+<code>ml-kem-512</code>/<code>ml-kem-768</code>/<code>ml-kem-1024</code> (KEM). See <a href="/configuration/catalog/#key-types">The catalog</a>.</p>
+<p>See <a href="/operations/importing-byok/">Importing (BYOK)</a> and <a href="/operations/rotating-keys/">Rotating keys</a>.</p>
+<h2 id="crypto">Crypto&nbsp;<a class="anchor" href="#crypto">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>sign --key-id … &lt;payload&gt;</code></td><td>Sign a message (raw, not pre-hashed).</td></tr>
+<tr><td><code>verify --key-id … --signature … &lt;payload&gt;</code></td><td>Verify a signature.</td></tr>
+<tr><td><code>encrypt --key-id … [--algorithm …] [--aad-hex …] &lt;plaintext&gt;</code></td><td>AEAD encrypt; <strong>Basil owns the nonce</strong>.</td></tr>
+<tr><td><code>decrypt --key-id … --algorithm … --version … --nonce … --ciphertext … [--aad-hex …]</code></td><td>AEAD decrypt an envelope.</td></tr>
+</tbody></table>
+<h2 id="secrets-values">Secrets / values&nbsp;<a class="anchor" href="#secrets-values">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>get --key-id … [--version …] [--raw|--out-file …] [--format raw|hex|base64|base64-url-no-pad]</code></td><td>Read a value/public key. <code>--format base64</code> emits standard padded Base64 for consumers such as NetBird.</td></tr>
+<tr><td><code>set --key-id … [--hex] &lt;value&gt;</code></td><td>Write a value key.</td></tr>
+</tbody></table>
+<h2 id="minting-identity">Minting &amp; identity&nbsp;<a class="anchor" href="#minting-identity">&#xE732;</a></h2>
+<table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>mint-jwt</code></td><td>Mint a generic JWT using the issuer key's JWS algorithm (EdDSA, ES256, ES384, or RS256).</td></tr>
+<tr><td><code>mint-nats-user</code></td><td>Mint a NATS user JWT. Pass <code>--issuer-account</code> when <code>--key-id</code> is an account <em>signing</em> key.</td></tr>
+<tr><td><code>sign-nats-jwt</code></td><td>Validate and sign a caller-supplied NATS JWT JSON claim document with the <code>ed25519-nkey</code> profile.</td></tr>
+<tr><td><code>issue-nats-creds</code></td><td>Locally assemble a canonical <code>nsc</code>-style user <code>.creds</code> file from a signed user JWT and user seed.</td></tr>
+<tr><td><code>issue-cert</code></td><td>Issue a DNS/IP-SAN TLS leaf from backend PKI.</td></tr>
+</tbody></table>
+<p>Flag signatures for the minting commands:</p>
+<ul>
+<li><code>mint-jwt --key-id … --sub … [--ttl-secs …] [--claims-json …]</code></li>
+<li><code>mint-nats-user --key-id … --user-nkey … [--issuer-account …] [--name …] [--ttl-secs …] [--pub-allow …] [--pub-deny …] [--sub-allow …] [--sub-deny …]</code></li>
+<li><code>sign-nats-jwt --key-id … (--claims-json … | --claims-file …) [--expect-type …] [--ttl-secs … | --expires-at-unix …] [--issued-at-unix …] [--rewrite-jti]</code></li>
+<li><code>issue-nats-creds (--jwt … | --jwt-file …) (--seed … | --seed-file …) --out-file … [--mode 0600|0660]</code></li>
+<li><code>issue-cert --key-id … --common-name … [--dns-san …] [--ip-san …] --ttl-secs …</code></li>
+</ul>
+<p><code>mint-jwt</code> derives the JWS algorithm from the issuer key: Ed25519 signs <code>EdDSA</code>, ECDSA P-256 signs
+<code>ES256</code>, ECDSA P-384 signs <code>ES384</code>, and RSA-2048 signs <code>RS256</code>. Generic <code>mint-jwt</code> is at algorithm
+parity with the JWT-SVID path. <code>ES512</code> (P-521) is not a JWT issuer at all (it is backend-native for
+the generic <code>sign</code>/<code>verify</code> operations only), so a P-521 issuer key is rejected for <code>mint-jwt</code>. The
+JWT header <code>kid</code> matches the key id Basil publishes in JWKS for the same issuer public key.</p>
+<p>NATS minting, signing, validation, and curve xkey boxes live on the broker's <code>NatsService</code>. The CLI
+exposes only <code>mint-nats-user</code> and <code>sign-nats-jwt</code>, plus the local <code>issue-nats-creds</code> assembler above.
+Minting operator, account, signer, server, and curve identities, along with <code>ValidateNatsJwt</code>,
+<code>EncryptNatsCurve</code>, and <code>DecryptNatsCurve</code>, are broker RPCs reached through the Rust, Go, or generated
+gRPC clients, not the CLI. See <a href="/clients/nats/">NATS integration</a>.</p>
+<p><code>sign-nats-jwt</code> forwards the supplied JSON object as raw claim bytes to the broker. This preserves
+large integer-valued NATS claims that would lose precision through protobuf's structured JSON number
+encoding. The <a href="/reference/nats-jwt-reference/">NATS JWT reference</a> documents every account and user
+claim the JSON document may carry and the semantic defaults Basil applies.</p>
+<h2 id="admin-permission-gated">Admin (permission-gated)&nbsp;<a class="anchor" href="#admin-permission-gated">&#xE732;</a></h2>
+<p>These require dedicated policy grants. They are not implied by data-plane grants or root's <code>*</code>.</p>
+<table><thead><tr><th>Command</th><th>Purpose</th><th>Grant</th></tr></thead><tbody>
+<tr><td><code>reload [--check] [--json]</code></td><td>Validate + atomically swap catalog/policy from disk. <code>--check</code> is a dry-run.</td><td><code>op:reload</code> over <code>broker.reload</code>. See <a href="/operations/hot-reload/">Hot reload</a>.</td></tr>
+<tr><td><code>explain --subject … --op … --key … [--json]</code></td><td>Live "would this be allowed, and why?" against the serving generation.</td><td><code>op:explain</code> over <code>broker.explain</code>. See <a href="/operations/policy-explain/">Policy explain</a>.</td></tr>
+<tr><td><code>revoke --trust-domain … --jti … --expires-at-unix … [--json]</code></td><td>Persist and publish a JWT-SVID revocation.</td><td><code>op:revoke</code> over <code>broker.revoke</code>. See <a href="/operations/revocation/">Revocation</a>.</td></tr>
+</tbody></table>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/cli/overview/">CLI overview</a>: the daemon-vs-client split and how attestation scopes a command.</li>
+<li><a href="/configuration/policy/">The policy</a>: the grants that bound what any command may do.</li>
+<li><a href="/operations/rotating-keys/">Rotating keys</a>: a common day-2 task driven from this CLI.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Google Cloud KMS </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/configuration/backend-gcp-kms/#google-cloud-kms">Google Cloud KMS</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#how-basil-uses-cloud-kms">How Basil uses Cloud KMS</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#before-you-begin">Before you begin</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#create-the-service-account-and-grant-iam">Create the service account and grant IAM</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#provision-the-key-ring-and-keys">Provision the key ring and keys</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#declare-the-backend-and-keys-in-the-catalog">Declare the backend and keys in the catalog</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#give-basil-its-credential">Give Basil its credential</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#verify-the-wiring">Verify the wiring</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#capabilities-and-honesty">Capabilities and honesty</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="google-cloud-kms">Google Cloud KMS&nbsp;<a class="anchor" href="#google-cloud-kms">&#xE732;</a></h1>
+<p>Google Cloud KMS is an <strong>in-place transit</strong> backend: the private key is generated inside Cloud KMS
+and cannot be exported, so Basil never sees key bytes. Basil brokers the <em>operation</em>, not the key. A
+sign, verify, encrypt, or decrypt request arrives over the local socket, Basil authorizes the caller
+against the catalog and policy, then calls Cloud KMS to perform the operation on the key that stays
+put. The identity Basil authenticates as gets only permission to <em>use</em> the keys, never to read or
+export them, which is exactly the least-privilege posture you want fronting a KMS.</p>
+<p>This page takes you end to end: the service account and IAM grants, the key ring and keys, the catalog
+and credential wiring, and how to confirm it works. It assumes you have used Basil with a
+vault-compatible backend before. If not, start with the <a href="/configuration/overview/">Configuration
+overview</a> and <a href="/configuration/backends/">Backends &amp; capabilities</a> first.</p>
+<h2 id="how-basil-uses-cloud-kms">How Basil uses Cloud KMS&nbsp;<a class="anchor" href="#how-basil-uses-cloud-kms">&#xE732;</a></h2>
+<p>Basil talks to Cloud KMS over gRPC and HTTP/2 through the opt-in <code>gcp-kms</code> build feature. It calls
+a deliberately small set of RPCs, and each one maps to a single Cloud KMS IAM permission. The table
+below lists the minimum permissions required for each operation.</p>
+<table><thead><tr><th>Basil operation</th><th>Cloud KMS RPC</th><th>IAM permission it needs</th></tr></thead><tbody>
+<tr><td>Startup reconcile / <code>config check</code> existence probe</td><td><code>GetCryptoKey</code></td><td><code>cloudkms.cryptoKeys.get</code></td></tr>
+<tr><td>Sign (<code>ES256</code>/<code>ES384</code>, <code>Ed25519</code>)</td><td><code>AsymmetricSign</code></td><td><code>cloudkms.cryptoKeyVersions.useToSign</code></td></tr>
+<tr><td>Get public key (and JWKS)</td><td><code>GetPublicKey</code></td><td><code>cloudkms.cryptoKeyVersions.viewPublicKey</code></td></tr>
+<tr><td>Verify a signature</td><td>none (done locally)</td><td><code>cloudkms.cryptoKeyVersions.viewPublicKey</code></td></tr>
+<tr><td>Encrypt (<code>AES-256-GCM</code>)</td><td><code>Encrypt</code></td><td><code>cloudkms.cryptoKeyVersions.useToEncrypt</code></td></tr>
+<tr><td>Decrypt (<code>AES-256-GCM</code>)</td><td><code>Decrypt</code></td><td><code>cloudkms.cryptoKeyVersions.useToDecrypt</code></td></tr>
+<tr><td>Provision a key (optional)</td><td><code>CreateCryptoKey</code></td><td><code>cloudkms.cryptoKeys.create</code></td></tr>
+</tbody></table>
+<p>Permissions you don't need for Basil:</p>
+<p><strong>Cloud KMS has no server-side asymmetric verify</strong>, so Basil fetches the public key and verifies
+the signature in its own process. The runtime identity therefore never needs
+<code>cloudkms.cryptoKeyVersions.useToVerify</code>.</p>
+<p><strong>Provisioning is a separate concern from serving</strong>. Creating keys is a one-time admin action.
+Basil doesn't need <code>cloudkms.cryptoKeys.create</code>. That's more appropriate for a provisioner
+identity (a person, or your CI) instead. The sections below split the grants exactly this way.</p>
+<div class="inset note"><span class="label">📝 Basil owns the nonces</span>
+
+<p>The <code>Encrypt</code> ciphertext Cloud KMS returns is opaque and self-describing: Cloud KMS chose and embedded
+the nonce and the key version. There is no caller-supplied nonce path to get wrong, which is the same
+footgun-free <code>AES-256-GCM</code> contract Basil enforces everywhere.</p>
+
+</div><h2 id="before-you-begin">Before you begin&nbsp;<a class="anchor" href="#before-you-begin">&#xE732;</a></h2>
+<p>You need the <code>gcloud</code> CLI authenticated as a project owner or IAM admin, a target project, and a
+<code>basil</code> binary built with the <code>gcp-kms</code> feature. A binary compiled without it fails closed at startup
+with <code>kind gcp-kms requires the gcp-kms feature</code> rather than silently ignoring the backend. Throughout,
+replace <code>PROJECT</code> with your project id and <code>us-west1</code> with your chosen KMS location (<code>global</code> is also
+valid).</p>
+<h2 id="create-the-service-account-and-grant-iam">Create the service account and grant IAM&nbsp;<a class="anchor" href="#create-the-service-account-and-grant-iam">&#xE732;</a></h2>
+<p>Basil authenticates to Cloud KMS as a <strong>service account</strong>. Create one dedicated to the broker so its
+grants are auditable and revocable on their own.</p>
+<p>To <em>create</em> the service account and (only if you plan to seal a key file, see below) its JSON key, the
+operator running <code>gcloud</code> needs these project-level roles:</p>
+<table><thead><tr><th>Task</th><th>Role to run it</th></tr></thead><tbody>
+<tr><td>Create the service account</td><td><code>roles/iam.serviceAccountCreator</code> (or <code>roles/iam.serviceAccountAdmin</code>)</td></tr>
+<tr><td>Create a JSON key for it</td><td><code>roles/iam.serviceAccountKeyAdmin</code></td></tr>
+<tr><td>Bind KMS roles on the key ring</td><td><code>roles/cloudkms.admin</code> on the ring (grants <code>setIamPolicy</code> there)</td></tr>
+</tbody></table>
+<p>Create the account:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> iam service-accounts create basil-broker</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --project PROJECT</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --display-name &quot;Basil broker (Cloud KMS runtime)&quot;</span></span></code></pre><h3 id="the-runtime-grant-least-privilege">The runtime grant (least privilege)&nbsp;<a class="anchor" href="#the-runtime-grant-least-privilege">&#xE732;</a></h3>
+<p>Scope the broker's grants to the <strong>key ring</strong>, not the project, so the broker can only touch the keys
+you route to it. The tightest predefined-role set that covers Basil's runtime RPCs is <code>signer</code> plus
+<code>publicKeyViewer</code> plus <code>cryptoKeyEncrypterDecrypter</code> plus <code>viewer</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span>RING</span><span style="color: #179299;">=</span><span style="color: #40A02B;">&quot;basil&quot;</span></span>
+<span class="giallo-l"><span>LOCATION</span><span style="color: #179299;">=</span><span style="color: #40A02B;">&quot;us-west1&quot;</span></span>
+<span class="giallo-l"><span>SA</span><span style="color: #179299;">=</span><span style="color: #40A02B;">&quot;basil-broker@PROJECT.iam.gserviceaccount.com&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #8839EF;">for</span><span> ROLE</span><span style="color: #8839EF;"> in</span><span> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  roles/cloudkms.viewer</span><span> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  roles/cloudkms.signer</span><span> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  roles/cloudkms.publicKeyViewer</span><span> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  roles/cloudkms.cryptoKeyEncrypterDecrypter</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">do</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">  gcloud</span><span style="color: #40A02B;"> kms keyrings add-iam-policy-binding &quot;</span><span>$RING</span><span style="color: #40A02B;">&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">    --project PROJECT --location &quot;</span><span>$LOCATION</span><span style="color: #40A02B;">&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">    --member &quot;serviceAccount:</span><span>$SA</span><span style="color: #40A02B;">&quot; --role &quot;</span><span>$ROLE</span><span style="color: #40A02B;">&quot;</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">done</span></span></code></pre>
+<p>Grant only the roles the deployment actually uses. Every Cloud KMS-backed broker still needs
+<code>viewer</code>, because startup reconcile reads the base <code>CryptoKey</code> with <code>GetCryptoKey</code> before Basil will
+use or generate the key. A broker that only signs needs <code>viewer</code> plus <code>signer</code> plus
+<code>publicKeyViewer</code>; drop <code>cryptoKeyEncrypterDecrypter</code> if you route no <code>AES-256-GCM</code> keys to Cloud
+KMS.</p>
+<div class="inset caution"><span class="label">⚠️ The predefined viewer role is broader than Basil&#x27;s probe</span>
+
+<p><code>roles/cloudkms.viewer</code> is the predefined role that carries <code>cloudkms.cryptoKeys.get</code>, but Google also
+puts list/read permissions in that role. If you need exact least privilege, use a custom role with the
+permissions below instead of the predefined-role set.</p>
+
+</div><div class="inset caution"><span class="label">⚠️ Why not roles&#x2F;cloudkms.signerVerifier</span>
+
+<p><code>roles/cloudkms.signerVerifier</code> is convenient because it is one role, but it also grants
+<code>cloudkms.cryptoKeyVersions.useToVerify</code>, which Basil never calls (it verifies locally). Preferring
+<code>signer</code> plus <code>publicKeyViewer</code> avoids the unused server-side verify grant; use the custom role below
+if you also need the read scope to match exactly.</p>
+
+</div>
+<p>If you want the grant tighter than any predefined role, define a custom role with exactly the five
+permissions Basil uses at runtime, then bind it on the ring. Write the definition to a file:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #1E66F5;">title</span><span style="color: #179299;">:</span><span style="color: #40A02B;"> &quot;Basil KMS runtime&quot;</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">description</span><span style="color: #179299;">:</span><span style="color: #40A02B;"> &quot;Least-privilege runtime permissions for the Basil broker&quot;</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">stage</span><span style="color: #179299;">:</span><span style="color: #40A02B;"> &quot;GA&quot;</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">includedPermissions</span><span style="color: #179299;">:</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">-</span><span style="color: #40A02B;"> cloudkms.cryptoKeys.get</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">-</span><span style="color: #40A02B;"> cloudkms.cryptoKeyVersions.viewPublicKey</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">-</span><span style="color: #40A02B;"> cloudkms.cryptoKeyVersions.useToSign</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">-</span><span style="color: #40A02B;"> cloudkms.cryptoKeyVersions.useToEncrypt</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">-</span><span style="color: #40A02B;"> cloudkms.cryptoKeyVersions.useToDecrypt</span></span></code></pre>
+<p>Then create and bind it. Keep <code>cloudkms.cryptoKeys.get</code> for every Cloud KMS-backed deployment; drop
+only the signing or encrypt/decrypt permissions the deployment does not use:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> iam roles create basilKmsRuntime --project PROJECT</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --file basil-kms-runtime.yaml</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> kms keyrings add-iam-policy-binding basil</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --project PROJECT --location us-west1</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --member &quot;serviceAccount:basil-broker@PROJECT.iam.gserviceaccount.com&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --role projects/PROJECT/roles/basilKmsRuntime</span></span></code></pre><h3 id="the-provisioner-grant">The provisioner grant&nbsp;<a class="anchor" href="#the-provisioner-grant">&#xE732;</a></h3>
+<p>Key creation needs <code>cloudkms.cryptoKeys.create</code> (and <code>cloudkms.keyRings.create</code> for the ring itself).
+<code>roles/cloudkms.admin</code> bundles both. Give it to the human operator or CI identity that provisions, and
+keep it off the broker's runtime account:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> kms keyrings add-iam-policy-binding basil</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --project PROJECT --location us-west1</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --member &quot;user:provisioner@example.com&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --role roles/cloudkms.admin</span></span></code></pre>
+<p>Creating the ring itself is a project-level action (the ring does not exist yet to bind against), so
+the provisioner needs <code>roles/cloudkms.admin</code> at the project the first time, or you create the ring once
+as a project admin and scope everything after that to the ring.</p>
+<h2 id="provision-the-key-ring-and-keys">Provision the key ring and keys&nbsp;<a class="anchor" href="#provision-the-key-ring-and-keys">&#xE732;</a></h2>
+<p>Create the ring, then a key per purpose. Basil supports <code>Ed25519</code>, <code>ES256</code> (P-256), and <code>ES384</code>
+(P-384) for signing, and <code>AES-256-GCM</code> for encrypt and decrypt. Use the matching <code>gcloud</code> algorithm
+token:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> kms keyrings create basil --project PROJECT --location us-west1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> kms keys create broker-response</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --project PROJECT --keyring basil --location us-west1</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --purpose asymmetric-signing --default-algorithm ec-sign-ed25519</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --protection-level software</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> kms keys create request-envelope</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --project PROJECT --keyring basil --location us-west1</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --purpose encryption --default-algorithm google-symmetric-encryption</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --protection-level software</span></span></code></pre>
+<p>For an ECDSA signing key use <code>--default-algorithm ec-sign-p256-sha256</code> or <code>ec-sign-p384-sha384</code>. When
+<em>Basil</em> provisions a key it requests the <code>software</code> protection level; when you provision with <code>gcloud</code>
+you may choose <code>hsm</code> instead, and Basil's sign, encrypt, and decrypt calls work the same either way.</p>
+<div class="inset note"><span class="label">📝 What Cloud KMS cannot do here</span>
+
+<p><code>ES512</code> (P-521) is unavailable because Cloud KMS exposes no P-521 signing key, and <code>RSA</code> signing,
+<code>ChaCha20-Poly1305</code>, and the post-quantum algorithms are not wired to this backend. A request for one
+of those fails closed rather than falling back. See the capability list at the end of this page.</p>
+
+</div><h2 id="declare-the-backend-and-keys-in-the-catalog">Declare the backend and keys in the catalog&nbsp;<a class="anchor" href="#declare-the-backend-and-keys-in-the-catalog">&#xE732;</a></h2>
+<p>The catalog is the exported JSON Basil loads at startup (<code>camelCase</code> keys). Add the backend under
+<code>backends</code> with <code>kind</code> set to <code>gcp-kms</code>, then route keys to it. The <code>gcp-kms</code> backend takes its
+project, location, and key ring from the sealed credential (next section), not from the catalog, so the
+schema-required <code>addr</code> field is only a readable label here. Declaring <code>engines: ["transit"]</code> turns on
+capability enforcement for the backend.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 1</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">backends</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">gcp</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;gcp-kms&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">addr</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;projects/PROJECT/locations/us-west1/keyRings/basil&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">engines</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;transit&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">keys</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">broker.response</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">class</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;asymmetric&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">keyType</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;ed25519&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">backend</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;gcp&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">engine</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;transit&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">path</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;broker-response/cryptoKeyVersions/1&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">missing</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;error&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">description</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;broker response signing key (Cloud KMS)&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">request.envelope</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">class</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;symmetric&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">keyType</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;aes-256-gcm&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">backend</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;gcp&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">engine</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;transit&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">path</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;request-envelope&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">missing</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;error&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">description</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;request envelope AEAD key (Cloud KMS)&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>The <code>path</code> is where Cloud KMS's addressing rules meet the catalog, and there are two rules to get right.</p>
+<div class="inset caution"><span class="label">⚠️ Asymmetric paths must pin an explicit cryptoKeyVersion</span>
+
+<p>Cloud KMS requires an exact version to sign or read a public key, so an <code>asymmetric</code> key's <code>path</code> must
+end in <code>/cryptoKeyVersions/&lt;N&gt;</code> (for example <code>broker-response/cryptoKeyVersions/1</code>). A versionless
+asymmetric path is rejected at request time. A <code>symmetric</code> key's <code>path</code> is just the crypto-key id with
+no version: Cloud KMS selects the primary version and binds it into the ciphertext itself.</p>
+
+</div>
+<p>The other rule concerns the crypto-key id in <code>path</code>. If the base id (the part before
+<code>/cryptoKeyVersions/</code>) is already a valid Cloud KMS crypto-key id (alphanumeric, <code>-</code>, <code>_</code>, at most 63
+characters), Basil uses it verbatim, so it must equal the id you created with <code>gcloud</code>. If it contains
+other characters (for example dots, as in <code>jwt.signing.primary</code>), Basil rewrites it to a slugged,
+hashed id, which will <em>not</em> match a hand-provisioned key. For pre-provisioned Cloud KMS keys, name the
+key with a KMS-valid id and use exactly that id in <code>path</code>.</p>
+<h2 id="give-basil-its-credential">Give Basil its credential&nbsp;<a class="anchor" href="#give-basil-its-credential">&#xE732;</a></h2>
+<p>The sealed bundle carries a <code>GcpKms</code> credential for the backend id you used in the catalog. It always
+holds the non-secret addressing (project, location, key ring). How Basil <em>authenticates</em> has two modes.</p>
+<p><strong>Application Default Credentials (ADC), recommended on GKE or GCE.</strong> Attach the <code>basil-broker</code> service
+account to the workload and Basil resolves credentials from the environment
+(<code>GOOGLE_APPLICATION_CREDENTIALS</code> / <code>GOOGLE_APPLICATION_CREDENTIALS_JSON</code>) or the metadata server. No
+key material is sealed in the bundle at all. This is the least-standing-secret option: rotate the
+binding, not a file. Seal a <code>GcpKms</code> credential with just the addressing:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> bundle set-backend /var/lib/basil/bundle.sealed</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --backend id=gcp,type=gcp-kms,project=PROJECT,location=us-west1,key-ring=basil</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --open passphrase:file=/run/secrets/basil-unlock-passphrase</span></span></code></pre>
+<p><strong>Sealed service-account JSON, for non-GKE, cross-cloud, or CI hosts</strong> where ambient credentials are
+not available. Create a JSON key for the service account and seal the whole file into the bundle with
+<code>key-file</code>. Basil uses it in place of ADC when present:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">gcloud</span><span style="color: #40A02B;"> iam service-accounts keys create /run/secrets/gcp-sa.json</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --iam-account basil-broker@PROJECT.iam.gserviceaccount.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> bundle set-backend /var/lib/basil/bundle.sealed</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --backend id=gcp,type=gcp-kms,project=PROJECT,location=us-west1,key-ring=basil,key-file=/run/secrets/gcp-sa.json</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --open passphrase:file=/run/secrets/basil-unlock-passphrase</span></span></code></pre>
+<p>The <code>key-file</code> is read from a <code>0600</code> file into zeroizing memory and sealed as one opaque secret; the
+plaintext file on disk is yours to remove afterward. Prefer ADC when you can, and treat any
+service-account key file as a long-lived secret that must be scoped and rotated like the vault itself.</p>
+<div class="inset best"><span class="label">✅ Deposit a KMS credential without opening the whole bundle</span>
+
+<p>When a cloud administrator owns the service-account JSON but should not hold the unlock secret that
+exposes every other backend credential, use a signed <strong>credential deposit</strong> instead of <code>set-backend</code>:
+the admin appends only the <code>gcp</code> credential, and Basil overlays it at startup after verifying the
+allow-list and signature. The <code>type=gcp-kms</code> field syntax is identical. See the deposit workflow in
+<a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>.</p>
+
+</div><h2 id="verify-the-wiring">Verify the wiring&nbsp;<a class="anchor" href="#verify-the-wiring">&#xE732;</a></h2>
+<p>Confirm the catalog and backend agree before you depend on them. <code>basil config check</code> parses the
+catalog and policy, enforces that each backend provides what the catalog requires, and read-only probes
+the backend for declared keys. Add <code>--require</code> to exit non-zero when a <code>missing=error</code> key is absent,
+so a broken deploy fails the pipeline instead of surfacing under traffic:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> config check --catalog /etc/basil/catalog.json</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --policy /etc/basil/policy.json</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --bundle /var/lib/basil/bundle.sealed --require</span></span></code></pre>
+<p><code>basil doctor</code> runs broader preflight environment and deployment checks, and once the agent is running,
+<code>basil ready</code> maps runtime readiness (can it actually serve, are required keys reachable) to a process
+exit code your orchestrator can gate on.</p>
+<div class="inset caution"><span class="label">⚠️ The live probe needs working credentials and network</span>
+
+<p>The key-existence probe in <code>config check</code> and the readiness reachability check call Cloud KMS
+(<code>GetCryptoKey</code> for the base key, and <code>GetPublicKey</code> when Basil needs the public half), so they need
+resolvable ADC or a sealed key file and outbound network to <code>cloudkms.googleapis.com</code>. A probe
+failure there points at credentials, IAM, or connectivity, not at a catalog mistake.</p>
+
+</div><div class="inset caution"><span class="label">⚠️ Doctor does not prove the Cloud KMS IAM path</span>
+
+<p><code>basil doctor</code> catches feature and configuration mismatches, but it does not unlock the broker or run
+startup reconcile against Cloud KMS. A green <code>doctor</code> does not prove that <code>cloudkms.cryptoKeys.get</code>
+is present; a missing grant surfaces when <code>config check</code>, <code>ready</code>, or the broker startup reconcile
+performs the live key-existence probe.</p>
+
+</div><h2 id="capabilities-and-honesty">Capabilities and honesty&nbsp;<a class="anchor" href="#capabilities-and-honesty">&#xE732;</a></h2>
+<p>The Cloud KMS backend implements the transit-shaped operations and nothing else. This is deliberate:
+Basil fails closed on anything it does not truly support rather than pretending.</p>
+<table><thead><tr><th>Status</th><th>Capability on Cloud KMS</th></tr></thead><tbody>
+<tr><td>Supported</td><td><code>Ed25519</code>, <code>ES256</code> (P-256), <code>ES384</code> (P-384) signing and local verify</td></tr>
+<tr><td>Supported</td><td><code>AES-256-GCM</code> encrypt and decrypt</td></tr>
+<tr><td>Supported</td><td>Optional key provisioning via <code>CreateCryptoKey</code></td></tr>
+<tr><td>Not supported</td><td><code>ES512</code> / P-521, <code>RSA</code> signing, <code>ChaCha20-Poly1305</code>, post-quantum algorithms</td></tr>
+<tr><td>Not supported</td><td>KV storage, PKI / X.509-SVID issuance, server-side verify, NATS minting over KMS</td></tr>
+</tbody></table>
+<p>For the full backend-kind comparison and the custody model, see <a href="/configuration/backends/">Backends &amp;
+capabilities</a> rather than duplicating it here.</p>
+<p>Rotation is worth calling out. Because an asymmetric <code>path</code> pins an explicit <code>cryptoKeyVersions/&lt;N&gt;</code>,
+rotating an asymmetric Cloud KMS key means provisioning a new version and updating the catalog <code>path</code>
+to point at it, not an in-place primary-version bump. Symmetric keys rotate transparently because Cloud
+KMS binds the version into each ciphertext. See <a href="/operations/rotating-keys/">Rotating keys</a>.</p>
+<div class="inset caution"><span class="label">⚠️ Not exercised against live Cloud KMS in CI</span>
+
+<p>As of this writing, Basil's CI has no live Google Cloud KMS lane. The offline unit tests cover the
+resource-name construction (key-ring, crypto-key, and version paths); the sign, verify, encrypt,
+decrypt, and provisioning calls themselves require live Cloud KMS credentials and are not run in CI.
+Treat the end-to-end flow as validated by construction and design, and verify it against your own
+project with <code>basil config check</code> before you rely on it.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/backends/">Backends &amp; capabilities</a>: the backend-kind matrix and the custody model.</li>
+<li><a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>: where the <code>GcpKms</code> credential lives and the deposit workflow.</li>
+<li><a href="/configuration/catalog/">The catalog (keys)</a>: the key-entry fields the snippet above uses.</li>
+<li><a href="/operations/rotating-keys/">Rotating keys</a>: versioned rotation for pinned Cloud KMS asymmetric keys.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

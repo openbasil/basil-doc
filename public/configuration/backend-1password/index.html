@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | 1Password </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/configuration/backend-1password/#1password">1Password</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#what-basil-actually-talks-to">What Basil actually talks to</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#creating-the-service-credential-with-least-privilege">Creating the service credential with least privilege</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#item-conventions-basil-expects">Item conventions Basil expects</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#configuring-basil">Configuring Basil</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#verifying">Verifying</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#security-caveats">Security caveats</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/configuration/backend-1password/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="1password">1Password&nbsp;<a class="anchor" href="#1password">&#xE732;</a></h1>
+<p>You already run 1Password, and you would rather keep a handful of Basil secrets in a vault your team
+governs than stand up a second store for them. Basil can treat a <strong>1Password</strong> vault as a <code>keystore</code>
+backend: a place it reads secrets from at the moment of use. This page sets that up end to end, from
+the 1Password side to the Basil catalog and sealed bundle.</p>
+<p>Be clear about custody first, because it is the whole reason to choose a backend. 1Password is a
+<strong>value store</strong>, not an in-place crypto engine. Where a <code>vault</code> transit backend signs and encrypts
+<em>inside</em> the backend so key bytes never cross the wire, 1Password only hands back a stored string.
+So the <code>keystore</code> kind is <strong>materialize-to-use</strong>: Basil validates the caller (kernel attestation) and
+the authorization (catalog policy), fetches the secret briefly into its own memory, performs the one
+operation, then zeroes it. The material is used <em>in place</em> from the caller's point of view (Basil
+never returns a private half to a client), but it does transit Basil's address space, which a transit
+backend avoids. See <a href="/introduction/backends-and-custody/">Backends &amp; custody</a> for that tradeoff in
+full, and <a href="/configuration/backends/">Backends &amp; capabilities</a> for where the <code>keystore</code> kind sits.</p>
+<div class="inset caution"><span class="label">⚠️ Scope: textual secrets, and a lightly-travelled path</span>
+
+<p>Two honesty notes up front. First, the 1Password backend is <strong>string-only</strong>: it stores each secret as
+the text of a Secure Note field, and a write of non-UTF-8 bytes fails closed. That makes it a good fit
+for stored <em>value</em> secrets (an API token, a connection string, a passphrase) and a poor fit for raw
+binary key material such as an Ed25519 seed or an X25519 private half, unless you consistent pass each
+write/read through base64 encode/decode. For
+materialize-to-use <em>signing</em> and <em>sealing</em> keys, use <a href="/examples/db-keystore/"><code>db-keystore</code></a>, which
+handles binary keys directly.
+Second, Basil's 1Password integration is exercised only by offline unit tests (URI parsing,
+item addressing); a live end-to-end run needs an authenticated <code>op</code> CLI and a real vault, which the
+test lane does not provide. Treat the live path as <strong>untested</strong> and validate it in a staging vault
+before you depend on it.</p>
+
+</div><h2 id="what-basil-actually-talks-to">What Basil actually talks to&nbsp;<a class="anchor" href="#what-basil-actually-talks-to">&#xE732;</a></h2>
+<p>Basil does not use 1Password Connect or the REST API. It shells out to the <strong>1Password CLI</strong> (<code>op</code>)
+as a child process and parses <code>op item ... --format json</code>. That has one consequence worth internalising
+before you provision anything: the machine running <code>basil agent</code> must have <code>op</code> on its <code>PATH</code> (or you
+point Basil at it with the <code>BASIL_OP_CLI_PATH</code> environment variable), and <code>op</code> must be able to
+authenticate non-interactively.</p>
+<p>For a long-running server, non-interactive means a <strong>service account</strong>. When Basil's provider URI
+carries a token, Basil sets <code>OP_SERVICE_ACCOUNT_TOKEN</code> in the child <code>op</code> environment for you;
+otherwise <code>op</code> inherits whatever token is already in the broker's environment. Either way the
+authenticating identity is a 1Password service account, and every grant below is a grant <em>to that
+account</em>.</p>
+<div class="inset note"><span class="label">📝 Note</span>
+
+<p>Do not confuse the 1Password <em>backend</em> (this page, where secrets Basil brokers live in a vault) with
+using 1Password to fetch Basil's own <em>unlock passphrase</em> (<code>op read</code> writing a file that a passphrase
+slot reads). The latter is covered under <a href="/operations/automated-boot-unlock/">Automated boot unlock</a>
+and is independent of whether you run this backend.</p>
+
+</div><h2 id="creating-the-service-credential-with-least-privilege">Creating the service credential with least privilege&nbsp;<a class="anchor" href="#creating-the-service-credential-with-least-privilege">&#xE732;</a></h2>
+<p>Least privilege is the point of a broker, so build the credential narrowly.</p>
+<p><strong>1. Create a dedicated vault (UI or CLI).</strong> Give Basil its own vault, not a shared one. The service
+account token is a bearer credential; if it leaks, its blast radius is exactly the vaults it can reach,
+so keep that to one vault that holds only Basil's brokered secrets. In the CLI:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">op</span><span style="color: #40A02B;"> vault create &quot;Basil&quot;</span></span></code></pre>
+<p><strong>2. Decide read-only versus read-write from what Basil will do.</strong> Basil's read operations run
+<code>op item get</code> and <code>op item list</code>; its write operations run <code>op item create</code> and <code>op item edit</code>.
+So the grant follows directly from your catalog:</p>
+<table><thead><tr><th>If Basil only...</th><th>It runs</th><th>Grant the service account</th></tr></thead><tbody>
+<tr><td>Reads existing secrets (<code>get</code>, and any read op)</td><td><code>op item get</code>, <code>op item list</code></td><td><code>read_items</code></td></tr>
+<tr><td>Also creates or updates items (a writable value, <code>rotate</code>/<code>set</code>)</td><td><code>op item create</code>, <code>op item edit</code></td><td><code>read_items,write_items</code></td></tr>
+</tbody></table>
+<p>Reading and writing are separate 1Password permissions, exactly as they are separate Basil ops, so
+grant <code>write_items</code> only if you actually want Basil to mutate the vault. Most deployments provision the
+secrets out of band and give Basil <strong>read-only</strong> access.</p>
+<p><strong>3. Create the service account scoped to that one vault.</strong> The token prints once; capture it into a
+<code>0600</code> file and never echo it:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># read-only broker (the common case)</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">op</span><span style="color: #40A02B;"> service-account create &quot;basil-broker&quot; --expires-in 90d --vault &quot;Basil:read_items&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># read-write broker (only if Basil must create or rotate items in the vault)</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">op</span><span style="color: #40A02B;"> service-account create &quot;basil-broker&quot; --expires-in 90d --vault &quot;Basil:read_items,write_items&quot;</span></span></code></pre><div class="inset caution"><span class="label">⚠️ Service accounts are immutable and expiring</span>
+
+<p>A 1Password service account cannot be edited after creation: to change its vault permissions or extend
+its life you revoke it and create a new one, then re-seal the new token into Basil's bundle. Pick an
+<code>--expires-in</code> you can rotate on schedule, and treat that rotation as credential rotation for the whole
+backend. Exact <code>op</code> flags vary by CLI version; confirm against your installed <code>op --version</code>.</p>
+
+</div><h2 id="item-conventions-basil-expects">Item conventions Basil expects&nbsp;<a class="anchor" href="#item-conventions-basil-expects">&#xE732;</a></h2>
+<p>Basil addresses each secret as a <strong>Secure Note</strong> whose <em>title</em> is computed, not free-form. The title
+template is:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="plain"><span class="giallo-l"><span>basil/{project}/{profile}/{key}</span></span></code></pre>
+<p>where <code>{project}</code> and <code>{profile}</code> are the values you configure for the backend (below), and <code>{key}</code> is
+the catalog key's <code>path</code> (the backend-native locator). So a catalog key with <code>path</code> <code>app/stripe-key</code>,
+under project <code>prod</code> and profile <code>agent</code>, resolves to an item titled <code>basil/prod/agent/app/stripe-key</code>
+in the configured vault.</p>
+<p>The secret itself lives in a field. On read, Basil prefers the field <strong>labelled <code>value</code></strong>; failing
+that it falls back to any Concealed field, or a field whose id is <code>password</code>. When Basil <em>creates</em> an
+item it writes a Secure Note with three string fields (<code>project</code>, <code>key</code>, <code>value</code>) and tags it
+<code>automated</code> plus the project name.</p>
+<p>A worked example: to provision <code>app.stripe-key</code> by hand for a read-only broker, create one Secure Note
+in the <code>Basil</code> vault:</p>
+<table><thead><tr><th>Item property</th><th>Value</th></tr></thead><tbody>
+<tr><td>Vault</td><td><code>Basil</code></td></tr>
+<tr><td>Category</td><td>Secure Note</td></tr>
+<tr><td>Title</td><td><code>basil/prod/agent/app/stripe-key</code></td></tr>
+<tr><td>Field label</td><td><code>value</code></td></tr>
+<tr><td>Field contents</td><td>the Stripe secret key (text)</td></tr>
+</tbody></table>
+<p>With the <code>op</code> CLI, the same item is:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">op</span><span style="color: #40A02B;"> item create --vault &quot;Basil&quot; --category &quot;Secure Note&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --title &quot;basil/prod/agent/app/stripe-key&quot;</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  &quot;value[text]=sk_live_...&quot;</span></span></code></pre><div class="inset note"><span class="label">📝 Vault name in the URI is percent-encoded</span>
+
+<p>The vault is named in Basil's provider URI. A vault whose name contains a space, such as <code>Basil Secrets</code>,
+is written <code>onepassword://Basil%20Secrets</code>. A bare <code>onepassword://localhost</code> (or no host) leaves the
+vault unset and Basil falls back to the <code>Private</code> vault, which is almost never what you want on a
+server; name the vault explicitly.</p>
+
+</div><h2 id="configuring-basil">Configuring Basil&nbsp;<a class="anchor" href="#configuring-basil">&#xE732;</a></h2>
+<h3 id="build-status">Build status&nbsp;<a class="anchor" href="#build-status">&#xE732;</a></h3>
+<p>The 1Password backend is enabled in the default cargo features.</p>
+<p><code>basil doctor</code> fails closed if a catalog declares a <code>keystore</code> backend but the binary lacks the
+feature, so a custom-build mismatch is caught before startup rather than at first use.</p>
+<h3 id="declare-the-backend-and-keys-in-the-catalog">Declare the backend and keys in the catalog&nbsp;<a class="anchor" href="#declare-the-backend-and-keys-in-the-catalog">&#xE732;</a></h3>
+<p>Add a <code>keystore</code>-kind backend and route value keys to it. The 1Password addressing lives in the sealed
+credential and the agent config, not in the catalog, so the backend's <code>addr</code> here is required by the
+schema but ignored by the 1Password arm; a short label keeps it readable.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">backends</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">op</span><span style="color: #7C7F93;">&quot;: { &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;keystore&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">addr</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;1password&quot;</span><span style="color: #7C7F93;"> }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  },</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  &quot;</span><span style="color: #1E66F5;">keys</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    &quot;</span><span style="color: #1E66F5;">app.stripe-key</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">class</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;value&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">backend</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;op&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">engine</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;kv2&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">path</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;app/stripe-key&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">writable</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> false</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">missing</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;error&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">      &quot;</span><span style="color: #1E66F5;">description</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;Stripe secret key, read in place from 1Password&quot;</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>This is a <code>class: value</code> key on the <code>kv2</code> engine: Basil brokers <code>get</code> (and, only if <code>writable</code> were
+true, <code>set</code>/<code>rotate</code>). <code>writable: false</code> caps writes off entirely, matching a read-only service
+account. <code>missing: "error"</code> tells reconcile to fail closed if the item is absent rather than trying to
+mint one, because Basil cannot generate a value into 1Password for you. See
+<a href="/configuration/catalog/">The catalog (keys)</a> for the full key schema.</p>
+<div class="inset caution"><span class="label">⚠️ Why the signing and sealing arms are not shown here</span>
+
+<p>The catalog does support materialize-to-use private keys (a <code>sealing</code> X25519 key, or an
+<code>asymmetric</code> key on <code>engine: kv2</code>), each carrying a required <code>publicPath</code> for its public half. Those
+arms are generic across <code>keystore</code> backends in the code, but 1Password's string-only storage cannot
+hold the raw seed or the raw public bytes (both are non-UTF-8), and the path is untested with <code>op</code>. If
+you need broker-mediated signing or sealing with local custody, use
+<a href="/examples/db-keystore/"><code>db-keystore</code></a>, which stores arbitrary bytes in an encrypted local database.</p>
+
+</div><h3 id="seal-the-1password-credential-into-the-bundle">Seal the 1Password credential into the bundle&nbsp;<a class="anchor" href="#seal-the-1password-credential-into-the-bundle">&#xE732;</a></h3>
+<p>The backend credential lives in the sealed bundle as an <code>OnePassword</code> entry carrying the provider URI,
+project, and profile. Seal it at bundle-create time alongside your unlock slots. All three fields are
+required by the CLI:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> bundle create /var/lib/basil/bundle.sealed</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --slot passphrase:file=/run/secrets/basil-unlock-passphrase</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --backend id=op,type=1password,provider-uri=onepassword://Basil,project=prod,profile=agent</span></span></code></pre>
+<p>The <code>id</code> must match the catalog backend name (<code>op</code> above). To inject the service account token, put it
+in the provider URI with the <code>onepassword+token</code> scheme, so the token travels <em>inside</em> the encrypted
+bundle rather than sitting in the environment:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> bundle create /var/lib/basil/bundle.sealed</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --slot passphrase:file=/run/secrets/basil-unlock-passphrase</span><span style="color: #EA76CB;"> \</span></span>
+<span class="giallo-l"><span style="color: #40A02B;">  --backend id=op,type=1password,provider-uri=onepassword+token://OPS_TOKEN@Basil,project=prod,profile=agent</span></span></code></pre>
+<p>Alternatively, leave the token out of the URI (<code>onepassword://Basil</code>) and provide
+<code>OP_SERVICE_ACCOUNT_TOKEN</code> in the broker's own environment (for example a systemd credential); the
+child <code>op</code> inherits it. Rotate the backend credential in place with <code>bundle set-backend</code>, and see
+<a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a> for deposits and the credential
+lifecycle.</p>
+<p>The three fields can also be supplied as agent-config defaults, used when a sealed field is left empty:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="toml"><span class="giallo-l"><span>onepassword-provider-uri</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;onepassword://Basil&quot;</span></span>
+<span class="giallo-l"><span>onepassword-project</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;prod&quot;</span></span>
+<span class="giallo-l"><span>onepassword-profile</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;agent&quot;</span></span></code></pre><h2 id="verifying">Verifying&nbsp;<a class="anchor" href="#verifying">&#xE732;</a></h2>
+<p>Run the environment preflight before you start the daemon. <code>doctor</code> confirms the <code>keystore</code> support is
+built in and the catalog is coherent without unlocking the bundle or touching the vault:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> doctor -c /etc/basil/agent.toml</span></span></code></pre>
+<p>A <code>keystore</code>-only catalog has no transit server to reach, so <code>doctor</code> skips backend reachability for it;
+the live check is that <code>op</code> can actually read the item. After the daemon starts, gate traffic on
+readiness (a broker can be alive yet not ready if a <code>missing: error</code> key is absent):</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> health</span><span style="color: #7C7F93;font-style: italic;">          # liveness: the process answers</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> ready</span><span style="color: #7C7F93;font-style: italic;">           # readiness: required keys resolved</span></span></code></pre>
+<p>See <a href="/operations/doctor/">Doctor (preflight checks)</a> and
+<a href="/operations/health-and-readiness/">Health &amp; readiness probes</a> for the full check lists and their exit
+codes.</p>
+<h2 id="security-caveats">Security caveats&nbsp;<a class="anchor" href="#security-caveats">&#xE732;</a></h2>
+<div class="inset caution"><span class="label">⚠️ Read before you depend on this backend</span>
+
+<p>The material Basil brokers here is <strong>materialized into Basil's memory</strong> to be used, then zeroized. That
+is a weaker custody position than an in-place <code>vault</code>, <code>aws-kms</code>, or <code>gcp-kms</code> backend, where the
+private half never leaves the backend. Choose 1Password for stored value secrets whose exposure you
+have already accepted living in a password manager, not for keys that demand hardware or in-place
+custody.</p>
+<p>The service account token is a standing bearer credential. Anyone who holds it can reach every item in
+every vault the account can read, so scope it to a <strong>dedicated vault</strong>, grant <code>read_items</code> unless you
+have a concrete reason to grant <code>write_items</code>, set a short <code>--expires-in</code>, and rotate it on a schedule.
+Sealing the token into the bundle (the <code>onepassword+token</code> scheme) keeps it encrypted at rest instead
+of loose in the environment.</p>
+<p>Finally, honour the untested caveat from the top of this page: exercise the full path against a staging
+vault before production, because the live <code>op</code> integration is not covered by Basil's automated tests.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/introduction/backends-and-custody/">Backends &amp; custody</a>: in-place versus materialize-to-use, and why it matters.</li>
+<li><a href="/configuration/backends/">Backends &amp; capabilities</a>: the <code>keystore</code> kind next to <code>vault</code> and cloud KMS.</li>
+<li><a href="/examples/db-keystore/">db-keystore backend</a>: the materialize-to-use path for signing and sealing keys.</li>
+<li><a href="/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>: where the <code>OnePassword</code> credential lives and how to rotate it.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

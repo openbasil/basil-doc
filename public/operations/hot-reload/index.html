@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Hot reload &amp; admin reload </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           />
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/operations/hot-reload/#hot-reload-admin-reload">Hot reload &amp; admin reload</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/hot-reload/#sighup-hot-reload">SIGHUP hot reload</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/hot-reload/#admin-reload-cli-grpc">Admin reload (CLI + gRPC)</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/operations/hot-reload/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="hot-reload-admin-reload">Hot reload &amp; admin reload&nbsp;<a class="anchor" href="#hot-reload-admin-reload">&#xE732;</a></h1>
+<p>Basil reloads its <strong>catalog</strong> and <strong>policy</strong> in place, without requiring another unseal, on a
+<code>SIGHUP</code> signal or through a permission-gated admin RPC (and the <code>basil reload</code> CLI). Both paths call
+the <em>identical</em> fail-closed reload engine.</p>
+<h2 id="sighup-hot-reload">SIGHUP hot reload&nbsp;<a class="anchor" href="#sighup-hot-reload">&#xE732;</a></h2>
+<p>Basil reloads in place when it receives <code>SIGHUP</code>. The keystore stays unlocked and every in-flight
+request keeps serving throughout. Each reload that succeeds advances a monotonic <strong>generation id</strong>; an
+operation pins one generation at request entry and uses it end to end, so a reload mid-request can
+never mix an old catalog with a new policy.</p>
+<h3 id="trigger">Trigger&nbsp;<a class="anchor" href="#trigger">&#xE732;</a></h3>
+<p>Send <code>SIGHUP</code> to the broker's main PID. The agent re-reads the <em>same</em> catalog/policy paths it was
+started with. For safety, basil never accepts configuration over the wire.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Under systemd (the Nix module wires ExecReload to this):</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">systemctl</span><span style="color: #40A02B;"> reload basil-agent</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Or directly:</span></span>
+<span class="giallo-l"><span style="color: #D20F39;font-style: italic;">kill</span><span style="color: #40A02B;"> -HUP &quot;</span><span style="color: #7C7F93;">$(</span><span style="color: #1E66F5;font-style: italic;">systemctl</span><span style="color: #40A02B;"> show -p MainPID --value basil-agent</span><span style="color: #7C7F93;">)</span><span style="color: #40A02B;">&quot;</span></span></code></pre>
+<p>On NixOS, a <code>nixos-rebuild switch</code> that changes <em>only</em> the catalog or policy repoints the
+<code>/etc/basil/{catalog,policy}.json</code> symlinks and sends <code>SIGHUP</code> for you; any other setting change goes
+through <code>ExecStart</code> (a full restart). Edit the source-of-truth files, not <code>/etc</code> directly.</p>
+<h3 id="what-a-reload-validates-fail-closed">What a reload validates (fail closed)&nbsp;<a class="anchor" href="#what-a-reload-validates-fail-closed">&#xE732;</a></h3>
+<p>Before swapping, the candidate runs the <em>full</em> startup/<code>check</code> validation: catalog + policy parse,
+every hard error, the JWT-SVID issuer-algorithm guardrail, and the <code>publicPath</code> enforcement for
+materialize-to-use keys. The reload is <strong>non-mutating</strong>: it performs no backend I/O and never
+generates missing key material on the signal path. If <em>anything</em> fails to validate, Basil does not
+swap; the previous generation keeps serving unchanged.</p>
+<p>After a successful real reload, Basil also refreshes the JWT-SVID deny-list backing store. This read
+is monotonic: newly loaded revocations are unioned into the live set, local in-memory revocations are
+preserved, and a refresh failure leaves the prior set serving while emitting a
+<code>revocation_refresh_failed</code> record.</p>
+<h3 id="reloadable-vs-restart-only">Reloadable vs. restart-only&nbsp;<a class="anchor" href="#reloadable-vs-restart-only">&#xE732;</a></h3>
+<p>Only the <em>content</em> the policy engine and audit trail consume is reloadable. Changing backends or the
+socket path requires a restart.</p>
+<table><thead><tr><th>Dimension</th><th>Reloadable on SIGHUP?</th></tr></thead><tbody>
+<tr><td>Policy rules / roles / name &amp; membership tables</td><td>✅ Yes</td></tr>
+<tr><td>A key's <code>writable</code>, <code>labels</code>, <code>description</code>, <code>missing</code></td><td>✅ Yes</td></tr>
+<tr><td>Adding / removing a <strong>backend</strong>, or any backend's <code>kind</code>/<code>addr</code>/<code>engines</code>/<code>capabilities</code>/<code>requires</code></td><td>⛔ Restart-only</td></tr>
+<tr><td>Adding / removing a <strong>key</strong>, or any key's <code>backend</code>/<code>path</code>/<code>engine</code>/<code>keyType</code>/<code>publicPath</code></td><td>⛔ Restart-only</td></tr>
+<tr><td>Unlock / sealed bundle, socket bind, backend credentials, broker limits</td><td>⛔ Restart-only</td></tr>
+</tbody></table>
+<p>A backend's <code>mintKeyTypes</code> set is not part of the routing shape: a change to it is re-validated by the
+load-time capability check and swapped in on reload, so it is not restart-only.</p>
+<div class="inset note"><span class="label">📝 Adding a key needs a restart</span>
+
+<p>Because a new key changes the routing shape, you cannot introduce a key (or backend) by hot reload;
+that is a restart. A reload only ever re-authorizes <em>existing</em> keys, so there is no missing-material
+question to answer on the signal path beyond what startup reconcile already settled.</p>
+
+</div><h3 id="rollback">Rollback&nbsp;<a class="anchor" href="#rollback">&#xE732;</a></h3>
+<p>Rollback is automatic: a rejected reload never replaced the prior generation, so there is nothing to
+roll back. To revert a <em>successful</em> reload, restore the previous catalog/policy files and SIGHUP
+again. Nothing is ever left in a half-swapped state.</p>
+<h3 id="observability">Observability&nbsp;<a class="anchor" href="#observability">&#xE732;</a></h3>
+<p>A reload emits a <code>basil.audit.reload</code> JSONL line carrying the actor (<code>SIGHUP</code>), the
+<code>previous_generation</code> and <code>generation</code> ids, the <code>outcome</code> (<code>applied</code> / <code>rejected</code>), and a stable
+<code>reason</code> token. The active generation id also tags every authorization record.</p>
+<table><thead><tr><th><code>reason</code> on reject</th><th>Cause</th></tr></thead><tbody>
+<tr><td><code>validation_failed</code></td><td>Catalog/policy failed to parse or violated a hard error / guardrail (issuer alg, <code>publicPath</code>).</td></tr>
+<tr><td><code>routing_shape_changed</code></td><td>The edit touched a restart-only dimension. Apply it via a restart.</td></tr>
+<tr><td><code>catalog_read_failed</code> / <code>policy_read_failed</code></td><td>A configured file could not be re-read (permissions / path).</td></tr>
+<tr><td><code>no_reload_inputs</code></td><td>The broker was started without configured catalog/policy paths; SIGHUP only reopens the audit log.</td></tr>
+</tbody></table>
+<h2 id="admin-reload-cli-grpc">Admin reload (CLI + gRPC)&nbsp;<a class="anchor" href="#admin-reload-cli-grpc">&#xE732;</a></h2>
+<p>The same in-place reload is available as a <strong>permission-gated admin RPC</strong> over the broker's existing
+peer-cred-attested Unix-socket admin surface, and through the <code>basil reload</code> CLI. Unlike a bare
+<code>SIGHUP</code> (which a signal cannot acknowledge), the RPC returns a validated result: the old → new
+generation id plus key/grant counts on success, or a structured rejection (with the previous
+generation still serving) on failure.</p>
+<div class="inset note"><span class="label">📝 Disk-only trust boundary: never config over the wire</span>
+
+<p>The reload RPC re-reads the catalog/policy from the broker's configured on-disk paths, the same
+root-owned files the daemon loaded when it started. It never accepts catalog or policy content over the
+wire. This is enforced <em>by construction</em>: the request message has no field for config bytes; its
+only input is the dry-run flag. A client cannot inject or override policy.</p>
+
+</div><h3 id="the-permission-grant-least-privilege-default-deny">The permission grant (least privilege, default-deny)&nbsp;<a class="anchor" href="#the-permission-grant-least-privilege-default-deny">&#xE732;</a></h3>
+<p>Reload is gated by a <strong>dedicated <code>reload</code> policy op</strong> that is not implied by any data-plane grant:
+not <code>sign</code>/<code>encrypt</code>/<code>get</code>/<code>set</code>/<code>rotate</code>/<code>mint</code>, and not even root's <code>*</code> wildcard. The only way to
+grant it is an explicit <code>op:reload</code> action over the reserved broker-admin target <code>broker.reload</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="json"><span class="giallo-l"><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">schemaVersion</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 2</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">		&quot;</span><span style="color: #1E66F5;">svc.reload</span><span style="color: #7C7F93;">&quot;: { &quot;</span><span style="color: #1E66F5;">allOf</span><span style="color: #7C7F93;">&quot;: [{ &quot;</span><span style="color: #1E66F5;">kind</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;unix&quot;</span><span style="color: #7C7F93;">, &quot;</span><span style="color: #1E66F5;">uid</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #FE640B;"> 4242</span><span style="color: #7C7F93;"> }] }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	},</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	&quot;</span><span style="color: #1E66F5;">rules</span><span style="color: #7C7F93;">&quot;: [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">		{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">			&quot;</span><span style="color: #1E66F5;">id</span><span style="color: #7C7F93;">&quot;:</span><span style="color: #40A02B;"> &quot;broker-admin-reload&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">			&quot;</span><span style="color: #1E66F5;">subjects</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;svc.reload&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">			&quot;</span><span style="color: #1E66F5;">action</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;op:reload&quot;</span><span style="color: #7C7F93;">],</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">			&quot;</span><span style="color: #1E66F5;">target</span><span style="color: #7C7F93;">&quot;: [</span><span style="color: #40A02B;">&quot;broker.reload&quot;</span><span style="color: #7C7F93;">]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">		}</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">	]</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>On NixOS the same rule is written in the module's policy options:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="nix"><span class="giallo-l"><span>services</span><span style="color: #179299;">.</span><span>basil</span><span style="color: #179299;">.</span><span>policy</span><span style="color: #179299;">.</span><span>subjects</span><span style="color: #179299;">.</span><span style="color: #40A02B;">&quot;svc.reload&quot;</span><span> =</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">  allOf</span><span style="color: #179299;"> =</span><span style="color: #7C7F93;"> [ {</span><span style="color: #1E66F5;"> kind</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;unix&quot;</span><span style="color: #7C7F93;">;</span><span style="color: #1E66F5;"> uid</span><span style="color: #179299;"> =</span><span style="color: #FE640B;"> 4242</span><span style="color: #7C7F93;">; } ];</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span><span>;</span></span>
+<span class="giallo-l"><span>services</span><span style="color: #179299;">.</span><span>basil</span><span style="color: #179299;">.</span><span>policy</span><span style="color: #179299;">.</span><span>rules =</span><span style="color: #7C7F93;"> [</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">  {</span><span style="color: #1E66F5;"> id</span><span style="color: #179299;"> =</span><span style="color: #40A02B;"> &quot;broker-admin-reload&quot;</span><span style="color: #7C7F93;">;</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    subjects</span><span style="color: #179299;"> =</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;"> &quot;svc.reload&quot;</span><span style="color: #7C7F93;"> ];</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    action</span><span style="color: #179299;">    =</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;"> &quot;op:reload&quot;</span><span style="color: #7C7F93;"> ];</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;">    target</span><span style="color: #179299;">    =</span><span style="color: #7C7F93;"> [</span><span style="color: #40A02B;"> &quot;broker.reload&quot;</span><span style="color: #7C7F93;"> ]; }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">]</span><span>;</span></span></code></pre>
+<p><code>broker.reload</code> is a reserved admin <em>target</em>, not a catalog key. A caller lacking this grant is denied
+fail-closed (<code>PermissionDenied</code>), and the denial is audited with the attested caller identity.</p>
+<h3 id="cli-usage-the-check-dry-run-workflow">CLI usage &amp; the <code>--check</code> dry-run workflow&nbsp;<a class="anchor" href="#cli-usage-the-check-dry-run-workflow">&#xE732;</a></h3>
+<p>Run the CLI <em>under the granted identity</em>. Basil attests the caller by its kernel <code>SO_PEERCRED</code> uid,
+so use systemd <code>User=</code>/<code>Group=</code> or <code>runuser -u &lt;svc&gt;</code>; the CLI cannot impersonate.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Dry-run: validate the on-disk candidate WITHOUT swapping the serving generation.</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Runs the exact validation a real reload runs; exits nonzero if it would be rejected.</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> reload --check</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Real reload: validate, then atomically swap. Prints old-&gt;new generation id + counts.</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> reload</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;"># Machine-readable (stable one-line JSON object) for automation:</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> reload --check --json</span></span>
+<span class="giallo-l"><span style="color: #1E66F5;font-style: italic;">basil</span><span style="color: #40A02B;"> reload --json</span></span></code></pre>
+<p>Recommended flow: run <code>basil reload --check</code> first (or <code>basil config check</code> in CI; both run the
+identical validation), confirm it validates, then <code>basil reload</code> to apply. The dry-run leaves the
+serving generation unchanged; the response reports the <em>would-be</em> new generation id.</p>
+<h3 id="exit-codes-failure-modes">Exit codes &amp; failure modes&nbsp;<a class="anchor" href="#exit-codes-failure-modes">&#xE732;</a></h3>
+<table><thead><tr><th>Condition</th><th>CLI exit</th><th>Surface</th></tr></thead><tbody>
+<tr><td>Reload applied (or <code>--check</code> validated cleanly)</td><td><code>0</code></td><td>Prints the outcome (old→new generation id + key/grant counts).</td></tr>
+<tr><td>Candidate <strong>rejected</strong> (validation / routing-shape), previous generation keeps serving</td><td><code>1</code></td><td>Prints the rejection <code>reason</code>; the RPC returns <code>OK</code> with a structured rejection, not a wire error.</td></tr>
+<tr><td><strong>Permission denied</strong> (caller lacks the <code>reload</code> grant)</td><td>nonzero</td><td><code>PERMISSION_DENIED</code> gRPC status; the denial is audited with the attested caller.</td></tr>
+<tr><td>Missing peer credentials / connect / RPC failure</td><td>nonzero</td><td><code>UNAUTHENTICATED</code> or a transport error.</td></tr>
+</tbody></table>
+<p>The rejection <code>reason</code> tokens are the same as the SIGHUP path. Both an applied reload and a denial are
+audited.</p>
+<div class="inset best"><span class="label">✅ Best practice</span>
+
+<p>Gate the same catalog/policy through <code>basil config check</code> in CI before you deploy. It runs the
+identical validation the reload runs, so a reload that would be rejected is caught pre-merge rather
+than at the SIGHUP. After a reload, confirm the new <code>generation</code> id in the audit trail before
+declaring the change live.</p>
+
+</div><div class="inset note"><span class="label">📝 Note</span>
+
+<p>Both the <code>SIGHUP</code> and admin-RPC paths are covered end to end by a cross-engine (OpenBao + Vault) live
+test: a valid reload bumps the generation without re-unseal, an invalid candidate keeps the prior
+generation serving, and both emit <code>basil.audit.reload</code> events of identical shape differing only in the
+actor.</p>
+
+</div><h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/configuration/policy/">The policy</a>: writing the <code>op:reload</code> grant.</li>
+<li><a href="/operations/policy-explain/">Policy explain / dry-run</a>: preview authorization before you reload.</li>
+<li><a href="/troubleshooting/error-reference/">Error reference</a>: the wire status codes a denial returns.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>

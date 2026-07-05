@@ -1,0 +1,592 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://docs.openbasil.org/main.css?h=f068d3fc15989321c287">
+    <meta name="generator" content="Zola">
+    <link rel="icon" href="https://docs.openbasil.org/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Basil | Go client </title>
+</head>
+<body>
+
+<main>
+    
+    
+        <nav>
+            <a href="https:&#x2F;&#x2F;docs.openbasil.org">
+                        <img src="https://docs.openbasil.org/basil-logo.svg" alt="logo"/>
+                    </a>
+                <button onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton" aria-label="Toggle navigation"></button>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="introduction"
+                           />
+                    <label class="tree-toggle-label"
+                           for="introduction">Introduction</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/introduction/what-is-basil/">What is Basil?</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/how-it-works/">How it works</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/backends-and-custody/">Backends &amp; custody</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/threat-model/">Threat model</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/introduction/comparisons/">How it compares</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="getting-started"
+                           />
+                    <label class="tree-toggle-label"
+                           for="getting-started">Getting Started</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/getting-started/quickstart/">Quickstart</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/installation/">Installation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/first-run/">First run: basil config init</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/make-it-your-own/">Make it your own</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/getting-started/sops-nix-to-basil/">Migrating from sops-nix to Basil</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="configuration"
+                           />
+                    <label class="tree-toggle-label"
+                           for="configuration">Configuration</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/configuration/overview/">Configuration overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/catalog/">The catalog (keys)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/policy/">The policy (authorization)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backends/">Backends &amp; capabilities</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-openbao-vault/">OpenBao &amp; Vault</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-aws-kms/">AWS KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-gcp-kms/">Google Cloud KMS</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/backend-1password/">1Password</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/capability-and-reconcile/">Capability policy &amp; reconcile</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/unlock-and-bundle/">Unlock &amp; the sealed bundle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/approvals/">Approvals &amp; change control</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/limits/">Limits &amp; resource controls</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/configuration/jwks/">JWKS HTTP surface</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="cli-reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="cli-reference">CLI Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/cli/overview/">CLI overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/cli/command-reference/">Command reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="client-libraries"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="client-libraries">Client Libraries</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/clients/overview/">Client libraries overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/rust/">Rust client</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/stream/">Streaming encryption</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://docs.openbasil.org/clients/go/">Go client</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://docs.openbasil.org/clients/go/#go-client">Go client</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#install-and-connect">Install and connect</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#errors">Errors</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#signing-and-key-lifecycle">Signing and key lifecycle</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#aead-and-kem-envelopes">AEAD and KEM envelopes</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#secrets-and-catalog">Secrets and catalog</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#minting-nats-and-certificates">Minting, NATS, and certificates</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#status-and-admin">Status and admin</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#spiffe-subpackage">SPIFFE subpackage</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#streaming-subpackage">Streaming subpackage</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://docs.openbasil.org/clients/go/#where-to-go-next">Where to go next</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://docs.openbasil.org/clients/other-languages/">Other languages</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats/">NATS integration</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/integration-patterns/">Integration patterns</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/sealed-invocations/">Sealed invocations</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/clients/nats-bridge/">NATS bridge</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="operations"
+                           />
+                    <label class="tree-toggle-label"
+                           for="operations">Operations</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/operations/crypto/">Crypto: keys &amp; algorithms</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/rotating-keys/">Rotating keys</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/importing-byok/">Importing (BYOK) keys &amp; sets</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/revocation/">Revocation</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/audit-logs/">Audit logs</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/hot-reload/">Hot reload &amp; admin reload</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/health-and-readiness/">Health &amp; readiness probes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/policy-explain/">Policy explain &#x2F; dry-run</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/doctor/">Doctor (preflight checks)</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/operations/automated-boot-unlock/">Automated boot unlock</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="examples"
+                           />
+                    <label class="tree-toggle-label"
+                           for="examples">Examples</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/examples/overview/">Examples overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/examples/db-keystore/">db-keystore backend</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="troubleshooting"
+                           />
+                    <label class="tree-toggle-label"
+                           for="troubleshooting">Troubleshooting</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/error-reference/">Error &amp; status code reference</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/troubleshooting/incident-runbook/">Incident runbook</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="reference"
+                           />
+                    <label class="tree-toggle-label"
+                           for="reference">Reference</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://docs.openbasil.org/reference/feature-matrix/">Feature matrix</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/glossary/">Glossary</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/rfc-compatibility/">RFC compatibility</a>
+                            </li>
+
+                            <li >
+                                <a href="https://docs.openbasil.org/reference/nats-jwt-reference/">NATS JWT reference</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="license"
+                           />
+                    <label class="tree-toggle-label"
+                           for="license">License</label>
+
+                    <ul class="subtree">
+                        </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="go-client">Go client&nbsp;<a class="anchor" href="#go-client">&#xE732;</a></h1>
+<p>The Go client is the <strong><code>github.com/openbasil/basil-go</code></strong> module, package <code>basil</code>. It talks to
+the broker over the local Unix socket, maps every RPC to context-aware Go methods, and keeps the root
+package lean: SPIFFE helpers and streaming encryption live in separate subpackages.</p>
+<p>The broker still authenticates the caller with <code>SO_PEERCRED</code>. The Go client does not present a token
+or certificate; run the process under the uid/gid evidence you want Basil to resolve to a policy
+subject.</p>
+<h2 id="install-and-connect">Install and connect&nbsp;<a class="anchor" href="#install-and-connect">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span style="color: #8839EF;">import</span><span> basil</span><span style="color: #40A02B;"> &quot;github.com/openbasil/basil-go&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>client</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Dial</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;/run/basil/basil.sock&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">defer</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Close</span><span style="color: #7C7F93;">()</span></span></code></pre>
+<p><code>Dial</code> is lazy: an unreachable socket fails on the first RPC, not at construction. The transport is
+plain gRPC over a Unix socket with a pinned <code>localhost</code> HTTP/2 authority; without that authority, a raw
+filesystem path can leak into <code>:authority</code> and be rejected by the HTTP/2 stack.</p>
+<p>Options:</p>
+<table><thead><tr><th>Option</th><th>Use</th></tr></thead><tbody>
+<tr><td><code>basil.WithTimeout(d)</code></td><td>Per-RPC timeout when the caller's context has no deadline. Default is <code>30s</code>; pass <code>0</code> to require caller deadlines.</td></tr>
+<tr><td><code>basil.WithDialOptions(...)</code></td><td>Extra gRPC dial options such as interceptors or message-size limits. The Unix dialer and local transport credentials are fixed.</td></tr>
+</tbody></table>
+<h2 id="errors">Errors&nbsp;<a class="anchor" href="#errors">&#xE732;</a></h2>
+<p>Broker failures surface as <code>*basil.StatusError</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>sig</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Sign</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;web.tls.signing_key&quot;</span><span style="color: #7C7F93;">,</span><span> msg</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> se</span><span style="color: #7C7F93;">,</span><span> ok</span><span style="color: #179299;"> :=</span><span> basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">AsStatusError</span><span style="color: #7C7F93;">(</span><span>err</span><span style="color: #7C7F93;">);</span><span> ok</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span>    log</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Printf</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;code=%s reason=%s op=%s&quot;</span><span style="color: #7C7F93;">,</span><span> se</span><span style="color: #7C7F93;">.</span><span>Code</span><span style="color: #7C7F93;">,</span><span> se</span><span style="color: #7C7F93;">.</span><span>Reason</span><span style="color: #7C7F93;">,</span><span> se</span><span style="color: #7C7F93;">.</span><span>Op</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p><code>Code</code> is the canonical gRPC status code. <code>Reason</code> and <code>Op</code> come from Basil's <code>BrokerErrorInfo</code>
+detail, for example <code>UNAUTHORIZED</code> / <code>sign</code> or <code>BACKEND_UNAVAILABLE</code> / <code>encrypt</code>. The type works with
+<code>errors.As</code> and <code>status.Code(err)</code>. Use <code>basil.FromError(err)</code> when you need to normalize an error from
+the raw go-spiffe client returned by <code>spiffe.Client.Workload()</code>.</p>
+<p><code>Verify</code> and <code>ValidateNatsJwt</code> have authoritative negative results: <code>Verify</code> returns <code>(false, nil)</code>
+for a bad signature, and NATS validation returns <code>Valid=false</code> with a typed reason. A non-nil error
+means the broker could not perform the operation.</p>
+<h2 id="signing-and-key-lifecycle">Signing and key lifecycle&nbsp;<a class="anchor" href="#signing-and-key-lifecycle">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>msg</span><span style="color: #179299;"> :=</span><span style="color: #7C7F93;"> []</span><span style="color: #8839EF;">byte</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;release v1.2.3&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>sig</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Sign</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;web.tls.signing_key&quot;</span><span style="color: #7C7F93;">,</span><span> msg</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>ok</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Verify</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;web.tls.signing_key&quot;</span><span style="color: #7C7F93;">,</span><span> msg</span><span style="color: #7C7F93;">,</span><span> sig</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>pub</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">GetPublicKey</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;web.tls.signing_key&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>sig</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> =</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">SignWithAlgorithm</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;nats.account&quot;</span><span style="color: #7C7F93;">,</span><span> msg</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    basil</span><span style="color: #7C7F93;">.</span><span>SigningAlgorithmEd25519NKey</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p>The broker signs the message bytes you pass, not a caller-prehashed digest. The algorithm is normally
+derived from the catalog key; use <code>SignWithAlgorithm</code> / <code>VerifyWithAlgorithm</code> only when a key supports
+an explicit profile such as NATS NKey signing.</p>
+<p>Create or import keys through the catalog name. Only the public half comes back:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>h</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">NewKey</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.pqc.sign&quot;</span><span style="color: #7C7F93;">,</span><span> basil</span><span style="color: #7C7F93;">.</span><span>KeyTypeMLDSA65</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>h</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> =</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Import</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;nats.operator&quot;</span><span style="color: #7C7F93;">,</span><span> basil</span><span style="color: #7C7F93;">.</span><span>KeyTypeEd25519</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Ed25519SeedMaterial</span><span style="color: #7C7F93;">(</span><span>seed</span><span style="color: #7C7F93;">))</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>keys</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">ImportSet</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">, []</span><span style="color: #DF8E1D;font-style: italic;">basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">ImportEntry</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span><span>KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;nats.operator&quot;</span><span style="color: #7C7F93;">,</span><span> KeyType</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span>KeyTypeEd25519</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>        Material</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Ed25519SeedMaterial</span><span style="color: #7C7F93;">(</span><span>operatorSeed</span><span style="color: #7C7F93;">)},</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    {</span><span>KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;web.tls&quot;</span><span style="color: #7C7F93;">,</span><span> KeyType</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span>KeyTypeRSA2048</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>        Material</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">PKCS8DERMaterial</span><span style="color: #7C7F93;">(</span><span>rsaDER</span><span style="color: #7C7F93;">)},</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span></code></pre>
+<p><code>KeyMaterial</code> is deliberately sealed and write-only: callers can construct
+<code>Ed25519SeedMaterial</code> or <code>PKCS8DERMaterial</code>, but no RPC returns imported private material. Custody and
+storage stay catalog-controlled.</p>
+<h2 id="aead-and-kem-envelopes">AEAD and KEM envelopes&nbsp;<a class="anchor" href="#aead-and-kem-envelopes">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>ct</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Encrypt</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.aead&quot;</span><span style="color: #7C7F93;">,</span><span> basil</span><span style="color: #7C7F93;">.</span><span>AeadAlgorithmAES256GCM</span><span style="color: #7C7F93;">,</span><span> plaintext</span><span style="color: #7C7F93;">,</span><span> aad</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>pt</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Decrypt</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.aead&quot;</span><span style="color: #7C7F93;">,</span><span> ct</span><span style="color: #7C7F93;">,</span><span> aad</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>wrapped</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">WrapEnvelope</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.kem&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    basil</span><span style="color: #7C7F93;">.</span><span>KemAlgorithmMLKEM768</span><span style="color: #7C7F93;">,</span><span> basil</span><span style="color: #7C7F93;">.</span><span>EnvelopeAlgorithmAES256GCM</span><span style="color: #7C7F93;">,</span><span> cek</span><span style="color: #7C7F93;">,</span><span> aad</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>cek</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> =</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">UnwrapEnvelope</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.kem&quot;</span><span style="color: #7C7F93;">,</span><span> wrapped</span><span style="color: #7C7F93;">,</span><span> aad</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p>For AEAD, Basil owns the nonce. Treat <code>*basil.Ciphertext</code> as opaque and round-trip its suite, version,
+nonce, and ciphertext unchanged. KEM envelopes use <code>*basil.KemEnvelope</code> for X25519 or ML-KEM wrapping;
+the private decapsulation key stays custodied by the broker.</p>
+<p>For files or large payloads, use the separate <a href="/clients/stream/"><code>stream</code> subpackage</a>. It encrypts an
+<code>io.Reader</code> into an <code>io.Writer</code> in bounded chunks, wire-identical to Rust <code>basil::stream</code>.</p>
+<h2 id="secrets-and-catalog">Secrets and catalog&nbsp;<a class="anchor" href="#secrets-and-catalog">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>sec</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">GetSecret</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.db_password&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;">)</span><span style="color: #7C7F93;font-style: italic;"> // nil = latest</span></span>
+<span class="giallo-l"><span>ver</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">SetSecret</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.db_password&quot;</span><span style="color: #7C7F93;">, []</span><span style="color: #8839EF;">byte</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;new value&quot;</span><span style="color: #7C7F93;">))</span></span>
+<span class="giallo-l"><span>ver</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> =</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">RotateSecret</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.db_password&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>entries</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">ListCatalog</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;">)</span><span style="color: #7C7F93;font-style: italic;"> // nil = no prefix filter</span></span></code></pre>
+<p><code>ListCatalog</code> drains the server stream into <code>[]basil.CatalogEntry</code>. It returns inventory metadata, not
+secret values.</p>
+<h2 id="minting-nats-and-certificates">Minting, NATS, and certificates&nbsp;<a class="anchor" href="#minting-nats-and-certificates">&#xE732;</a></h2>
+<p>Generic JWT minting stays on <code>MintingService</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>cred</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">MintJwt</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">JwtRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">   &quot;app.jwt_issuer&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Subject</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;svc-a&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    TTL</span><span style="color: #7C7F93;">:</span><span style="color: #FE640B;">     15</span><span style="color: #179299;"> *</span><span> time</span><span style="color: #7C7F93;">.</span><span>Minute</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Claims</span><span style="color: #7C7F93;">:</span><span style="color: #8839EF;">  map</span><span style="color: #7C7F93;">[</span><span style="color: #8839EF;">string</span><span style="color: #7C7F93;">]</span><span style="color: #DF8E1D;font-style: italic;">any</span><span style="color: #7C7F93;">{</span><span style="color: #40A02B;">&quot;scope&quot;</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;orders:read&quot;</span><span style="color: #7C7F93;">},</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span></code></pre>
+<p>NATS-specific calls live on the <code>NatsService</code> sub-client:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>user</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Nats</span><span style="color: #7C7F93;">().</span><span style="color: #1E66F5;font-style: italic;">MintNatsUser</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">NatsUserRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">           &quot;nats.account&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    SubjectUserNKey</span><span style="color: #7C7F93;">:</span><span> userNKey</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Name</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">            &quot;orders-api&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    TTL</span><span style="color: #7C7F93;">:</span><span>             time</span><span style="color: #7C7F93;">.</span><span>Hour</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>signed</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Nats</span><span style="color: #7C7F93;">().</span><span style="color: #1E66F5;font-style: italic;">SignNatsJwt</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">NatsJwtRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">        &quot;nats.account&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Claims</span><span style="color: #7C7F93;">:</span><span>       claims</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    ExpectedType</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span>NatsJwtTypeUser</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    TTL</span><span style="color: #7C7F93;">:</span><span>          time</span><span style="color: #7C7F93;">.</span><span>Hour</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>validation</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Nats</span><span style="color: #7C7F93;">().</span><span style="color: #1E66F5;font-style: italic;">ValidateNatsJwt</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">ValidateNatsJwtRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    JWT</span><span style="color: #7C7F93;">:</span><span> token</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    AllowedSigners</span><span style="color: #7C7F93;">: []</span><span style="color: #DF8E1D;font-style: italic;">basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">AllowedSigner</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>        basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">AllowedSignerKeyID</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;nats.account&quot;</span><span style="color: #7C7F93;">),</span></span>
+<span class="giallo-l"><span>        basil</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">AllowedSignerNatsPublicKey</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;ADVCJ4FZLS...&quot;</span><span style="color: #7C7F93;">),</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    },</span></span>
+<span class="giallo-l"><span>    ExpectedType</span><span style="color: #7C7F93;">:</span><span> basil</span><span style="color: #7C7F93;">.</span><span>NatsJwtTypeUser</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span></code></pre>
+<p><code>NatsJwtRequest.Claims</code> may be a map, struct, <code>json.RawMessage</code>, <code>[]byte</code>, or JSON string. Use
+<code>json.RawMessage</code> or <code>[]byte</code> when you need byte-exact claim JSON, and use
+<code>json.Decoder.UseNumber</code> before placing decoded JSON in a map with large integer claims. The
+<a href="/reference/nats-jwt-reference/">NATS JWT reference</a> documents every account and user claim
+<code>SignNatsJwt</code> accepts and the semantic defaults Basil applies.</p>
+<p><code>ValidateNatsJwt</code> returns <code>Valid</code>, <code>Reason</code>, <code>Subject</code>, <code>Issuer</code>, <code>JWTType</code>,
+<code>MatchedSignerKeyID</code>, <code>ExpiresAt</code>, and <code>IssuedAt</code>. Reasons include malformed, bad signature, unknown
+signer, expired, not-yet-valid, and wrong type.</p>
+<p>NATS curve xkey boxes also live on <code>NatsService</code>:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>box</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Nats</span><span style="color: #7C7F93;">().</span><span style="color: #1E66F5;font-style: italic;">EncryptNatsCurve</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">NatsCurveEncryptRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">               &quot;nats.xkey&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    RecipientPublicXKey</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;XBCRECIPIENT...&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Plaintext</span><span style="color: #7C7F93;">:</span><span>           payload</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span>
+<span class="giallo-l"><span>payload</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> =</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Nats</span><span style="color: #7C7F93;">().</span><span style="color: #1E66F5;font-style: italic;">DecryptNatsCurve</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">NatsCurveDecryptRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    KeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">            &quot;nats.xkey&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    SenderPublicXKey</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;XBCSENDER...&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    Ciphertext</span><span style="color: #7C7F93;">:</span><span>       box</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span></code></pre>
+<p>See <a href="/clients/nats/">NATS integration</a> for the service split, catalog shape, policy grants, and the
+<code>xkv1</code> wire format.</p>
+<p>Certificate issuance returns the sole broker result containing private key material: the freshly
+minted leaf key that a TLS server needs.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>cert</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">IssueCertificate</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #DF8E1D;font-style: italic;"> basil</span><span style="color: #7C7F93;">.</span><span style="color: #DF8E1D;font-style: italic;">CertificateRequest</span><span style="color: #7C7F93;">{</span></span>
+<span class="giallo-l"><span>    IssuerKeyID</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;"> &quot;web.tls.cert_issuer&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    CommonName</span><span style="color: #7C7F93;">:</span><span style="color: #40A02B;">  &quot;svc.example.org&quot;</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    DNSSANs</span><span style="color: #7C7F93;">:     []</span><span style="color: #8839EF;">string</span><span style="color: #7C7F93;">{</span><span style="color: #40A02B;">&quot;svc.example.org&quot;</span><span style="color: #7C7F93;">},</span></span>
+<span class="giallo-l"><span>    TTL</span><span style="color: #7C7F93;">:</span><span style="color: #FE640B;">         24</span><span style="color: #179299;"> *</span><span> time</span><span style="color: #7C7F93;">.</span><span>Hour</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">})</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;font-style: italic;">// cert.CertChainDER, cert.PrivateKeyDER, cert.CAChainDER</span></span></code></pre><h2 id="status-and-admin">Status and admin&nbsp;<a class="anchor" href="#status-and-admin">&#xE732;</a></h2>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>st</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Status</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>health</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Health</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>ready</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Readiness</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p><code>Health</code> is cheap liveness. <code>Readiness</code> probes backend reachability and key presence, returning only
+counts and coarse reasons.</p>
+<p>Admin mutations are permission-gated and not implied by data-plane grants:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>reload</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Reload</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #FE640B;"> false</span><span style="color: #7C7F93;">)</span><span style="color: #7C7F93;font-style: italic;"> // check=true dry-runs without swapping</span></span>
+<span class="giallo-l"><span>explain</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Explain</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;svc.app&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;sign&quot;</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.signing&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>revoked</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Revoke</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;example.org&quot;</span><span style="color: #7C7F93;">,</span><span> jti</span><span style="color: #7C7F93;">,</span><span> expiresAtUnix</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p><code>Reload</code> re-reads the broker's configured on-disk catalog/policy paths; the request carries no config.
+A validation or routing rejection is returned as <code>ReloadResult.Rejection</code>, not by swapping in a bad
+generation.</p>
+<p><code>Watch</code> is a long-lived server stream for key rotation, bundle changes, and revocations. It is exempt
+from the default per-RPC timeout; the caller owns and closes it.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>watch</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> client</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Watch</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span> basil</span><span style="color: #7C7F93;">.</span><span>EventKindKeyRotated</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">defer</span><span> watch</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Close</span><span style="color: #7C7F93;">()</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #8839EF;">for</span><span> ev</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span style="color: #8839EF;"> range</span><span> watch</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Events</span><span style="color: #7C7F93;">() {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    if</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">        return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    if</span><span> ev</span><span style="color: #7C7F93;">.</span><span>Kind</span><span style="color: #179299;"> ==</span><span> basil</span><span style="color: #7C7F93;">.</span><span>EventKindKeyRotated</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span>        log</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Printf</span><span style="color: #7C7F93;">(</span><span style="color: #40A02B;">&quot;%s -&gt; v%d&quot;</span><span style="color: #7C7F93;">,</span><span> ev</span><span style="color: #7C7F93;">.</span><span>KeyRotated</span><span style="color: #7C7F93;">.</span><span>KeyID</span><span style="color: #7C7F93;">,</span><span> ev</span><span style="color: #7C7F93;">.</span><span>KeyRotated</span><span style="color: #7C7F93;">.</span><span>NewVersion</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">    }</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span></code></pre>
+<p>You can also use <code>Recv()</code> directly; clean close returns <code>io.EOF</code>.</p>
+<h2 id="spiffe-subpackage">SPIFFE subpackage&nbsp;<a class="anchor" href="#spiffe-subpackage">&#xE732;</a></h2>
+<p>The <code>github.com/openbasil/basil-go/spiffe</code> subpackage wraps go-spiffe's Workload API client
+over the Basil socket. It attaches the mandatory <code>workload.spiffe.io: true</code> header, parses SVIDs and
+bundles into standard go-spiffe types, and normalizes Basil gRPC errors with <code>basil.FromError</code>.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span style="color: #8839EF;">import</span><span style="color: #40A02B;"> &quot;github.com/openbasil/basil-go/spiffe&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>sc</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> spiffe</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Dial</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;/run/basil/basil.sock&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">if</span><span> err</span><span style="color: #179299;"> !=</span><span style="color: #D20F39;"> nil</span><span style="color: #7C7F93;"> {</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">    return</span><span> err</span></span>
+<span class="giallo-l"><span style="color: #7C7F93;">}</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">defer</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Close</span><span style="color: #7C7F93;">()</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>x509svid</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchX509SVID</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>x509svids</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchX509SVIDs</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>x509Bundles</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchX509Bundles</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>x509Context</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchX509Context</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>jwt</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchJWTSVID</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;orders&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>jwts</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchJWTSVIDs</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;orders&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>jwtBundles</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">FetchJWTBundles</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>validated</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> sc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">ValidateJWTSVID</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span> token</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;orders&quot;</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p>The X.509-SVID includes the workload's own private key, as the SPIFFE standard requires. For
+long-running processes, use rotation-aware sources:</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span>xsrc</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> spiffe</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">NewX509Source</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;/run/basil/basil.sock&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">defer</span><span> xsrc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Close</span><span style="color: #7C7F93;">()</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>jsrc</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> spiffe</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">NewJWTSource</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;/run/basil/basil.sock&quot;</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span style="color: #8839EF;">defer</span><span> jsrc</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">Close</span><span style="color: #7C7F93;">()</span></span></code></pre>
+<p><code>WatchX509Context</code> and <code>WatchJWTBundles</code> expose the raw rotation streams when you need to react to
+updates yourself. <code>Workload()</code> returns the underlying go-spiffe client for advanced cases.</p>
+<h2 id="streaming-subpackage">Streaming subpackage&nbsp;<a class="anchor" href="#streaming-subpackage">&#xE732;</a></h2>
+<p>The <code>github.com/openbasil/basil-go/stream</code> subpackage encrypts files and large payloads in
+bounded chunks. It is wire-identical to Rust <code>basil::stream</code>, and it is isolated so callers that do not
+need post-quantum streaming do not link those dependencies.</p>
+<pre class="giallo" style="color: #4C4F69; background-color: #EFF1F5;"><code data-lang="go"><span class="giallo-l"><span style="color: #8839EF;">import</span><span style="color: #40A02B;"> &quot;github.com/openbasil/basil-go/stream&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>cek</span><span style="color: #7C7F93;">,</span><span> err</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">EncryptAEAD</span><span style="color: #7C7F93;">(</span><span>dst</span><span style="color: #7C7F93;">,</span><span> src</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteAES256GCM</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">GenerateCEK</span><span style="color: #7C7F93;">(),</span><span> stream</span><span style="color: #7C7F93;">.</span><span>DefaultChunkSize</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>err</span><span style="color: #179299;"> =</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">DecryptAEAD</span><span style="color: #7C7F93;">(</span><span>out</span><span style="color: #7C7F93;">,</span><span> encrypted</span><span style="color: #7C7F93;">,</span><span> cek</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>err</span><span style="color: #179299;"> =</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">EncryptMLKEM</span><span style="color: #7C7F93;">(</span><span>dst</span><span style="color: #7C7F93;">,</span><span> src</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteMLKEM768</span><span style="color: #7C7F93;">,</span><span> recipientPubKey</span><span style="color: #7C7F93;">,</span></span>
+<span class="giallo-l"><span>    stream</span><span style="color: #7C7F93;">.</span><span>DefaultChunkSize</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>rec</span><span style="color: #179299;"> :=</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">NewBrokerCEKRecovery</span><span style="color: #7C7F93;">(</span><span>client</span><span style="color: #7C7F93;">,</span><span style="color: #40A02B;"> &quot;app.kem_key&quot;</span><span style="color: #7C7F93;">,</span><span> stream</span><span style="color: #7C7F93;">.</span><span>SuiteMLKEM768</span><span style="color: #7C7F93;">)</span></span>
+<span class="giallo-l"><span>err</span><span style="color: #179299;"> =</span><span> stream</span><span style="color: #7C7F93;">.</span><span style="color: #1E66F5;font-style: italic;">DecryptMLKEM</span><span style="color: #7C7F93;">(</span><span>ctx</span><span style="color: #7C7F93;">,</span><span> out</span><span style="color: #7C7F93;">,</span><span> encrypted</span><span style="color: #7C7F93;">,</span><span> rec</span><span style="color: #7C7F93;">)</span></span></code></pre>
+<p>See <a href="/clients/stream/">Streaming encryption</a> for the container, CEK recovery model, and interop tests.</p>
+<h2 id="where-to-go-next">Where to go next&nbsp;<a class="anchor" href="#where-to-go-next">&#xE732;</a></h2>
+<ul>
+<li><a href="/clients/nats/">NATS integration</a>: NATS service split, validation, and xkey boxes.</li>
+<li><a href="/clients/stream/">Streaming encryption</a>: file and large-payload encryption.</li>
+<li><a href="/clients/integration-patterns/">Integration patterns</a>: native client, sidecar, and pre-fetch.</li>
+</ul>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://docs.openbasil.org/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://docs.openbasil.org/search_index.en.js?h=739324aa1633897ca71d" defer></script>
+<script type="text/javascript" src="https://docs.openbasil.org/js.js?h=4dc92bffd1cd35c33565" defer></script>
+
+</body>
+</html>
