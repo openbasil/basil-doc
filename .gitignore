@@ -4,6 +4,14 @@
 # Zola's processed-images cache (generated from static/ on build)
 /static/processed_images
 
-# Editor / OS noise
+.wrangler
 *.swp
+*.tmp
 .DS_Store
+/result
+/result-*
+graphify-out
+.claude
+.codex
+.bv/
+.work/
