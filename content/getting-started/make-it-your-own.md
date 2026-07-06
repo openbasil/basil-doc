@@ -5,7 +5,7 @@ weight = 40
 
 # Make it your own
 
-`basil-example.nix` is a self-contained catalog + policy + NixOS module + foreground runner. It's
+[`basil-example.nix`](https://github.com/openbasil/basil/tree/main/examples/nix) is a self-contained catalog + policy + NixOS module + foreground runner. It's
 the fastest way from "the fixture works" to "Basil runs *my* keys for *my* services." Copy it and edit
 two things:
 
