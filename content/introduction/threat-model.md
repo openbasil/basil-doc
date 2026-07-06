@@ -34,14 +34,14 @@ The assets Basil is responsible for, and the property it gives each:
 Basil sits between a workload and a backend, on one host. What it trusts, and
 what it does not:
 
-| Component                     | Trusted?         | Why, and the caveat |
-| ----------------------------- | ---------------- | ------------------- |
-| The kernel                    | Yes              | `SO_PEERCRED` is the root of caller identity. If the kernel is compromised, Basil's attestation is meaningless. |
-| The host (root)               | Yes              | Root can read Basil's memory, its sealed bundle, and its unlock secret. Basil does not defend a workload against a host-root compromise. |
-| The backend (OpenBao / Vault) | Yes, for custody | In-place keys live and are used there. Basil trusts it to hold and not leak key material. |
-| The local socket              | Partially        | Filesystem mode/group controls who can *open* it. That is a coarse first gate; every RPC is still authorized from peer credentials and policy. |
-| The catalog and policy        | Yes, as authored | Validated at load; Basil fails closed on a malformed policy but cannot know your *intent*. A grant you wrote is honored. |
-| The calling workload          | No               | The caller proves nothing but its uid/gid. It holds no backend credential and is allowed only what policy grants its subject. |
+| Component                     | Trusted?         | Why, and the caveat                                                                                                                               |
+| ----------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The kernel                    | Yes              | `SO_PEERCRED` is the root of caller identity. If the kernel is compromised, Basil's attestation is meaningless.                                   |
+| The host (root)               | Yes              | Root can read Basil's memory, its sealed bundle, and its unlock secret. Basil does not defend a workload against a host-root compromise.          |
+| The backend (OpenBao / Vault) | Yes, for custody | In-place keys live and are used there. Basil trusts it to hold and not leak key material.                                                         |
+| The local socket              | Partially        | Filesystem mode/group controls who can *open* it. That is a coarse first gate; every RPC is still authorized from peer credentials and policy.    |
+| The catalog and policy        | Yes, as authored | Validated at load; Basil fails closed on a malformed policy but cannot know your *intent*. A grant you wrote is honored.                          |
+| The calling workload          | No               | The caller proves nothing but its uid/gid. It holds no backend credential and is allowed only what policy grants its subject.                     |
 | The network                   | No               | Basil brokers over a local Unix socket, not remote callers. Its HTTP server is opt-in and only binds when the JWKS surface is explicitly enabled. |
 
 ## What Basil assumes (its trusted computing base)
@@ -154,10 +154,9 @@ for that role rather than replacing it. See
 
 ## Reporting a vulnerability
 
-If you find a way to break one of the properties above, report it privately,
-not in a public issue. The public `SECURITY.md` reporting channel is not
-published yet; until it lands, use the private maintainer channel through which
-you received Basil.
+If you find a way to break one of the properties above, report it privately
+to security@openbasil.org, not in a poblic issue.
+[Security policy](https://github.com/openbasil/basil/blob/main/SECURITY.md)
 
 ## Where to go next
 
