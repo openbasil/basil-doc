@@ -5,9 +5,10 @@ weight = 30
 
 # Go client
 
-The Go client is the **`github.com/openbasil/basil-go`** module, package `basil`. It talks to
-the broker over the local Unix socket, maps every RPC to context-aware Go methods, and keeps the root
-package lean: SPIFFE helpers and streaming encryption live in separate subpackages.
+The Go client is the **`github.com/openbasil/basil-go`** module. The client package lives at the
+`basil` subpath, so the import path is `github.com/openbasil/basil-go/basil`. It talks to the broker
+over the local Unix socket, maps every RPC to context-aware Go methods, and keeps the core package
+lean: SPIFFE helpers and streaming encryption live in separate subpackages.
 
 The broker still authenticates the caller with `SO_PEERCRED`. The Go client does not present a token
 or certificate; run the process under the uid/gid evidence you want Basil to resolve to a policy
@@ -15,8 +16,12 @@ subject.
 
 ## Install and connect
 
+```sh
+go get github.com/openbasil/basil-go/basil
+```
+
 ```go
-import basil "github.com/openbasil/basil-go"
+import "github.com/openbasil/basil-go/basil"
 
 client, err := basil.Dial("/run/basil/basil.sock")
 if err != nil {
