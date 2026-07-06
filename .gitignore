@@ -1,6 +1,10 @@
 # Zola build output
 /public
 
+author-guide.md
+AGENTS.md
+CLAUDE.md
+
 # Zola's processed-images cache (generated from static/ on build)
 /static/processed_images
 

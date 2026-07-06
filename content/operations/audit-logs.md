@@ -62,17 +62,53 @@ grant of its own).
 
 ## Sinks
 
-| Sink                           | Status                                     |
-| ------------------------------ | ------------------------------------------ |
-| Local JSONL file (`audit-log`) | <span class="pill impl">implemented</span> |
-| OTLP / OpenTelemetry           | <span class="pill impl">implemented</span> |
-| journald                       | <span class="pill impl">implemented</span> |
-| syslog                         | <span class="pill gap">roadmap</span>      |
-| NATS                           | <span class="pill gap">roadmap</span>      |
-| Prometheus metrics             | <span class="pill gap">roadmap</span>      |
+| Sink                              | Status                                     |
+| --------------------------------- | ------------------------------------------ |
+| Local JSONL file (`audit-log`)    | <span class="pill impl">implemented</span> |
+| Runtime file log (`logging.file`) | <span class="pill impl">implemented</span> |
+| OTLP / OpenTelemetry              | <span class="pill impl">implemented</span> |
+| journald                          | <span class="pill impl">implemented</span> |
+| syslog                            | <span class="pill gap">roadmap</span>      |
+| NATS                              | <span class="pill gap">roadmap</span>      |
+| Prometheus metrics                | <span class="pill gap">roadmap</span>      |
 
-Configure runtime tracing sinks under `[logging]`. `stdout` and `journald` are enabled by default;
-disable either with `[logging.stdout].enable = false` or `[logging.journald].enable = false`.
+Configure runtime tracing sinks under `[logging]`. The dedicated `audit-log` JSONL file is still the
+strict per-decision audit trail. Runtime sinks receive Basil tracing events; when `audit-log` is not
+set, authorization decisions are emitted through tracing and can be captured by these sinks.
+
+`journald` is enabled by default. If journald is unavailable, Basil prints one startup diagnostic to
+stderr and does not install a stderr fallback sink.
+
+`stdout` defaults to enabled unless file logging is enabled. Set it explicitly when you want both
+stdout and file logs, or when you want neither:
+
+```toml
+[logging.stdout]
+enable = true  # true, false, or omit for the default
+```
+
+To write runtime logs to files, enable `[logging.file]` and provide a writable directory:
+
+```toml
+[logging.file]
+enable = true
+dir = "/var/log/basil"
+prefix = "basil-agent-"
+rotation = "daily" # "none", "hourly", "daily", or "weekly"
+```
+
+`logging.file.enable` defaults to `false`; `prefix` defaults to `basil-agent-`; `rotation` defaults to
+`daily`. `dir` is required when file logging is enabled; `path` is accepted as an alias for `dir`.
+Basil uses a non-blocking rolling file appender: if the directory cannot be opened, it reports the
+error to stderr and continues without the file sink; later write or flush failures are reported to
+stderr without crashing the agent.
+
+Disable journald with:
+
+```toml
+[logging.journald]
+enable = false
+```
 
 OTLP log export is compiled behind the default-off `otlp` cargo feature. A binary built with that
 feature accepts:
