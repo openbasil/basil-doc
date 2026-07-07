@@ -13,9 +13,11 @@ extra port is opened. They are deliberately distinct:
   stack are alive. It says nothing about whether data-plane ops can succeed.
 - **Readiness** - can the broker actually *serve*? It runs the read-only existence probe over every
   catalog key and reports whether serving would **fail closed**: an unreachable/rejecting backend, or
-  a `missing=error` key whose material is absent. Either makes the broker not ready. The probe
-  result is cached for a short window (a couple of seconds); a hot reload (generation change)
-  invalidates the cache immediately.
+  a `missing=error` key whose material is absent. Either makes the broker not ready. Absent keys
+  are classified against the **currently serving** generation, so a hot reload that flips a key's
+  `missing` policy (say `warn` to `error`) changes the verdict on the next probe, without a restart.
+  The probe result is cached for a short window (a couple of seconds); a hot reload (generation
+  change) invalidates the cache immediately.
 
 Both probes are **ungated** for any socket peer. Readiness returns a non-secret summary only:
 counts, a coarse reason category, and the active generation id. It never returns key names, key

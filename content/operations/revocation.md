@@ -19,6 +19,9 @@ promptly rather than waiting for it to expire.
   revocation is not shortened or removed by a reload.
 - Entries auto-expire: once a revoked credential's own expiry passes, the entry is moot (a
   short-lived SVID is already gone).
+- A JWT-SVID without a `jti` fails validation outright. Revocation is `jti`-scoped, so a token that
+  could never be revoked is never accepted; the broker minter stamps a deterministic `jti` on every
+  SVID it issues.
 
 {% note(title="Live revocation is explicit and persisted") %}
 `basil revoke` writes through the configured `revocation_store=jwt-svid` value key, updates the live
@@ -30,7 +33,10 @@ command fails closed instead of creating a restart-lost in-memory revocation.
 
 Revocation is gated by a dedicated broker-admin op. It is not implied by data-plane grants,
 `op:reload`, `op:explain`, or wildcard `*`. Grant `op:revoke` explicitly over the reserved target
-`broker.revoke`:
+`broker.revoke`. Subscribing to the `REVOKED` event feed is gated the same way: grant `op:watch`
+over `broker.watch` to the watcher's subject.
+
+The revoke grant:
 
 ```json
 {

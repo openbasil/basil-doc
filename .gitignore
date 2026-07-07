@@ -8,6 +8,9 @@ CLAUDE.md
 # Zola's processed-images cache (generated from static/ on build)
 /static/processed_images
 
+.beads/
+.bv/
+
 .wrangler
 *.swp
 *.tmp
@@ -17,5 +20,4 @@ CLAUDE.md
 graphify-out
 .claude
 .codex
-.bv/
 .work/

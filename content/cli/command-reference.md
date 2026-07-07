@@ -30,7 +30,7 @@ Daemon/offline commands operate on config files and don't need a running broker.
 
 | Command | Purpose |
 | --- | --- |
-| `status` | Agent backend, version, protocol. |
+| `status` | Agent backend, version, protocol. Answered only for peers that resolve to a policy subject (the backend kind is deployment detail); needs no further grant. |
 | `health [--json]` | Liveness probe (no backend I/O). Exit 0 = alive. |
 | `ready [--json]` | Readiness probe (non-secret summary). Exit 0 = ready, 1 = not ready. |
 

@@ -218,7 +218,9 @@ ready, err := client.Readiness(ctx)
 ```
 
 `Health` is cheap liveness. `Readiness` probes backend reachability and key presence, returning only
-counts and coarse reasons.
+counts and coarse reasons. `Status` names the configured backend kind, so the broker answers it only
+for peers that resolve to a policy subject (no further grant needed); `Health` and `Readiness` stay
+ungated.
 
 Admin mutations are permission-gated and not implied by data-plane grants:
 
@@ -232,8 +234,12 @@ revoked, err := client.Revoke(ctx, "example.org", jti, expiresAtUnix)
 A validation or routing rejection is returned as `ReloadResult.Rejection`, not by swapping in a bad
 generation.
 
-`Watch` is a long-lived server stream for key rotation, bundle changes, and revocations. It is exempt
-from the default per-RPC timeout; the caller owns and closes it.
+`Watch` is a long-lived server stream for key rotation, bundle changes, and revocations. Like the
+other admin ops it needs an explicit grant: `op:watch` over the reserved target `broker.watch`. It is
+exempt from the default per-RPC timeout; the caller owns and closes it. Delivery is at-most-once over
+a bounded buffer: a stream that falls too far behind is closed with the `DataLoss` code instead of
+silently skipping events (a missed revocation is never invisible); reconnect and re-fetch the state
+you mirror.
 
 ```go
 watch, err := client.Watch(ctx, basil.EventKindKeyRotated)

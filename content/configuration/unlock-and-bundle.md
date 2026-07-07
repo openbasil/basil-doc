@@ -151,9 +151,12 @@ service account identity fields when present; otherwise Basil prints a `SHA-256`
 serialized credential.
 
 {% note(title="Anti-rollback") %}
-The bundle carries a monotonic epoch, checked at unlock against an epoch sidecar file. Restoring an old
-bundle over a newer one is refused, so a credential you rotated out can't be silently reinstated from a
-backup.
+The bundle carries a monotonic epoch, checked against an epoch sidecar file before any unlock is
+attempted. Restoring an old bundle over a newer one is refused, so a credential you rotated out
+can't be *accidentally* reinstated from a backup. This is a safety net, not a security boundary: an
+attacker who can replace the broker-owned bundle can also delete the sidecar, and a missing sidecar
+is re-initialized from the bundle's own epoch. Deliberate rollback resistance (TPM-backed epoch
+storage) is <span class="pill gap">roadmap</span>.
 {% end %}
 
 ## Where to go next

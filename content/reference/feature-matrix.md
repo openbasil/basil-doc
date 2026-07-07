@@ -156,10 +156,10 @@ operation, then zeroize them. AWS KMS and GCP Cloud KMS are separate in-place tr
 
 | Status | Capability                                                               |
 | ------ | ------------------------------------------------------------------------ |
-| ✅     | `Status` returns broker version, backend, and protocol info              |
+| ✅     | `Status` returns broker version, backend, and protocol info (requires a resolved policy subject) |
 | ✅     | `Health`: liveness probe over the Unix socket                            |
 | ✅     | `Readiness`: readiness probe with structured reason codes                |
-| ✅     | `Watch` streams an event feed (`KeyRotated`, `BundleChanged`, `Revoked`) |
+| ✅     | `Watch` streams an event feed (`KeyRotated`, `BundleChanged`, `Revoked`); gated by `op:watch`, closes with `DataLoss` on overflow |
 | ✅     | `Reload`: live catalog and policy reload without restart                 |
 | ✅     | `Explain`: policy dry-run with matched-rule detail                       |
 | ✅     | `Revoke`: JWT-SVID deny-list revocation                                  |

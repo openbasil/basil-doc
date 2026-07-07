@@ -64,6 +64,9 @@ roles:
 
 `ValidateNatsJwt` authorizes `op:validate_nats_jwt` only for candidate signers supplied as catalog
 keys. A raw public NKey candidate is just public material, so it does not require a catalog-key grant.
+The RPC itself still requires an attested peer that resolves to a policy subject, and the presented
+token is bounded by the broker payload cap; an unknown caller is rejected before any verification
+runs.
 
 ## Validate a presented NATS JWT
 
