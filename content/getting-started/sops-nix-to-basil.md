@@ -27,10 +27,10 @@ hands each service a **value on disk**. That works well for static boot-time mat
 
 Basil gives you two migration levels:
 
-| Level | What the workload gets | Custody model | Best for |
-| --- | --- | --- | --- |
-| **Tier 1: value access** | A secret value fetched on demand | Secret stays in the backend until Basil fetches it for an authorized caller | DB passwords, API tokens, existing apps that still need a value |
-| **Tier 2: operation access** | A result from `sign`, `encrypt`, `decrypt`, `issue-cert`, or minting | Key is used *in place* by a transit, KMS, PKI, or NATS backend | TLS keys, signing keys, encryption keys, workload identities |
+| Level                        | What the workload gets                                               | Custody model                                                               | Best for                                                        |
+| ---------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Tier 1: value access**     | A secret value fetched on demand                                     | Secret stays in the backend until Basil fetches it for an authorized caller | DB passwords, API tokens, existing apps that still need a value |
+| **Tier 2: operation access** | A result from `sign`, `encrypt`, `decrypt`, `issue-cert`, or minting | Key is used *in place* by a transit, KMS, PKI, or NATS backend              | TLS keys, signing keys, encryption keys, workload identities    |
 
 Tier 1 is the smallest change. It is still a value, but it is off the Nix store, policy-gated,
 audited, and rotatable without a rebuild.
@@ -40,24 +40,24 @@ identity credentials, Basil brokers the operation rather than handing out the pr
 
 ## Side-by-side
 
-| | `sops-nix` today | Basil Tier 1: value | Basil Tier 2: operation |
-| --- | --- | --- | --- |
-| Where the secret lives | Decrypted file on disk | Backend value, fetched on demand | Backend key, **never leaves** |
-| Rotation | Edit encrypted source + rebuild | `basil rotate` or `basil set` live | `basil rotate` live, with grace window |
-| Who can read it | Anything running as the owner | Only the granted subject, audited | Nobody reads the key material |
-| Authorization | File ownership and mode | Default-deny policy per subject | Default-deny policy per subject |
-| Audit | No broker audit | Every access logged | Every operation logged |
-| App change needed | None | Small: fetch from Basil instead of a file | App calls `sign`, `encrypt`, `decrypt`, etc. |
+|                        | `sops-nix` today                | Basil Tier 1: value                       | Basil Tier 2: operation                      |
+| ---------------------- | ------------------------------- | ----------------------------------------- | -------------------------------------------- |
+| Where the secret lives | Decrypted file on disk          | Backend value, fetched on demand          | Backend key, **never leaves**                |
+| Rotation               | Edit encrypted source + rebuild | `basil rotate` or `basil set` live        | `basil rotate` live, with grace window       |
+| Who can read it        | Anything running as the owner   | Only the granted subject, audited         | Nobody reads the key material                |
+| Authorization          | File ownership and mode         | Default-deny policy per subject           | Default-deny policy per subject              |
+| Audit                  | No broker audit                 | Every access logged                       | Every operation logged                       |
+| App change needed      | None                            | Small: fetch from Basil instead of a file | App calls `sign`, `encrypt`, `decrypt`, etc. |
 
 ## Concept mapping
 
-| `sops-nix` | Basil |
-| --- | --- |
-| `sops.secrets."app/db_password"` | catalog key `app.db_password` with `class = "value"` and `engine = "kv2"` |
-| `owner = "app"` and file mode | policy subject for the app uid plus a rule granting `op:get` |
-| age or GPG host key | Basil's sealed bundle, unlocked once at boot |
+| `sops-nix`                                | Basil                                                                                |
+| ----------------------------------------- | ------------------------------------------------------------------------------------ |
+| `sops.secrets."app/db_password"`          | catalog key `app.db_password` with `class = "value"` and `engine = "kv2"`            |
+| `owner = "app"` and file mode             | policy subject for the app uid plus a rule granting `op:get`                         |
+| age or GPG host key                       | Basil's sealed bundle, unlocked once at boot                                         |
 | edit encrypted file and rebuild to rotate | `basil rotate --key-id app.db_password`, or `basil set` for caller-supplied material |
-| no read audit | audit log entry for every read or operation |
+| no read audit                             | audit log entry for every read or operation                                          |
 
 ## Before: `sops-nix`
 
@@ -84,7 +84,7 @@ have the service fetch the value from Basil instead of reading a `sops-nix` file
 
 ```nix
 # Import the Basil NixOS module from a Basil checkout.
-service.basil = {
+services.basil = {
   enable = true;
 
   catalog = {
@@ -162,7 +162,7 @@ If the secret is really a key, do not deliver it. Declare it as an in-place key 
 operation the workload needs:
 
 ```nix
-service.basil.catalog.keys."app.tls.signing_key" = {
+services.basil.catalog.keys."app.tls.signing_key" = {
   class = "asymmetric";
   keyType = "ed25519";
   backend = "bao";
@@ -172,9 +172,9 @@ service.basil.catalog.keys."app.tls.signing_key" = {
   missing = "generate";
 };
 
-service.basil.policy.roles.signer = [ "sign" "verify" "get_public_key" ];
+services.basil.policy.roles.signer = [ "sign" "verify" "get_public_key" ];
 
-service.basil.policy.rules = [
+services.basil.policy.rules = [
   {
     id = "app-can-sign";
     subjects = [ "svc-app" ];
