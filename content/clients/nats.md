@@ -126,6 +126,9 @@ if !res.Valid {
 }
 ```
 
+Construct Go `AllowedSigner` values with `AllowedSignerKeyID` or `AllowedSignerNatsPublicKey`; the
+zero value is rejected locally so an empty protobuf `oneof` is never sent.
+
 The response carries `subject`, `issuer`, `jwt_type`, optional `exp`/`iat`, and
 `matched_signer_key_id` when the winning candidate was a catalog key.
 

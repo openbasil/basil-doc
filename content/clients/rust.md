@@ -33,7 +33,14 @@ let envelope = client.encrypt("app.aead", b"backup-bytes").await?;
 let plaintext = client.decrypt("app.aead", &envelope).await?;
 
 // Mint a short-lived generic JWT using the issuer key's JWS algorithm.
-let jwt = client.mint_jwt("svc.jwt_issuer", "spiffe://example.org/web", 300).await?;
+let jwt = client
+    .mint_jwt(
+        "svc.jwt_issuer",
+        "spiffe://example.org/web",
+        Some(300),
+        serde_json::json!({"scope": "orders:read"}),
+    )
+    .await?;
 
 // Ask the agent what it's fronting.
 let status = client.status().await?;
@@ -71,20 +78,22 @@ let status = client.status()?;
 | **Sign / verify** | `sign(key_id, message)`, `sign_with_algorithm(...)`, `verify(key_id, message, signature)`, `verify_with_algorithm(...)`, `get_public_key(...)` |
 | **Encrypt / decrypt** | `encrypt(...)`, `decrypt(...)`, `wrap_envelope(...)`, `unwrap_envelope(...)` |
 | **Secrets / values** | `get_secret(...)`, `set_secret(secret_id, value)`, `rotate_secret(secret_id)` |
-| **Minting & certificates** | `mint_jwt`, `sign_nats_jwt`, `validate_nats_jwt`, `issue_certificate` |
+| **Minting & certificates** | `mint_jwt`/`mint_jwt_json`, `sign_nats_jwt`/`sign_nats_jwt_json`, `validate_nats_jwt`, `issue_certificate` |
 | **NATS keys & curve boxes** | `mint_nats_user`/`account`/`operator`/`signer`/`server`/`curve`, `encrypt_nats_curve`, `decrypt_nats_curve` |
 | **Admin** | `status()`, `health()`, `readiness()`, `reload(check)`, `explain(subject, op, key)`, `revoke(...)` |
 
 Public result/argument types include `KeyHandle`, `SecretValue`, `MintedJwt`, `IssuedCertificate`,
-`AgentStatus`, `AgentHealth`, `AgentReadiness`, `AgentReload`, `AgentExplanation`, `AgentRevocation`,
-`ImportEntry`, `NatsUserPermissions`, and `SignNatsJwtOptions`. Errors surface through `basil::Error`
-(with the `basil::Result` alias). Protocol enums such as `KeyType`, `AeadAlgorithm`, and
-`CatalogEntry` are re-exported from `basil-proto`.
+`AgentStatus`, `AgentHealth`, `AgentReadiness`, `AgentReload`, `AgentExplanation`, `AgentDecision`,
+`AgentRevocation`, `ImportEntry`, `NatsUserPermissions`, and `SignNatsJwtOptions`. Errors surface
+through `basil::Error` (with the `basil::Result` alias). Protocol enums such as `KeyType`,
+`AeadAlgorithm`, and `CatalogEntry` are re-exported from `basil-proto`. Match public enums with a
+wildcard arm; Basil marks evolution-sensitive enums as non-exhaustive before 1.0.
 
-`sign_nats_jwt` accepts any `serde::Serialize` claim object. Use `sign_nats_jwt_json` when you
-already have UTF-8 JSON claim bytes and need to preserve integer-valued NATS claims without an
-intermediate structured conversion. See the [NATS JWT reference](/reference/nats-jwt-reference/) for
-every account and user claim these calls accept and the semantic defaults Basil applies.
+`mint_jwt` and `sign_nats_jwt` accept any `serde::Serialize` claim object and send UTF-8 JSON bytes
+over gRPC. Use `mint_jwt_json` or `sign_nats_jwt_json` when you already have encoded JSON and need
+to preserve byte-exact large integer claims. See the
+[NATS JWT reference](/reference/nats-jwt-reference/) for every account and user claim NATS signing
+accepts and the semantic defaults Basil applies.
 
 {% tip(title="Sign takes the message, not a digest") %}
 Basil's signing contract is over the **raw message**: you pass `b"hello basil"`, not a pre-computed
@@ -94,9 +103,10 @@ hash. The broker (and its backend) does the hashing, closing a class of caller-s
 ## Sealed invocation helpers
 
 The crate also exports `basil::sealed_invocation` for sealed-invocation handoff. Use
-`SealedInvocationBody`, `SealedInvocationOptions`, and `prepare_sealed_invocation` to build a v1
-tagged `COSE_Sign1` for `Sign`, `MintJwt`, or `MintNatsUser` bridged calls. The helper selects the
-protected `application/basil.*` content type, emits deterministic CBOR, seals the body to the broker
+`SealedInvocationOptions` and `prepare_sealed_invocation` with a `SignInvocationRequest` body to
+build a v1 tagged `COSE_Sign1` for a bridged `Sign` call — the only invocation the broker executes.
+The helper selects the protected `application/basil.sign-request` content type, emits deterministic
+CBOR, seals the body to the broker
 request-encryption public key, and signs the COSE `Sig_structure` with your signer. For protected
 `Sign` responses, `verify_and_decrypt_sign_response` verifies the pinned broker response-signing key,
 checks request binding, decrypts the body to the request-selected response key, and decodes the

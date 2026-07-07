@@ -71,7 +71,8 @@ never handed out.
   the test suite pins the RFC 8032 §7.1 vector.
 - **[RFC 6979](https://www.rfc-editor.org/rfc/rfc6979)** Deterministic Usage of DSA and ECDSA. Local
   `ES256` COSE signing uses deterministic ECDSA over P-256 and normalizes low `S`, so the signed
-  `COSE_Sign1` fixture is byte-stable.
+  `COSE_Sign1` fixture is byte-stable. The verifier also rejects high-`S` `ES256` signatures, so
+  Basil accepts the same canonical form it emits.
 - **[RFC 8410](https://www.rfc-editor.org/rfc/rfc8410)** Algorithm Identifiers for Ed25519, Ed448,
   X25519, X448 in X.509. The fixed PKCS#8 DER prefix that wraps an Ed25519 seed on transit BYOK
   import.

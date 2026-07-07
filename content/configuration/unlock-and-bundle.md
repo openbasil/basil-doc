@@ -33,13 +33,14 @@ choose each credential kind.
 | --- | --- | --- |
 | age / YubiKey | `age-yubikey = true` | Master key wrapped to an age recipient; a YubiKey touch/PIN (via `age-plugin-yubikey`) recovers it. Strongest interactive production slot. |
 | Passphrase | `unlock-passphrase-file = "<FILE>"` | A production passphrase read from a `0600` file or systemd credential, Argon2id-stretched, then wiped by default after startup reads it. |
-| BIP39 | `bip39-phrase-file = "<FILE>"` | A 24-word recovery phrase read from a `0600` file (never argv/env). Break-glass. |
+| BIP39 | `bip39-phrase-file = "<FILE>"` | A 24-word recovery phrase read from a `0600` file (never argv/env), then wiped by default after startup reads it. Break-glass. |
 | TPM | `unlock-tpm = true` | <span class="pill impl">implemented</span> Master KEK sealed to host TPM 2.0 PCR state; unattended boot, no operator secret. Needs the `unlock-tpm` build. |
 
 Set `strict-bundle-perms = true` to refuse startup if the bundle isn't `0600` (default is warn-only).
 
-For read-only credential mounts, set `unlock-passphrase-no-wipe = true`. Otherwise Basil attempts a
-best-effort overwrite and remove after it has read the passphrase into zeroizing memory.
+For read-only credential mounts, set `unlock-passphrase-no-wipe = true` for the passphrase slot.
+Otherwise Basil attempts a best-effort overwrite and remove after it has read passphrase and BIP39
+phrase files into zeroizing memory.
 
 The TPM slot is available in a binary built with the non-default `unlock-tpm` feature. It seals the
 master KEK to the host's TPM 2.0 PCR state, so the host unlocks itself at boot with no operator secret.

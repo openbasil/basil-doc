@@ -144,10 +144,12 @@ registry for invocation body schemas:
 | `application/basil.mint-nats-user-request` | `MintNatsUserInvocationRequest` |
 | `application/basil.mint-nats-user-response` | `MintNatsUserInvocationResponse` |
 
-Bodies are deterministic CBOR maps selected only by the protected content type. The current broker
-execution path returns protected `application/basil.sign-response` bodies for sealed `Sign`
-requests, including denied and invalid-request outcomes. The registry also defines the minting body
-contracts used by fixtures and client helpers.
+Bodies are deterministic CBOR maps selected only by the protected content type, and the body
+decoders reject non-minimal integer and length encodings. The broker executes only sealed `Sign`
+requests and returns protected `application/basil.sign-response` bodies, including denied and
+invalid-request outcomes. The mint entries are reserved wire-format contracts pinned by fixtures:
+the broker rejects them with a protected `UNSUPPORTED_CONTENT_TYPE` response body, and the client
+crates ship no helper that builds them.
 
 `SignInvocationResponse` carries `status`, `policy_generation`, and an optional `signature`.
 `status` is one of `OK`, `DENIED`, `INVALID_REQUEST`, or `INTERNAL_ERROR`. A denied or failed
@@ -333,7 +335,7 @@ The Rust `basil` crate exports `basil::sealed_invocation`:
 
 ```rust
 use basil::{
-    LocalSealedInvocationSigner, SealedInvocationBody, SealedInvocationOptions,
+    LocalSealedInvocationSigner, SealedInvocationOptions,
     SigningAlgorithm, prepare_sealed_invocation,
 };
 use basil_cose::KeyId;
@@ -345,11 +347,11 @@ let signer = LocalSealedInvocationSigner::from_secret_bytes(
     &Zeroizing::new(sender_private_seed),
 );
 
-let body = SealedInvocationBody::Sign(SignInvocationRequest {
+let body = SignInvocationRequest {
     key_id: "publisher.signing.2026q3".to_string(),
     message: b"payload".to_vec(),
     algorithm: i32::from(SigningAlgorithm::Ed25519),
-});
+};
 
 let prepared = prepare_sealed_invocation(
     SealedInvocationOptions {

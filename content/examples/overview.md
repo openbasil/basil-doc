@@ -34,6 +34,13 @@ materializes key bytes for a single operation, then zeroizes them.
 
 → [db-keystore backend example](/examples/db-keystore/)
 
+## The COSE over NATS demo
+
+`examples/cose-nats-demo/` starts OpenBao, NATS, `basil agent`, and `basil-nats-bridge`, then sends a
+sealed COSE request/reply flow over NATS. It honors `BASIL_BIN` and `BASIL_NATS_BRIDGE_BIN` when you
+want to test prebuilt binaries, and it removes `VAULT_TOKEN` from the broker and bridge
+environments so the demo exercises the sealed bundle credentials.
+
 ## Make it your own
 
 When you're ready to move past the fixtures, `basil-example.nix` is a self-contained catalog + policy

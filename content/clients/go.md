@@ -141,6 +141,11 @@ cred, err := client.MintJwt(ctx, basil.JwtRequest{
 })
 ```
 
+`JwtRequest.Claims` is serialized as raw UTF-8 JSON object bytes in the broker's
+`extra_claims_json` field. It may be a map, struct, `json.RawMessage`, `[]byte`, or JSON string. Use
+`json.RawMessage` or `[]byte` when you need byte-exact claim JSON, and use
+`json.Decoder.UseNumber` before placing decoded JSON in a map with large integer claims.
+
 NATS-specific calls live on the `NatsService` sub-client:
 
 ```go
@@ -168,9 +173,8 @@ validation, err := client.Nats().ValidateNatsJwt(ctx, basil.ValidateNatsJwtReque
 })
 ```
 
-`NatsJwtRequest.Claims` may be a map, struct, `json.RawMessage`, `[]byte`, or JSON string. Use
-`json.RawMessage` or `[]byte` when you need byte-exact claim JSON, and use
-`json.Decoder.UseNumber` before placing decoded JSON in a map with large integer claims. The
+`NatsJwtRequest.Claims` uses the same raw JSON pattern for the full NATS claim object, sent as
+`claims_json`; it may be a map, struct, `json.RawMessage`, `[]byte`, or JSON string. The
 [NATS JWT reference](/reference/nats-jwt-reference/) documents every account and user claim
 `SignNatsJwt` accepts and the semantic defaults Basil applies.
 
