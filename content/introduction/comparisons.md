@@ -25,20 +25,20 @@ Basil fronts the backend instead:
 
 It also removes some crypto footguns by design. For example, the API doesn't ask for a nonce, so the
 app cannot accidentally reuse one. What's the downside? There's an extra agent process, plus one
-extra communication hop over a local Unix socket. Vault and OpenBao has one answer to this, discussed
+extra communication hop over a local Unix socket. Vault and OpenBao have an answer for this, discussed
 in the next section.
 
 ## Vault Agent / OpenBao's `bao agent`
 
 Vault's answer to the bootstrap problem is
-[Vault Agent](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent) (OpenBao has `bao agent`):
-a host-local sidecar that auto-authenticates to the server (cloud IAM,
+[Vault Agent](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent), and OpenBao has `bao agent`.
+These agents act as a host-local sidecar that auto-authenticates to the server (cloud IAM,
 Kubernetes SA, AppRole, TLS cert), keeps the token renewed, and renders secrets into files or a
-child process's environment. It is mature, widely deployed, and if you already run Vault or
-OpenBao you might already be using it. The app itself no longer holds a backend
-credential, which is a large part of what Basil offers.
+child process's environment. They are mature, widely deployed, and if you already run Vault or
+OpenBao, you may already be using one. Like Basil, these agents relieve the app of the responsibility
+of storing or rotating the secret.
 
-The differences between vault agent/bao agent and Basil agent are in what happens after authentication:
+The differences are in what happens after authentication. With vault/bao agent,:
 
 - **The identity is the host's, not the caller's.** Auto-auth proves the machine (or pod) to the
   server; anything on the host that can read a rendered file or reach the agent's proxy inherits
@@ -46,7 +46,7 @@ The differences between vault agent/bao agent and Basil agent are in what happen
   policy per uid, per operation.
 - **It still delivers values.** Templated secrets land in files or env and live in the app's
   memory, with no per-operation authorization or audit of who read them. Basil brokers the
-  operation, so in-place keys never leave the backend.
+  operation, so in-place keys never leave the backend, and auditing is each use, not first delivery.
 - **On bare hosts, bootstrap moves rather than disappears.** In cloud or Kubernetes, auto-auth
   builds on the platform identity, and the problem is genuinely solved. On plain machines, the agent
   needs an AppRole `secret_id` or a client cert, now held by the agent. Basil has the same needs,

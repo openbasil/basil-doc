@@ -8,7 +8,7 @@ weight = 20
 Basil is two things on disk: the **`basil` binary** (the broker daemon *and* the CLI: one binary,
 several subcommands) and a **Vault-compatible backend** it talks to.
 
-Download the latest release binary & install scripts: [![GitHub release](https://img.shields.io/github/v/release/openbasil/basil)](https://github.com/openbasil/basil/releases/latest)
+Download the latest release binary: [![GitHub release](https://img.shields.io/github/v/release/openbasil/basil)](https://github.com/openbasil/basil/releases/latest)
 
 ## Prerequisites
 
