@@ -8,6 +8,8 @@ weight = 20
 Basil is two things on disk: the **`basil` binary** (the broker daemon *and* the CLI: one binary,
 several subcommands) and a **Vault-compatible backend** it talks to.
 
+Download the latest release binary & install scripts: [![GitHub release](https://img.shields.io/github/v/release/openbasil/basil)](https://github.com/openbasil/basil/releases/latest)
+
 ## Prerequisites
 
 - A **Vault-compatible backend CLI** on your `PATH`: OpenBao (`bao`) or HashiCorp Vault (`vault`).
@@ -61,15 +63,15 @@ The default `basil-bin` build talks to OpenBao/Vault, includes SPIFFE and PQC su
 the 1Password backend plus the `age`/YubiKey and BIP39 unlock slots. Some integrations stay opt-in
 because they add a network listener, cloud SDKs, hardware-specific code, or telemetry dependencies:
 
-| Capability | Build with | Notes |
-| --- | --- | --- |
-| JWKS HTTP listener | `--features http` | Required for `[jwks] enable = true`; no HTTP port opens unless the config opts in. |
-| JWKS native TLS | `--features http-tls` | Also enables `http`; use a reverse proxy instead if you prefer. |
-| `db-keystore` | `--features db-keystore` | Embedded encrypted SQLite-compatible store (turso). |
-| AWS KMS | `--features aws-kms` | In-place cloud KMS backend; pulls in the AWS SDK. |
-| Google Cloud KMS | `--features gcp-kms` | In-place cloud KMS backend; pulls in the Google Cloud KMS SDK. |
-| TPM unlock | `--features unlock-tpm` | TPM 2.0 sealed-bundle unlock slot. |
-| OTLP / OpenTelemetry logs | `--features otlp` | Enables the `[logging.opentelemetry]` sink. |
+| Capability                | Build with               | Notes                                                                              |
+| ------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| JWKS HTTP listener        | `--features http`        | Required for `[jwks] enable = true`; no HTTP port opens unless the config opts in. |
+| JWKS native TLS           | `--features http-tls`    | Also enables `http`; use a reverse proxy instead if you prefer.                    |
+| `db-keystore`             | `--features db-keystore` | Embedded encrypted SQLite-compatible store (turso).                                |
+| AWS KMS                   | `--features aws-kms`     | In-place cloud KMS backend; pulls in the AWS SDK.                                  |
+| Google Cloud KMS          | `--features gcp-kms`     | In-place cloud KMS backend; pulls in the Google Cloud KMS SDK.                     |
+| TPM unlock                | `--features unlock-tpm`  | TPM 2.0 sealed-bundle unlock slot.                                                 |
+| OTLP / OpenTelemetry logs | `--features otlp`        | Enables the `[logging.opentelemetry]` sink.                                        |
 
 The 1Password and `db-keystore` backends are **materialize-to-use** custody choices. See
 [Backends & custody](/introduction/backends-and-custody/). The
