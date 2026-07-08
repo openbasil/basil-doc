@@ -25,7 +25,39 @@ Basil fronts the backend instead:
 
 It also removes some crypto footguns by design. For example, the API doesn't ask for a nonce, so the
 app cannot accidentally reuse one. What's the downside? There's an extra agent process, plus one
-extra communication hop over a local Unix socket.
+extra communication hop over a local Unix socket. Vault and OpenBao has one answer to this, discussed
+in the next section.
+
+## Vault Agent / OpenBao's `bao agent`
+
+Vault's answer to the bootstrap problem is
+[Vault Agent](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent) (OpenBao has `bao agent`):
+a host-local sidecar that auto-authenticates to the server (cloud IAM,
+Kubernetes SA, AppRole, TLS cert), keeps the token renewed, and renders secrets into files or a
+child process's environment. It is mature, widely deployed, and if you already run Vault or
+OpenBao you might already be using it. The app itself no longer holds a backend
+credential, which is a large part of what Basil offers.
+
+The differences between vault agent/bao agent and Basil agent are in what happens after authentication:
+
+- **The identity is the host's, not the caller's.** Auto-auth proves the machine (or pod) to the
+  server; anything on the host that can read a rendered file or reach the agent's proxy inherits
+  that identity. Basil attests each calling process from the kernel and applies a default-deny
+  policy per uid, per operation.
+- **It still delivers values.** Templated secrets land in files or env and live in the app's
+  memory, with no per-operation authorization or audit of who read them. Basil brokers the
+  operation, so in-place keys never leave the backend.
+- **On bare hosts, bootstrap moves rather than disappears.** In cloud or Kubernetes, auto-auth
+  builds on the platform identity, and the problem is genuinely solved. On plain machines, the agent
+  needs an AppRole `secret_id` or a client cert, now held by the agent. Basil has the same needs,
+  but differs in what is unlocked. The token unlocks every caller. Basil continues to attest each caller.
+
+To be fair, Basil has additional costs relative to Vault Agent. Basil is another daemon to operate,
+a policy file to maintain, and clients need to speak Basil's API (or run its CLI) instead of just
+reading a file. If your workloads run in cloud or Kubernetes and only need values in files,
+Vault Agent or Bao Agent are simpler and probably enough. The two can coexist: Vault Agent for workloads
+that genuinely need a rendered config file, and Basil in front of the same server for the things that
+are really keys (TLS, signing, encryption) and for per-process authorization and audit on shared hosts.
 
 ## SPIFFE / SPIRE
 
@@ -116,13 +148,14 @@ the in-place tier, where the private half never lands anywhere.
 
 ## Summary
 
-| You want…                                                                                             | Reach for…                                                                |
-| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Fleet-wide SPIFFE with cloud/k8s attestation + federation                                             | SPIRE (with Basil as a local broker if useful)                            |
-| Static, boot-time secrets delivered to a unit                                                         | systemd credentials (delivering Basil's unlock secret)                    |
+| You want…                                                                                             | Reach for…                                                                   |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Auto-auth and templated secret files from an existing Vault/OpenBao                                   | Vault Agent / `bao agent` (with Basil brokering key use on the same server)  |
+| Fleet-wide SPIFFE with cloud/k8s attestation + federation                                             | SPIRE (with Basil as a local broker if useful)                               |
+| Static, boot-time secrets delivered to a unit                                                         | systemd credentials (delivering Basil's unlock secret)                       |
 | A team secrets manager with a UI, sharing, and cross-environment sync                                 | Doppler / Infisical / 1Password (which Basil can source through `1password`) |
-| Declarative secrets encrypted in Git and decrypted at deploy                                          | SOPS / sops-nix / agenix (migrate to Basil one secret at a time)          |
-| A host-local broker that keeps keys in place, attests from the kernel, and mints short-lived identity | **Basil**                                                                 |
+| Declarative secrets encrypted in Git and decrypted at deploy                                          | SOPS / sops-nix / agenix (migrate to Basil one secret at a time)             |
+| A host-local broker that keeps keys in place, attests from the kernel, and mints short-lived identity | **Basil**                                                                    |
 
 ## Where to go next
 
