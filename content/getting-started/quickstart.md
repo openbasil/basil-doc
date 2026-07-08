@@ -9,6 +9,13 @@ The quickest way to see Basil work end to end is the **dev fixture**: one script
 backend, writes an example catalog + policy, pre-fills a few keys, and creates a sealed bundle, then
 prints the exact commands to run the broker and drive it. Under five minutes.
 
+{% tip(title="Zero setup: basil demo") %}
+No backend CLI handy? `basil demo` runs a guided tour with nothing but the `basil` binary: it
+scaffolds a throwaway broker on the built-in keystore backend and drives a scripted
+sign → verify → denied read → explain → mint sequence, audit trail included. See
+[The five-minute demo](/getting-started/demo/).
+{% end %}
+
 ## Prerequisites
 
 - A **Vault-compatible backend CLI** on your `PATH`: OpenBao (`bao`) or HashiCorp Vault (`vault`).

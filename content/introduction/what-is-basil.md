@@ -5,6 +5,10 @@ weight = 10
 
 # What is Basil?
 
+> **Basil is a host-local secrets broker: your app never touches the key.** The kernel attests who's
+> calling, a default-deny policy decides, the key is used where it lives (OpenBao/Vault, KMS, or a
+> sealed local store), and every operation is audited.
+
 **Basil** is a small agent that lets your app use secrets without needing to touch them.
 Basil sits in front of a secrets backend like HashiCorp Vault or KMS,
 and provides gRPC services to your app over a local Unix socket: attested identity,

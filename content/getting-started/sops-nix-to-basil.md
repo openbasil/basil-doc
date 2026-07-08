@@ -59,6 +59,62 @@ identity credentials, Basil brokers the operation rather than handing out the pr
 | edit encrypted file and rebuild to rotate | `basil rotate --key-id app.db_password`, or `basil set` for caller-supplied material |
 | no read audit                             | audit log entry for every read or operation                                          |
 
+## Generate the stubs: `basil init --from-sops`
+
+You do not have to hand-author the Tier 1 catalog. Point `basil init` at your existing sops file
+and it scaffolds the migration skeleton for you:
+
+```sh
+basil init --backend openbao --dir ./basil --from-sops secrets.yaml
+```
+
+`--from-sops` reads **only the key names** from a sops YAML or JSON file. The encrypted values are
+never touched, and the `sops` metadata block is skipped. Decryption stays where it belongs, in
+`sops -d` under your existing age or GPG key, until you migrate each value on purpose.
+
+For every secret it finds, `init`:
+
+- adds one `value` catalog stub with `missing: warn`, so the broker starts and `doctor` warns
+  instead of failing while a value still lives in sops. Nested keys flatten to dotted names:
+  `app.db_password` from a nested `app: db_password:` entry.
+- grants a `sops-migrator` role (`get` + `set`) over the imported names to the uid that ran `init`,
+  so the migration itself is policy-checked and audited like everything else.
+- prints one hand-off command per secret, decrypting with sops and writing through the broker:
+
+```sh
+basil --socket ./basil/basil.sock set --key-id app.db_password \
+  "$(sops -d --extract '["app"]["db_password"]' secrets.yaml)"
+```
+
+Each generated stub records its origin, and the value stays in sops until you run its `set`:
+
+```json
+"app.db_password": {
+  "class": "value",
+  "backend": "primary",
+  "engine": "kv2",
+  "path": "sops/app/db_password",
+  "writable": true,
+  "missing": "warn",
+  "description": "Imported from sops key `app.db_password` by `basil init --from-sops`; value still lives in sops until migrated with `basil set`."
+}
+```
+
+Migrate one secret, point its consumer at Basil, verify, then do the next. When the last value is
+across, verify the set with `basil doctor --keys` and retire the sops entries.
+
+{% best(title="Drop `set` when the migration is done") %}
+The `sops-migrator` grant exists to move values in, not to stay. Once every secret is migrated,
+remove `set` from the role (or delete the rule) so the migration uid keeps read access at most.
+Least privilege applies to operators too.
+{% end %}
+
+{% note(title="Runnable companion: the NixOS migration VM") %}
+The Basil repo ships `examples/nixos-vm/`, a before/after NixOS VM pair for this exact migration: a
+host delivering a secret with `sops-nix`, and the same host after the move to a Basil catalog key
+and policy grant. Use it to rehearse the cutover before touching a real machine.
+{% end %}
+
 ## Before: `sops-nix`
 
 A typical service reads its database password from a decrypted file:
@@ -101,6 +157,7 @@ services.basil = {
       writable = true;
       missing = "generate";
       generate = { format = "ascii-printable"; bytes = 24; };
+      description = "Database password for app.service, generated in place.";
     };
   };
 
@@ -141,8 +198,8 @@ systemd.services.app = {
 
   preStart = ''
     ${pkgs.basil}/bin/basil --socket /run/basil/basil.sock \
-      get --key-id app.db_password --format raw \
-      > "$RUNTIME_DIRECTORY/db_password"
+      get --key-id app.db_password \
+      --out-file "$RUNTIME_DIRECTORY/db_password"
   '';
 };
 ```

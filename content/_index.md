@@ -6,10 +6,9 @@ insert_anchor_links = "right"
 <div class="hero">
   <div class="tagline">Broker for Attestation, Secrets, Identity &amp; Leases</div>
   <p class="lede">
-  Basil is a small agent that gives your workloads identity, secrets, signatures,
-  and short-lived credentials, without putting private keys in their hands. Keys stay inside a
-  Vault-compatible backend and are used <em>in place</em>; Basil attests every caller from the
-  kernel, checks a default-deny policy, and brokers the <strong>operation</strong>, not the key.</p>
+  <strong>Basil is a host-local secrets broker: your app never touches the key.</strong> The kernel
+  attests who's calling, a default-deny policy decides, the key is used where it lives
+  (OpenBao/Vault, KMS, or a sealed local store), and every operation is audited.</p>
 
 </div>
 

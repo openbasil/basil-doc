@@ -14,7 +14,9 @@ Daemon/offline commands operate on config files and don't need a running broker.
 | Command | Purpose |
 | --- | --- |
 | `basil agent -c <toml>` | Run the broker daemon from a TOML startup config. See [Configuration overview](/configuration/overview/). |
-| `basil init --backend … --unlock … --dir … [--socket …]` | Scaffold a least-privilege starter catalog + policy + config. Generated `socket` follows `--socket` > `BASIL_SOCKET` > `<dir>/basil.sock`. |
+| `basil demo [--dir …] [--paced] [--force]` | Zero-dependency guided tour on the built-in db-keystore backend: scaffold a throwaway broker, start it, and drive sign → verify → denied read → explain → encrypt → mint, audit tail included. `--paced` adds human pacing for watching or recording. See [The five-minute demo](/getting-started/demo/). |
+| `basil init --backend … --unlock … --dir … [--socket …] [--from-sops <file>]` | Scaffold a least-privilege starter catalog + policy + config. Generated `socket` follows `--socket` > `BASIL_SOCKET` > `<dir>/basil.sock`. `--from-sops` reads only the key **names** from a sops YAML/JSON file, adds one `value` stub per secret (`missing: warn`), grants a `sops-migrator` role, and prints the per-secret `sops -d`-to-`basil set` hand-off. See [Migrating from sops-nix](/getting-started/sops-nix-to-basil/). |
+| `basil completions <shell>` | Print a completion script for `bash`, `zsh`, `fish`, `elvish`, or `powershell` to stdout, e.g. `basil completions bash > /etc/bash_completion.d/basil`. The deb, Arch, and Nix packages ship the bash/zsh/fish scripts pre-installed. |
 | `basil bundle create <bundle> --slot …` | Create a sealed bundle with `--slot`/`--backend`. `--deposit-key <OUT>` adds a public deposit recipient; `--from <FILE>` loads a `[[slot]]`/`[[backend]]` TOML manifest. |
 | `basil bundle add-slot <bundle> --slot … --open …` | Add an unlock slot to an existing bundle. |
 | `basil bundle set-backend <bundle> --backend … --open …` | Replace one backend credential in the sealed payload. |
@@ -30,7 +32,7 @@ Daemon/offline commands operate on config files and don't need a running broker.
 
 | Command | Purpose |
 | --- | --- |
-| `status` | Agent backend, version, protocol. Answered only for peers that resolve to a policy subject (the backend kind is deployment detail); needs no further grant. |
+| `status [--json]` | Agent backend, version, protocol; `--json` prints a stable one-line JSON object for automation. Answered only for peers that resolve to a policy subject (the backend kind is deployment detail); needs no further grant. |
 | `health [--json]` | Liveness probe (no backend I/O). Exit 0 = alive. |
 | `ready [--json]` | Readiness probe (non-secret summary). Exit 0 = ready, 1 = not ready. |
 

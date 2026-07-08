@@ -24,7 +24,9 @@ that user's grants. Use systemd `User=`/`Group=` or `runuser -u <svc>` to act as
 | Command | Purpose |
 | --- | --- |
 | `basil agent` | Run the broker daemon. |
-| `basil init` | First-run scaffolding: write a starter catalog + least-privilege policy + config. See [First run](/getting-started/first-run/). |
+| `basil demo` | Zero-dependency guided tour on the built-in keystore backend. See [The five-minute demo](/getting-started/demo/). |
+| `basil init` | First-run scaffolding: write a starter catalog + least-privilege policy + config; `--from-sops` seeds it from an existing sops file. See [First run](/getting-started/first-run/). |
+| `basil completions` | Print a `bash`/`zsh`/`fish`/`elvish`/`powershell` completion script to stdout. |
 | `basil bundle` | Create, update, verify, review, and promote sealed credential bundles. See [Unlock & the sealed bundle](/configuration/unlock-and-bundle/). |
 | `basil explain` | Offline policy dry-run by default: "would this be allowed, and why?" `--live` queries the running broker. See [Policy explain](/operations/policy-explain/). |
 | `basil doctor` | Preflight diagnostics before the daemon starts: validate catalog + policy, enforce capability + invocation bindings, and (with `--keys`) probe the backend for declared keys. See [Doctor](/operations/doctor/). |

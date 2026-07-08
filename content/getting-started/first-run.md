@@ -36,6 +36,7 @@ Into the target dir (refusing to overwrite an existing file unless `--force`):
 | `--addr` | Backend HTTP URL (vault/openbao only). | `http://127.0.0.1:8200` |
 | `--transit-mount` | Transit mount the example key lives under (vault/openbao only). | `transit` |
 | `--passphrase-file` | Existing `0600` passphrase file to bake into the config and the printed `bundle create` command. Only valid with `--unlock passphrase` (see below). | placeholder |
+| `--from-sops` | Seed the catalog from an existing sops YAML/JSON file: one `value` stub per secret name (values are never read), a `sops-migrator` grant, and printed per-secret hand-off commands. See [Migrating from sops-nix](/getting-started/sops-nix-to-basil/). | off |
 | `--force` | Overwrite existing target files (otherwise init refuses and names them). | off |
 
 The catalog/policy are produced by serializing the real schema types, so the output is valid by

@@ -1,7 +1,7 @@
 # Basil documentation site - Zola configuration. Theme based on EasyDocs
 base_url = "https://docs.openbasil.org"
 title = "Basil"
-description = "Broker for Attestation, Secrets, Identity & Leases"
+description = "Basil is a host-local secrets broker: your app never touches the key. The kernel attests who's calling, a default-deny policy decides, the key is used where it lives (OpenBao/Vault, KMS, or a sealed local store), and every operation is audited."
 
 compile_sass = true
 build_search_index = true

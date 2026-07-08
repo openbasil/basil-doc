@@ -22,6 +22,11 @@ boundary, so no client TLS certificate is involved. Run the client process under
 want Basil to evaluate, because authorization resolves kernel-attested uid/gid evidence to a policy
 subject and a client cannot impersonate.
 
+This is not theoretical: `examples/python-grpc/` in the Basil repo is a runnable Python example
+that generates stubs from the broker protos with plain `grpcio` tooling and drives the broker over
+the socket, with no Basil-specific client library at all. Use it as the template for any other
+gRPC-capable language.
+
 For bridged transports, do not invent a parallel auth scheme. Use the
 [sealed invocation](/clients/sealed-invocations/) COSE fixture and canonical bytes. Rust helpers are
 implemented, including protected `Sign` response verification/decryption and broker-backed
