@@ -101,3 +101,5 @@ just cargo-live-e2e
 
 - [Quickstart](/getting-started/quickstart/): the throwaway dev fixture, end to end.
 - [First run: basil init](/getting-started/first-run/): scaffold a real least-privilege config.
+- [Running the examples](/getting-started/running-the-examples/): the repo's Rust and Go examples.
+- [Uninstall & removal](/operations/uninstall/): the mirror image of this page.

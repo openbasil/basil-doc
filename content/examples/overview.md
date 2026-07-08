@@ -8,7 +8,9 @@ weight = 10
 The Basil tree ships several examples that exercise the broker through the `basil` CLI. The two
 below are runnable end to end and are the fastest way to *see* the model rather than read about it.
 More examples (COSE over NATS, streaming file encryption, artifact signing, and the Go client) live
-under `examples/` and `clients/go/examples/` in the repo.
+under `examples/` and `clients/go/examples/` in the repo; see
+[Running the examples](/getting-started/running-the-examples/) for the full list and how to run
+each one.
 
 ## The dev fixture (quickstart)
 

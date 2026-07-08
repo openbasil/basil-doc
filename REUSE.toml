@@ -10,7 +10,8 @@ version = 1
 #   - The vendored EasyDocs theme keeps its upstream MIT license and author.
 #
 # Embedded code samples inside the docs are offered under Apache-2.0 (see
-# content/license/), so they can be copy-pasted without an attribution burden.
+# content/reference/licenses.md), so they can be copy-pasted without an
+# attribution burden.
 
 # Documentation prose.
 [[annotations]]

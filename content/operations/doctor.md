@@ -119,5 +119,7 @@ pre-deploy coverage.
 ## Where to go next
 
 - [Capability policy & reconcile](/configuration/capability-and-reconcile/): what a clean start checks.
+- [Production hardening checklist](/operations/production-hardening/): the go-live items doctor
+  cannot check for you.
 - [Health & readiness probes](/operations/health-and-readiness/): the *running* equivalents.
 - [Policy explain / dry-run](/operations/policy-explain/): preview authorization outcomes.

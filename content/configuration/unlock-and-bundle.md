@@ -167,4 +167,5 @@ storage) is <span class="pill gap">roadmap</span>.
   [AWS KMS](/configuration/backend-aws-kms/), [Google Cloud KMS](/configuration/backend-gcp-kms/),
   [1Password](/configuration/backend-1password/): creating the credentials you deposit here.
 - [Automated boot unlock](/operations/automated-boot-unlock/): unattended startup with a passphrase slot.
+- [Backup & disaster recovery](/operations/backup-and-recovery/): backing up the bundle and sidecar.
 - [Incident runbook](/troubleshooting/incident-runbook/): lost unlock secret, epoch mismatch recovery.

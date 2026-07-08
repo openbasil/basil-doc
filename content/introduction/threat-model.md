@@ -155,8 +155,9 @@ for that role rather than replacing it. See
 ## Reporting a vulnerability
 
 If you find a way to break one of the properties above, report it privately
-to security@openbasil.org, not in a poblic issue.
-[Security policy](https://github.com/openbasil/basil/blob/main/SECURITY.md)
+to security@openbasil.org, not in a public issue. The
+[security policy](/reference/security-policy/) describes both reporting channels,
+what to include in a report, and what to expect back.
 
 ## Where to go next
 

@@ -98,5 +98,7 @@ See [Capability policy & reconcile](/configuration/capability-and-reconcile/).
 ## Where to go next
 
 - [Error & status code reference](/troubleshooting/error-reference/): what each wire code means.
+- [Backup & disaster recovery](/operations/backup-and-recovery/): the proactive half of the
+  recovery scenarios above.
 - [Rotating keys](/operations/rotating-keys/) · [Revocation](/operations/revocation/) ·
   [Audit logs](/operations/audit-logs/)
