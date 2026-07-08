@@ -2,7 +2,7 @@ name: Deploy docs
 
 # Builds the Zola site with a PINNED Zola version and deploys it to Cloudflare
 # Pages. Deploys to production (docs.openbasil.org) only when a tag matching
-# basil-doc-vX.Y.Z is pushed.
+# basil-doc-vX.Y.Z or basil-doc-vX.Y.Z-* is pushed.
 #
 # Required repository secrets:
 #   CLOUDFLARE_API_TOKEN   - token with the "Cloudflare Pages: Edit" permission
@@ -19,7 +19,8 @@ name: Deploy docs
 on:
   push:
     tags:
-      - 'basil-doc-v[0-9]+.[0-9]+.[0-9]+(-.*)?'
+      - 'basil-doc-v[0-9]+.[0-9]+.[0-9]+'
+      - 'basil-doc-v[0-9]+.[0-9]+.[0-9]+-*'
   workflow_dispatch:
 
 concurrency:
