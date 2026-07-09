@@ -144,7 +144,6 @@ services.basil = {
   enable = true;
 
   catalog = {
-    schemaVersion = 1;
     backends.bao = {
       implementation = (import ./nix/backend-capabilities.nix).OPENBAO_2_5;
       addr = "https://127.0.0.1:8200";
