@@ -79,6 +79,12 @@ A reload emits a `basil.audit.reload` JSONL line carrying the actor (`SIGHUP`), 
 `previous_generation` and `generation` ids, the `outcome` (`applied` / `rejected`), and a stable
 `reason` token. The active generation id also tags every authorization record.
 
+Each candidate source read also emits the `basil.configuration.source` tracing event described in
+[Configuration overview](/configuration/overview/#configuration-source-traces/). On reload, the event
+sets `active_generation_present = true` and records the generation that was serving when validation
+started. A rejected reload sets `prior_generation_active = true`, so log consumers can distinguish a
+failed candidate from the generation that remains live.
+
 | `reason` on reject                           | Cause                                                                                              |
 | -------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `validation_failed`                          | Catalog/policy failed to parse or violated a hard error / guardrail (issuer alg, `publicPath`).    |

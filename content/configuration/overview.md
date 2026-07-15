@@ -132,6 +132,31 @@ The catalog and policy are normally generated from your NixOS configuration (see
 The JSON files are the export Basil consumes; you rarely hand-edit them.
 {% end %}
 
+## Configuration source traces
+
+Basil emits an info-level tracing event named `basil.configuration.source` for each configuration
+source it reads during startup, offline validation, and reload. The event gives operators a
+secret-free fingerprint of the exact bytes Basil parsed, so you can answer which file was accepted,
+which file was rejected, and whether the running process saw the bytes you expected.
+
+| Field | Meaning |
+| --- | --- |
+| `operation` | `startup`, `offline`, or `reload`. |
+| `slot` | Source kind: `agent`, `catalog`, `policy`, `bundle`, or `compose`. |
+| `name` / `name_present` | The named Compose document when `slot = "compose"`; otherwise empty with `name_present = false`. |
+| `path` | Resolved filesystem path read by Basil. |
+| `modified_unix_seconds` / `modified_nanoseconds` | File modification time observed for the accepted or rejected read. |
+| `byte_size` | Number of exact bytes hashed and parsed. |
+| `hash_algorithm` / `hash` | Always `sha256` plus the hex SHA-256 digest of those bytes. |
+| `outcome` | `accepted` when the source passed that read stage, `rejected` when validation failed after the read. |
+| `active_generation` / `active_generation_present` | Present on reload attempts to identify the generation serving when validation began. |
+| `prior_generation_active` | `true` on a rejected reload, confirming the prior generation kept serving. |
+
+Source content, override values, key material, bundle contents, passphrases, tokens, and rendered
+secret values never appear in this event. The event records paths, sizes, timestamps, and a hash.
+Basil also bounds source reads before parsing: catalog and policy files are capped at 2 MiB each; the
+agent bootstrap, sealed bundle, and each named Compose source are capped at 1 MiB each.
+
 ## Where to go next
 
 - [The catalog](/configuration/catalog/): the keys Basil knows about and where they live.
