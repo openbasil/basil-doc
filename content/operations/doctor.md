@@ -35,6 +35,7 @@ rotates, imports, or writes the epoch sidecar.
 basil doctor -c /etc/basil/agent.toml                  # human-readable, offline
 basil doctor -c /etc/basil/agent.toml --json           # stable machine output
 basil doctor -c /etc/basil/agent.toml --keys --json    # add the authenticated per-key probe
+basil doctor -c /etc/basil/agent.toml --rootless-expected-containers 1000
 basil doctor -c /etc/basil/agent.toml --strict         # warnings exit non-zero too
 ```
 
@@ -43,6 +44,7 @@ basil doctor -c /etc/basil/agent.toml --strict         # warnings exit non-zero 
 | `-c` / `--config` | The daemon TOML config to diagnose (same file `agent` loads). Individual paths can also be supplied via `--catalog`/`--policy`/`--bundle`/`--socket` or `BASIL_*`. |
 | `--json` | Emit the stable, versioned JSON document instead of human-readable text. |
 | `--keys` | Opt in to the authenticated key-material probe: unlock the bundle, build the manager, and read-only-check every catalog key. A missing required key is **fatal**; an optional (or `missing=generate`) key only **warns**. Emits an aggregate `key_material` row plus one `key_material:<key>` row per key. |
+| `--rootless-expected-containers COUNT` | Opt in to the Linux rootless keyring quota readiness check for this expected container count. Omit it on rootful-only hosts. |
 | `--strict` | Treat warnings as failures: exit non-zero if any check is a warning, not just on a fatal condition. |
 
 ## The checks
@@ -60,11 +62,36 @@ basil doctor -c /etc/basil/agent.toml --strict         # warnings exit non-zero 
 | `bundle_freshness` | The bundle's epoch is not behind the `.epoch` sidecar (anti-rollback). | **fatal** if the epoch is behind or corrupt; **warn** if the sidecar is absent (first boot). |
 | `backend_reachability` | Each distinct `vault` address answers an unauthenticated `GET /v1/sys/health` within ~3s. | **fatal** on any unreachable address (it never hangs the run). |
 | `key_material` | `--keys` only: probes every catalog key read-only, like startup reconcile; no writes. Emits an aggregate row plus one `key_material:<key>` row per key. | **fatal** on an absent required key or probe error; **warn** on absent optional / `missing=generate` keys. |
+| `rootless_keyring_quota` | `--rootless-expected-containers` only: reads `/proc/sys/kernel/keys/maxkeys` and `/proc/sys/kernel/keys/maxbytes` and checks them against the requested rootless container count. | **ok** when both dimensions are high enough; **warn** when the host is non-Linux, procfs values are unreadable or invalid, or either quota is low. |
 
 `feature_compatibility` checks the unlock-slot features (`unlock-bip39`, `unlock-age-yubikey`) and the
 backend features (`keystore-backend`, `aws-kms`, `gcp-kms`), naming any the binary lacks. A normal
 default build includes 1Password, BIP39, and `age`/YubiKey support; this check matters most for
 `--no-default-features`, cloud KMS, and other custom builds.
+
+### Rootless keyring quota check
+
+Use `--rootless-expected-containers COUNT` on Linux hosts that run rootless Podman workloads. The
+check is omitted unless you pass the flag, which keeps rootful-only hosts quiet. Basil reads the live
+procfs values and requires at least two keys and 2,000 bytes per expected container.
+
+For `COUNT = 1000`, the passing floor is:
+
+```sh
+kernel.keys.maxkeys=2000
+kernel.keys.maxbytes=2000000
+```
+
+If the live values are low, Doctor returns a `warn` row with a non-lowering remediation. For example,
+if `maxkeys` is already higher than the required floor, the suggested command keeps that higher value
+and only raises the dimension that needs it. On NixOS, the remediation shows the matching
+`boot.kernel.sysctl` assignments and points out that
+`services.basil.raiseRootlessKeyringQuotas` supplies the `2000`/`2000000` defaults for 1,000
+containers.
+
+`--strict` turns this warning into a non-zero exit, which is useful in provisioning and
+`ExecStartPre=` gates. On non-NixOS hosts, apply the same values with `sysctl` and persist them in the
+host's sysctl configuration.
 
 ## Exit codes
 

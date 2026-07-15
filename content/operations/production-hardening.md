@@ -61,6 +61,36 @@ ReadWritePaths=/run/basil /var/lib/basil
 Add your audit-log directory to `ReadWritePaths` if it lives elsewhere. Reload catalog/policy
 with `ExecReload` sending `SIGHUP`; see [Hot reload](/operations/hot-reload/).
 
+## Rootless container density
+
+Rootless Podman through `crun` joins one session keyring per container. On Linux, those keyrings are
+charged to the per-user kernel keyring quotas in `kernel.keys.maxkeys` and
+`kernel.keys.maxbytes`. The kernel default of `maxkeys = 200` leaves a rootless realm with room for
+roughly 196 containers before `crun` fails with `join keyctl: Disk quota exceeded`.
+
+The NixOS module raises both quotas by default when `services.basil.enable = true`:
+
+```nix
+services.basil.raiseRootlessKeyringQuotas = true; # default
+boot.kernel.sysctl."kernel.keys.maxkeys" = lib.mkDefault 2000;
+boot.kernel.sysctl."kernel.keys.maxbytes" = lib.mkDefault 2000000;
+```
+
+The values support at least 1,000 rootless containers per owner under Basil's readiness model: two
+keys and 2,000 bytes per expected container. They are `mkDefault` assignments, so an operator can set
+higher explicit `boot.kernel.sysctl` values without fighting the module. Set
+`services.basil.raiseRootlessKeyringQuotas = false` on hosts that never run rootless container
+workloads.
+
+On non-NixOS Linux hosts, set the same sysctls directly:
+
+```sh
+sudo sysctl -w kernel.keys.maxkeys=2000 kernel.keys.maxbytes=2000000
+```
+
+Persist them with the host's normal sysctl mechanism, such as a file under `/etc/sysctl.d/`. For
+higher container targets, use at least `2 * COUNT` keys and `2000 * COUNT` bytes.
+
 ## Memory, swap, and the keystore cache
 
 Everything above protects key material at rest; this section is about key bytes in RAM. With an
@@ -146,6 +176,8 @@ Those are exactly the items above, which is why this page exists.
 - [ ] Backend credential is least-privilege AppRole (or `SpiffeSigner`), not a root token.
 - [ ] Keystore backends only: `MemorySwapMax=0` and `LimitCORE=0` on the unit; host swap absent
       or encrypted with a random per-boot key.
+- [ ] Rootless container hosts: keyring quotas sized for the expected container count, and
+      `basil doctor --rootless-expected-containers COUNT --strict` green on the target host.
 - [ ] A portable break-glass unlock slot exists and its phrase is stored offline.
 - [ ] Bundle + `.epoch` sidecar in backups; restore drilled with `bundle verify`. See
       [Backup & disaster recovery](/operations/backup-and-recovery/).
