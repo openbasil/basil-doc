@@ -61,6 +61,41 @@ ReadWritePaths=/run/basil /var/lib/basil
 Add your audit-log directory to `ReadWritePaths` if it lives elsewhere. Reload catalog/policy
 with `ExecReload` sending `SIGHUP`; see [Hot reload](/operations/hot-reload/).
 
+## Memory, swap, and the keystore cache
+
+Everything above protects key material at rest; this section is about key bytes in RAM. With an
+in-place backend the private key never enters Basil's memory, and there is nothing to do here.
+With a `keystore`-kind backend every private operation is
+[materialize-to-use](/introduction/backends-and-custody/): Basil holds the decrypted key briefly,
+then zeroes it. How long decrypted bytes sit in memory is what sets the risk. For `1password` it
+is the one operation, a small window. For `db-keystore` it is larger: the embedded turso engine
+keeps database cache pages in process memory, and a cached page can hold decrypted rows for as
+long as it stays cached, not just for the duration of one call.
+
+Zeroing cannot reach a page the kernel has already written to disk. Two paths do that, swap and
+core dumps, and both close at the host level:
+
+- **Keep the unit out of swap.** Add `MemorySwapMax=0` to the `[Service]` section (needs cgroup
+  v2 with memory accounting, the default on current distros). The kernel then never swaps the
+  broker's pages. Neither the shipped unit nor the NixOS module sets this yet; add it yourself
+  when you enable `db-keystore`.
+- **Disable or encrypt swap host-wide.** No swap device is the simple answer. If the host needs
+  swap, encrypt it with a random per-boot key: `swapDevices.*.randomEncryption.enable = true` on
+  NixOS, or a `crypttab` entry keyed from `/dev/urandom` with the `swap` option elsewhere. Do not
+  lean on `vm.swappiness`; it is a preference, not a guarantee.
+- **Disable core dumps for the unit.** A crash dump of the broker contains its heap, cache pages
+  included. Set `LimitCORE=0` in the unit and, where `systemd-coredump` is active, set
+  `Storage=none` in `coredump.conf` (or mask the socket) so nothing writes the heap to disk.
+
+{% note(title="Why not just mlock?") %}
+Locking pages with `mlockall` would pin them in RAM, but Basil does not call it today, and systemd
+has no directive to impose it on a service from outside (`LimitMEMLOCK` only raises the
+allowance). `MemorySwapMax=0` gives you the property you actually want, that these pages never
+reach a swap device, without process cooperation. Hibernation is the one exception: a hibernation
+image contains all of RAM, locked or not, so a host that hibernates needs an encrypted image or no
+keystore backend.
+{% end %}
+
 ## Backend least privilege
 
 - Scope the broker's backend credential to exactly the mounts and paths the catalog uses;
@@ -96,6 +131,7 @@ deployment choices. It will not flag:
 - missing systemd sandboxing, or the unit running as root;
 - a bundle whose only unlock slot is TPM-sealed and therefore unrecoverable off-host;
 - weak passphrase entropy, or an unlock secret stored next to the bundle;
+- unencrypted swap or enabled core dumps on a host running a keystore backend;
 - anything about backend ACL scope beyond capability probes.
 
 Those are exactly the items above, which is why this page exists.
@@ -108,6 +144,8 @@ Those are exactly the items above, which is why this page exists.
 - [ ] Unit sandboxing: `NoNewPrivileges`, `PrivateTmp`, `ProtectSystem=strict`, `ProtectHome`.
 - [ ] One uid per client workload; no shared uids across trust boundaries.
 - [ ] Backend credential is least-privilege AppRole (or `SpiffeSigner`), not a root token.
+- [ ] Keystore backends only: `MemorySwapMax=0` and `LimitCORE=0` on the unit; host swap absent
+      or encrypted with a random per-boot key.
 - [ ] A portable break-glass unlock slot exists and its phrase is stored offline.
 - [ ] Bundle + `.epoch` sidecar in backups; restore drilled with `bundle verify`. See
       [Backup & disaster recovery](/operations/backup-and-recovery/).
