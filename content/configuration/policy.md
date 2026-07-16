@@ -91,10 +91,12 @@ fails closed.
 
 {% note(title="Evidence-provider status") %}
 Schema 3 parsing, the host-process `SO_PEERCRED` compatibility path, recursive evaluation,
-unique-subject resolution, and invocation signature-key binding are implemented. Pinned credential
-slot revalidation and live systemd, executable-object, Compose, container-runtime, and OCI-signer
-providers remain roadmap items in the feature matrix. Predicates that require unavailable evidence
-evaluate to `unavailable` and cannot grant authority.
+unique-subject resolution, invocation signature-key binding, and the bounded process-pinning and
+OCI-verifier foundations are implemented. Live realm listeners, systemd/container runtime
+providers, registry collection, and transport revalidation remain roadmap items in the feature
+matrix. Predicates that require those providers evaluate to `unavailable` and cannot grant
+authority. See [Workload evidence & OCI signers](/configuration/workload-evidence/) for the exact
+pinning, revalidation, signer-policy, and digest-chain contracts.
 {% end %}
 
 ## Recursive `all` and `any`
@@ -172,7 +174,9 @@ combine the systemd predicate with `process.uid` or `process.gid` when those cre
 `compose.service` matches realm, effective project, and service together. `compose.project` matches
 realm and project. No partial object, glob, or label-only identity is accepted. `oci.signer` names a
 configured policy result after image-digest verification; a tag or repository string alone is not
-signer evidence.
+signer evidence. Define that named result under the top-level `ociSignerPolicies` map. Pinned-key
+and exact keyless examples are in
+[Workload evidence & OCI signers](/configuration/workload-evidence/).
 
 ### Numeric and symbolic local accounts
 
@@ -296,6 +300,6 @@ numeric credential leaves.
 ## Where to go next
 
 - [Policy explain / dry-run](/operations/policy-explain/): inspect grants without performing an operation.
+- [Workload evidence & OCI signers](/configuration/workload-evidence/): process pins and exact image trust.
 - [Sealed invocations](/clients/sealed-invocations/): bind a local presenter and remote signing key.
 - [Threat model](/introduction/threat-model/): understand the evidence and host trust boundaries.
-- [Approvals & change control](/configuration/approvals/): the `writable` hard cap above the allow-list.

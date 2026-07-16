@@ -115,13 +115,15 @@ operation, then zeroize them. AWS KMS and GCP Cloud KMS are separate in-place tr
 
 ## Attestation sources
 
-| Status | Capability                                                                       |
-| ------ | -------------------------------------------------------------------------------- |
-| ✅     | `SO_PEERCRED` kernel attestation (caller uid / gid / pid over the local socket)  |
-| ☐      | /proc exe path + Sha256                                                          |
-| ☐      | systemd unit identity · cgroup identity · container runtime metadata attestation |
-| ☐      | Kubernetes service account attestation · TPM-based node attestation              |
-| ☐      | X.509 proof-of-possession attestation · pluggable attestor interface             |
+| Status | Capability                                                                                                                        |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| ✅     | `SO_PEERCRED` kernel attestation (caller uid / gid / pid over the local socket)                                                   |
+| ✅     | Bounded procfs process-pinning foundation: start time, caller/host ID maps, namespaces, cgroups, and stable executable measurement |
+| ✅     | Strict OCI signer-policy and digest-chain verifier foundation: pinned-key/keyless Sigstore and exact index/manifest/config binding |
+| ☐      | Live realm/listener integration for point-of-use process revalidation, systemd identity, and container runtime metadata             |
+| ☐      | Live registry/runtime evidence collection for `oci.signer` authorization                                                          |
+| ☐      | Kubernetes service account attestation · TPM-based node attestation                                                               |
+| ☐      | X.509 proof-of-possession attestation · pluggable attestor interface                                                              |
 
 ## Identity protocols
 

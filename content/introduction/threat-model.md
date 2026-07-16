@@ -97,10 +97,12 @@ For Basil's guarantees to hold, these must be true:
 {% caution(title="Current live attestation boundary") %}
 The current host-process path proves caller credentials through `SO_PEERCRED`.
 A different program started as the same uid can match the same credential leaf.
-Schema 3 defines executable, systemd, Compose, runtime, and OCI-signer leaves,
-but their live evidence providers remain <span class="pill gap">roadmap</span>.
-Until those providers land, give each workload its own uid and treat the ability
-to run as that uid as the ability to present its host-process evidence.
+The bounded process pin, point-of-use revalidation, domain resolver, and OCI
+signer verifier are implemented foundations. Realm listeners and live systemd,
+container-runtime, registry, and transport-revalidation providers remain
+<span class="pill gap">roadmap</span>. Until those providers land, give each
+workload its own uid and treat the ability to run as that uid as the ability to
+present its host-process evidence.
 {% end %}
 
 ## What Basil does not defend against
@@ -144,8 +146,9 @@ audit context. Understand the current live limits:
 - **uid reuse and sharing.** Identity is only as strong as your uid hygiene. A
   reused or shared uid dilutes the subject.
 - **Executable evidence provider.** `process.executable.digest` is a strict
-  schema-3 predicate, while live executable-object measurement remains roadmap.
-  A configured digest therefore fails closed when that evidence is unavailable.
+  schema-3 predicate, and the stable opened-object measurement is implemented in
+  the process-evidence foundation. Live transport wiring remains roadmap. A
+  configured digest therefore fails closed when that evidence is unavailable.
 - **Local only.** `SO_PEERCRED` works because the caller is on the same host over
   a Unix socket. Basil does not attest remote callers, and cross-host federation
   is <span class="pill gap">roadmap</span>.
@@ -172,4 +175,4 @@ what to include in a report, and what to expect back.
 - [How it works](/introduction/how-it-works/): the two gates that every call passes.
 - [Backends & custody](/introduction/backends-and-custody/): in-place vs. materialize-to-use exposure.
 - [The policy](/configuration/policy/): writing default-deny grants and break-glass subjects.
-- [Unlock & bundle](/configuration/unlock-and-bundle/): how the backend credential is sealed and opened.
+- [Workload evidence & OCI signers](/configuration/workload-evidence/): process and image evidence contracts.
