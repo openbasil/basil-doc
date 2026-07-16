@@ -27,6 +27,68 @@ Daemon/offline commands operate on config files and don't need a running broker.
 | `basil bundle verify <bundle> --open …` / `show <bundle> [--open …]` | Verify unlock or inspect non-secret bundle metadata. |
 | `basil explain --subject … (--op … --key … \| --effective) [--catalog … --policy …] [--live] [--json]` | Policy dry-run; offline against the files by default, `--live` against the running broker. `--effective` previews every grant (offline-only). See [Policy explain](/operations/policy-explain/). |
 | `basil doctor -c <toml> [--json] [--keys] [--strict]` | Preflight diagnostics: validate catalog + policy, enforce capability + invocation bindings; `--keys` adds the authenticated per-key probe; `--strict` fails on warnings. See [Doctor](/operations/doctor/). |
+| `basil cache --check [--age 30d] [-q\|--json]` | Inspect and integrity-check the private OCI evidence cache. `--age` selects entries whose last use is at least the supplied duration ago. |
+| `basil cache prune [--force] <id-or-reference>…` | Preview exact-ID or exact observed-reference removal. `--force` executes the displayed plan. |
+
+## OCI evidence cache
+
+`basil cache` is an offline operator command. It reads the `[oci]` cache path and bounds from the
+same startup config as the agent, including `-c`/`--config` and the normal config overrides. It does
+not contact the broker or require a policy grant.
+
+### Inspect entries
+
+```sh
+basil cache -c /etc/basil/agent.toml --check
+basil cache -c /etc/basil/agent.toml --check --age 30d
+basil cache -c /etc/basil/agent.toml --check --json
+basil cache -c /etc/basil/agent.toml --check -q
+```
+
+The human output prints one deterministic ID-sorted row per entry: cache ID, OCI subject digest,
+encoded bytes, last-use timestamp, age since the last successful online refresh, the fixed refresh
+threshold, current degradation duration, source repository, and observed references. The final line
+reports selected entries, selected encoded bytes, and corrupt entries removed.
+
+`--age` accepts a positive integer followed by `d`, `h`, `m`, or `s`. It filters on `lastUse`; it
+does not remove anything. `-q` prints one strict lowercase SHA-256 cache ID per line. `--json` emits
+an ID-sorted array with these stable fields:
+
+| Field | Meaning |
+| --- | --- |
+| `id`, `subject` | Content-derived cache ID and immutable OCI subject digest. |
+| `references`, `source` | Exact observed references and repository/source boundary. |
+| `lastUse`, `collectedAt`, `lastSuccessfulRefresh` | Unix-second lifecycle timestamps. |
+| `ageSeconds`, `refreshThresholdSeconds`, `refreshDue` | Refresh age, the 30-day threshold, and whether refresh is due. |
+| `degradedSince`, `degradedDurationSeconds` | First continuously failed refresh and its duration; both are `null` when healthy. |
+| `encodedSize` | Bytes charged to the aggregate cache limit. |
+
+`--check` validates the bounded on-disk format, hashes, file identity, ownership, modes, and link
+counts. Safely identified corrupt regular entries are removed and counted as cache misses. The
+integrity inventory has no authorization effect. Cache admission separately repeats offline
+verification with the current trust and denylist generation. Use `basil doctor` when inspection
+must be strictly read-only.
+
+### Preview and confirm pruning
+
+```sh
+# Preview every entry associated with this exact observed reference.
+basil cache -c /etc/basil/agent.toml prune registry.example/team/app:stable
+
+# Confirm removal by exact 64-character lowercase cache ID.
+basil cache -c /etc/basil/agent.toml prune --force \
+  0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+```
+
+A strict 64-character lowercase hexadecimal selector is an exact cache ID. Every other selector is
+matched as one complete previously observed reference. Multiple selectors form one deterministic
+ID-sorted plan. The default command prints that plan and changes nothing; repeat it with `--force`
+only after reviewing the candidates.
+
+Execution rechecks each previewed file's identity and encoded hash. An entry that changed after the
+preview is skipped and reported. Removal retires and clears only the already validated opened file,
+so a concurrent pathname replacement is preserved. Basil reuses bounded private retirement slots;
+repeated prune, restart, and re-store cycles do not grow metadata without bound.
 
 ## Status & probes
 

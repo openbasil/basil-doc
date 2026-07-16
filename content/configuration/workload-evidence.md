@@ -13,10 +13,10 @@ This page describes the protected evidence contracts and the `ociSignerPolicies`
 The [policy reference](/configuration/policy/) covers domains, predicates, and grant evaluation.
 
 {% note(title="Current provider availability") %}
-The bounded process-pinning, domain-resolution, signer-policy, Cosign, and OCI digest-chain
-foundations are implemented and tested. The current broker transport still supplies the
-`SO_PEERCRED` host-process compatibility evidence. Realm listeners, live systemd/container runtime
-providers, registry collection, and per-request transport revalidation remain
+The bounded process-pinning, domain-resolution, signer-policy, Cosign, OCI digest-chain, and
+persistent public-evidence cache foundations are implemented and tested. The current broker
+transport still supplies the `SO_PEERCRED` host-process compatibility evidence. Realm listeners,
+live systemd/container runtime providers, and per-request transport revalidation remain
 <span class="pill gap">roadmap</span>. Predicates that depend on those providers evaluate to
 `unavailable`, cannot grant authority, and cannot fall back to a less-specific domain.
 {% end %}
@@ -201,13 +201,44 @@ to 16 records. Basil invokes Cosign through a protected absolute path with an em
 private mode-`0700` temporary directory, bounded output, and a deadline of at most five minutes.
 Timeout or cancellation kills the complete verifier process group.
 
-Registry collection, private-registry credentials, persistent evidence caching, and runtime-to-image
-correlation are separate provider layers. Until those integrations supply a verified chain, an
-`oci.signer` leaf remains unavailable in live authorization.
+## Cached evidence is reverified under the current generation
+
+The persistent OCI cache stores complete public verification bundles and immutable source context.
+It deliberately excludes policy decisions, trusted-root bytes, pinned public keys, and the digest
+denylist. A candidate therefore has no standing authority after it is read from disk.
+
+Before admission, Basil binds a candidate to the expected repository, platform, selected manifest,
+config digest, and optional index digest. It then repeats offline cryptographic verification with
+the current generation's signer policy and protected trust snapshot, and applies that generation's
+exact digest denylist. A current policy or trust rejection leaves the entry inactive. Malformed,
+wrong-hash, or non-correlating evidence is treated as corruption and removed only after Basil has
+verified the opened file's stable identity.
+
+Every scan is bounded by both configured entry count and encoded bytes before allocation. The
+defaults are 10,000 entries and 512 MiB, with a non-configurable 4 MiB limit per encoded entry. The
+cache never evicts usable evidence to make room. If it reaches capacity, online verification can
+still succeed, but the newly collected bundle is not persisted.
+
+### Thirty-day stale-while-revalidate behavior
+
+Evidence becomes due for refresh 30 days after its last successful online collection or refresh.
+Due evidence remains usable only when the complete offline current-generation check still passes.
+The verifier then schedules one deduplicated background online refresh for that entry, with at most
+16 refreshes queued or running in one verifier process.
+
+A successful online verification advances the refresh timestamp and clears degradation, even when
+the refreshed bundle cannot be persisted. A failed or cancelled refresh records the start of the
+continuous degraded interval without deleting locally valid evidence. `basil doctor` reports due
+and degraded counts, while `basil cache --check` exposes exact per-entry ages and timestamps.
+
+Registry collection and runtime-to-image correlation remain separate provider layers. Until a live
+provider supplies a verified chain, an `oci.signer` leaf remains unavailable in live authorization.
+The cache and its operator commands are implemented foundations and do not create a fallback to a
+less-specific identity.
 
 ## Where to go next
 
 - [The policy](/configuration/policy/): combine evidence into one unambiguous subject.
+- [Command reference](/cli/command-reference/#oci-evidence-cache): inspect and prune cached evidence.
 - [Threat model](/introduction/threat-model/): understand the host and process trust boundaries.
 - [Feature matrix](/reference/feature-matrix/): distinguish implemented foundations from live providers.
-- [Production hardening](/operations/production-hardening/): protect the broker and its local socket.

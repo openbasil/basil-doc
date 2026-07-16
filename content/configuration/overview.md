@@ -66,6 +66,14 @@ enable = false
 # max-ttl-secs = 60
 # clock-skew-secs = 30
 # replay-cache-capacity = 4096
+
+[oci]
+enable = false
+# trusted-root = "/etc/basil/sigstore-trusted-root.json"
+# denied-digests = ["sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"]
+# cache-directory = "/var/cache/basil/oci"
+# cache-max-bytes = 536870912
+# cache-max-entries = 10000
 ```
 
 | Config key | What it does |
@@ -106,6 +114,35 @@ is registered but disabled unless `[invocation] enable = true`, and enabling it 
 `audience`, broker identity, response-signing key id, or request-encryption key id fails closed.
 Each accepted request must also name a valid requester `response_encryption_key_id` so Basil can
 return a signed, encrypted operation response.
+
+## OCI verifier and evidence cache
+
+The opt-in `[oci]` section configures Basil's packaged Cosign verifier and its private cache of
+public verification evidence. The cache is a performance and availability layer. Cached bytes
+remain untrusted and must pass offline verification against the complete current generation before
+they can contribute `oci.signer` evidence.
+
+| Config key | What it does |
+| --- | --- |
+| `enable` | Construct the packaged OCI verifier and cache during agent startup. Default `false`. |
+| `trusted-root` | Protected absolute Sigstore root for keyless offline verification. Maximum 1 MiB per file and 16 MiB aggregate trust per generation. |
+| `denied-digests` | Exact canonical lowercase `sha256:<64 hex>` subject digests rejected by the current generation. Limited to 10,000 entries. |
+| `cache-directory` | Absolute private cache path. Default `/var/cache/basil/oci`. Basil requires a protected parent and creates owner-only cache directories. |
+| `cache-max-bytes` | Aggregate encoded-byte limit. Default 512 MiB; valid values are 1 byte through 16 GiB. |
+| `cache-max-entries` | Entry-count and directory-walk limit. Default 10,000; valid values are 1 through 100,000. |
+| `cosign-executable` | Protected absolute packaged Cosign path. Default `/usr/libexec/basil/cosign`. |
+| `temp-parent` | Protected parent for private verifier views. Default `/run/basil/cosign`. |
+| `deadline-secs` | Complete online or offline Cosign deadline. Default 30 seconds; the verifier enforces a five-minute maximum. |
+
+One encoded entry is limited to 4 MiB. Reaching either configured capacity limit preserves existing
+usable entries and declines to persist new evidence; Basil does not evict an entry implicitly. Use
+[`basil cache`](/cli/command-reference/#oci-evidence-cache) to inspect or selectively prune the
+cache, and use [Doctor](/operations/doctor/#oci-evidence-cache) for a read-only health summary.
+
+`trusted-root`, `denied-digests`, OCI signer policies, and their protected public-key bytes are
+captured into one immutable reload generation. The cache path, capacity bounds, packaged verifier,
+deadline, and registry access are restart-only. See [Hot reload](/operations/hot-reload/) for the
+generation boundary.
 
 ## Allowed startup overrides
 

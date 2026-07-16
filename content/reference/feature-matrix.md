@@ -119,7 +119,7 @@ operation, then zeroize them. AWS KMS and GCP Cloud KMS are separate in-place tr
 | ------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | ✅     | `SO_PEERCRED` kernel attestation (caller uid / gid / pid over the local socket)                                                   |
 | ✅     | Bounded procfs process-pinning foundation: start time, caller/host ID maps, namespaces, cgroups, and stable executable measurement |
-| ✅     | Strict OCI signer-policy and digest-chain verifier foundation: pinned-key/keyless Sigstore and exact index/manifest/config binding |
+| ✅     | Strict OCI signer-policy and digest-chain verifier foundation: pinned-key/keyless Sigstore, exact index/manifest/config binding, and bounded current-generation evidence caching |
 | ☐      | Live realm/listener integration for point-of-use process revalidation, systemd identity, and container runtime metadata             |
 | ☐      | Live registry/runtime evidence collection for `oci.signer` authorization                                                          |
 | ☐      | Kubernetes service account attestation · TPM-based node attestation                                                               |

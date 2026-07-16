@@ -5,9 +5,9 @@ weight = 50
 
 # Hot reload & admin reload
 
-Basil reloads its **catalog** and **policy** in place, without requiring another unseal, on a
-`SIGHUP` signal or through a permission-gated admin RPC (and the `basil reload` CLI). Both paths call
-the *identical* fail-closed reload engine.
+Basil reloads its **catalog**, **policy**, and reloadable OCI trust inputs in place, without requiring
+another unseal, on a `SIGHUP` signal or through a permission-gated admin RPC (and the `basil reload`
+CLI). Both paths call the *identical* fail-closed reload engine.
 
 ## SIGHUP hot reload
 
@@ -35,10 +35,11 @@ through `ExecStart` (a full restart). Edit the source-of-truth files, not `/etc`
 ### What a reload validates (fail closed)
 
 Before swapping, the candidate runs the *full* startup/`check` validation: catalog + policy parse,
-every hard error, the JWT-SVID issuer-algorithm guardrail, and the `publicPath` enforcement for
-materialize-to-use keys. The reload is **non-mutating**: it performs no backend I/O and never
-generates missing key material on the signal path. If *anything* fails to validate, Basil does not
-swap; the previous generation keeps serving unchanged.
+every hard error, the JWT-SVID issuer-algorithm guardrail, `publicPath` enforcement for
+materialize-to-use keys, and OCI signer-policy/trust/denylist validation. Basil snapshots protected
+trusted-root and pinned-public-key bytes into the candidate. The reload is **non-mutating**: it
+performs no backend I/O and never generates missing key material on the signal path. If *anything*
+fails to validate, Basil does not swap; the previous generation keeps serving unchanged.
 
 After a successful real reload, Basil also refreshes the JWT-SVID deny-list backing store. This read
 is monotonic: newly loaded revocations are unioned into the live set, local in-memory revocations are
@@ -54,12 +55,19 @@ socket path requires a restart.
 | --- | --- |
 | Policy rules / roles / name & membership tables | ✅ Yes |
 | A key's `writable`, `labels`, `description`, `missing` | ✅ Yes |
+| OCI signer policies, protected public-key/trusted-root bytes, and `denied-digests` | ✅ Yes, as one immutable generation |
 | Adding / removing a **backend**, or any backend's `kind`/`addr`/`engines`/`capabilities`/`requires` | ⛔ Restart-only |
 | Adding / removing a **key**, or any key's `backend`/`path`/`engine`/`keyType`/`publicPath` | ⛔ Restart-only |
+| OCI verifier path/deadline/temp parent, cache path/bounds, and registry access | ⛔ Restart-only |
 | Unlock / sealed bundle, socket bind, backend credentials, broker limits | ⛔ Restart-only |
 
 A backend's `mintKeyTypes` set is not part of the routing shape: a change to it is re-validated by the
 load-time capability check and swapped in on reload, so it is not restart-only.
+
+Cached OCI bytes contain no authorization decision. A request pins one generation and repeats
+offline verification with that generation's signer policy, trust bytes, and digest denylist. A
+reload therefore cannot mix old trust with a new policy, and an existing cache entry cannot retain
+authority removed by the new generation.
 
 {% note(title="Adding a key needs a restart") %}
 Because a new key changes the routing shape, you cannot introduce a key (or backend) by hot reload;

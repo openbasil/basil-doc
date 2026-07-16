@@ -61,6 +61,7 @@ basil doctor -c /etc/basil/agent.toml --strict         # warnings exit non-zero 
 | `bundle_perms` | The sealed bundle is strict `0600` (owner-only). | **fatal** on any broader mode. |
 | `bundle_freshness` | The bundle's epoch is not behind the `.epoch` sidecar (anti-rollback). | **fatal** if the epoch is behind or corrupt; **warn** if the sidecar is absent (first boot). |
 | `backend_reachability` | Each distinct `vault` address answers an unauthenticated `GET /v1/sys/health` within ~3s. | **fatal** on any unreachable address (it never hangs the run). |
+| `oci_evidence_cache` | Read-only private OCI cache health. | **warn** at capacity or on degraded refresh; **fatal** for an unsafe or unreadable layout. |
 | `key_material` | `--keys` only: probes every catalog key read-only, like startup reconcile; no writes. Emits an aggregate row plus one `key_material:<key>` row per key. | **fatal** on an absent required key or probe error; **warn** on absent optional / `missing=generate` keys. |
 | `rootless_keyring_quota` | `--rootless-expected-containers` only: reads `/proc/sys/kernel/keys/maxkeys` and `/proc/sys/kernel/keys/maxbytes` and checks them against the requested rootless container count. | **ok** when both dimensions are high enough; **warn** when the host is non-Linux, procfs values are unreadable or invalid, or either quota is low. |
 
@@ -88,6 +89,23 @@ and only raises the dimension that needs it. On NixOS, the remediation shows the
 `boot.kernel.sysctl` assignments and points out that
 `services.basil.raiseRootlessKeyringQuotas` supplies the `2000`/`2000000` defaults for 1,000
 containers.
+
+### OCI evidence cache
+
+The `oci_evidence_cache` row is `ok` when OCI verification is disabled, when the cache has not been
+created yet, or when the existing cache is below both capacity limits with no degraded refresh. For
+an existing cache, the detail reports entry and byte pressure, due refreshes, oldest evidence age,
+last successful refresh, and the fixed 2,592,000-second refresh threshold.
+
+The row becomes `warn` when either configured capacity limit is reached or at least one due entry
+has a failed background refresh. Its detail includes the degraded count and longest continuous
+degradation. Preview selective removal with `basil cache prune`, and investigate registry or trust
+access before forcing a removal.
+
+Doctor opens an existing cache without creating directories, rewriting entries, or removing
+corruption. An unsafe owner/mode/type/link layout or an inspection failure is `fatal`. Use
+`basil cache --check` when you deliberately want an integrity scan that repairs safely identified
+corrupt regular entries.
 
 `--strict` turns this warning into a non-zero exit, which is useful in provisioning and
 `ExecStartPre=` gates. On non-NixOS hosts, apply the same values with `sysctl` and persist them in the
