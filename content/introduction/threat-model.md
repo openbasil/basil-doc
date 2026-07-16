@@ -41,7 +41,7 @@ what it does not:
 | The backend (OpenBao / Vault) | Yes, for custody | In-place keys live and are used there. Basil trusts it to hold and not leak key material.                                                         |
 | The local socket              | Partially        | Filesystem mode/group controls who can *open* it. That is a coarse first gate; every RPC is still authorized from peer credentials and policy.    |
 | The catalog and policy        | Yes, as authored | Validated at load; Basil fails closed on a malformed policy but cannot know your *intent*. A grant you wrote is honored.                          |
-| The calling workload          | No               | The caller proves nothing but its uid/gid. It holds no backend credential and is allowed only what policy grants its subject.                     |
+| The calling workload          | No               | Basil derives local evidence from the host and may verify a sealed invocation key. The workload holds no backend credential and receives only its subject's grants. |
 | The network                   | No               | Basil brokers over a local Unix socket, not remote callers. Its HTTP server is opt-in and only binds when the JWKS surface is explicitly enabled. |
 
 ## What Basil assumes (its trusted computing base)
@@ -53,8 +53,10 @@ For Basil's guarantees to hold, these must be true:
 - **The host is not root-compromised.** Basil raises the cost of stealing a key
   (there often *is* no key on the host to steal), but it is not a sandbox
   against a privileged host attacker.
-- **Each workload runs under its own uid.** The uid *is* the identity. Two
-  services sharing a uid share every grant.
+- **Each workload has distinct evidence.** In the current host-process path, a
+  dedicated uid is the strongest live selector. Schema-3 subjects also declare
+  a mandatory domain and may combine several evidence predicates. Overlapping
+  subjects are denied instead of sharing or merging grants.
 - **The backend keeps key material.** With an in-place backend, custody is the
   backend's job; Basil never persists the private half.
 - **The catalog and policy are delivered with integrity.** On NixOS they are
@@ -73,6 +75,9 @@ For Basil's guarantees to hold, these must be true:
   there is nothing to lift from a service's environment or config.
 - **A caller pretending to be someone else.** Identity comes from the kernel, not
   a bearer token, so a process cannot claim a uid it is not running as.
+- **Ambiguous authorization identity.** Basil resolves a local workload domain
+  before matching subjects. Zero matches, multiple matches, and evidence that
+  cannot be established safely all fail closed before grant evaluation.
 - **A low-privilege service overreaching.** Default-deny means a service can only
   perform the exact operations policy grants its subject on the exact keys named.
   Read and write are distinct; rotating or overwriting is never implied by read.
@@ -83,17 +88,19 @@ For Basil's guarantees to hold, these must be true:
   excluded from wildcard expansion.
 - **Long-lived credential theft.** Where a raw secret is not required, Basil hands
   out a short-lived lease that expires on its own instead of a standing secret.
-- **Replayed or forged bridged invocations.** Sealed invocations authenticate the
-  actor by a signature-key subject and check replay, expiry, and audience before
-  policy evaluation.
+- **Replayed or forged bridged invocations.** Sealed invocations bind a verified
+  `invocation.signature-key` leaf to the independently attested local presenter,
+  then check replay, expiry, and audience around policy evaluation.
+- **Anonymous public-class reads.** `class: public` changes implicit read grants
+  only after exactly one subject resolves. It does not bypass workload identity.
 
-{% caution(title="Basil authorizes the workload, not its code") %}
-Attestation proves the caller's uid/gid, not *which binary* is running under that
-uid. A different program started as the same uid presents the same identity and
-gets the same grants. Give each workload its own uid, keep those uids from being
-reused by other software, and treat "can run code as this uid" as equivalent to
-"holds this subject's authority". Richer attestation (systemd unit, container,
-TPM node identity) is <span class="pill gap">roadmap</span>.
+{% caution(title="Current live attestation boundary") %}
+The current host-process path proves caller credentials through `SO_PEERCRED`.
+A different program started as the same uid can match the same credential leaf.
+Schema 3 defines executable, systemd, Compose, runtime, and OCI-signer leaves,
+but their live evidence providers remain <span class="pill gap">roadmap</span>.
+Until those providers land, give each workload its own uid and treat the ability
+to run as that uid as the ability to present its host-process evidence.
 {% end %}
 
 ## What Basil does not defend against
@@ -129,15 +136,16 @@ its restart/unlock story; it is not clustered.
 
 ## The attestation boundary
 
-`SO_PEERCRED` gives Basil the caller's uid, gid, and pid.
-Authorization binds to the subject resolved from uid/gid; the pid and
-presenter names are recorded for the audit trail but are not the decision tuple.
-Understand the limits:
+`SO_PEERCRED` gives Basil the caller's uid, gid, and pid. Schema 3 places those
+facts in a provider-independent evidence snapshot, resolves one local workload
+domain, and evaluates same-domain subjects. The pid and presenter names remain
+audit context. Understand the current live limits:
 
 - **uid reuse and sharing.** Identity is only as strong as your uid hygiene. A
   reused or shared uid dilutes the subject.
-- **Not binary attestation.** As above, the same uid means the same identity
-  regardless of the executable.
+- **Executable evidence provider.** `process.executable.digest` is a strict
+  schema-3 predicate, while live executable-object measurement remains roadmap.
+  A configured digest therefore fails closed when that evidence is unavailable.
 - **Local only.** `SO_PEERCRED` works because the caller is on the same host over
   a Unix socket. Basil does not attest remote callers, and cross-host federation
   is <span class="pill gap">roadmap</span>.

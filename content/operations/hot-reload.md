@@ -115,9 +115,12 @@ grant it is an explicit `op:reload` action over the reserved broker-admin target
 
 ```json
 {
-	"schemaVersion": 2,
+	"schema": "policy",
 	"subjects": {
-		"svc.reload": { "allOf": [{ "kind": "unix", "uid": 4242 }] }
+		"svc.reload": {
+			"domain": "host-process",
+			"match": { "all": [{ "process.uid": 4242 }] }
+		}
 	},
 	"rules": [
 		{
@@ -134,7 +137,8 @@ On NixOS the same rule is written in the module's policy options:
 
 ```nix
 services.basil.policy.subjects."svc.reload" = {
-  allOf = [ { kind = "unix"; uid = 4242; } ];
+  domain = "host-process";
+  match.all = [ { "process.uid" = 4242; } ];
 };
 services.basil.policy.rules = [
   { id = "broker-admin-reload";

@@ -15,8 +15,9 @@ bytes, and the gRPC invocation service is only a small local carrier around thos
 
 {% caution(title="Not a second authentication system") %}
 Sealed invocation does not restore bearer tokens, uid spoofing, or a metadata principal. The actor is
-proved by a `signature-key` subject inside the signed COSE message, then Basil applies the same
-default-deny policy and catalog grants as a local socket call.
+resolved from the local presenter domain plus an `invocation.signature-key` policy leaf. The
+signature constrains that subject but cannot classify the presenter or disambiguate overlapping
+subjects. Basil then applies the same default-deny grants as a local socket call.
 {% end %}
 
 ## Enable the service
@@ -282,9 +283,10 @@ whether a returned `response_subject` is a valid publish subject. It wraps reque
 reply subject otherwise.
 
 The bridge does not inspect protected headers, decrypt bodies, verify signatures, rewrite subjects,
-or fabricate operation results. It also needs no policy grant of its own: Basil authorizes the actor
-inside the sealed request (its `signature-key` proof, its `op:decrypt` on the request-encryption
-key, and the operation-specific grants on the requested key), never the process that presented it.
+or fabricate operation results. It needs no separate `op:invoke` grant. Basil independently attests
+the bridge process and combines that local evidence with the verified signing key in one
+domain-scoped subject. That subject needs `op:decrypt` on the request-encryption key and the
+operation-specific grants on the requested key.
 
 ## Trust distribution
 
@@ -379,20 +381,24 @@ embedded tagged `COSE_Encrypt` bytes to `AeadService.UnsealCose` without re-enco
 
 ## Policy shape
 
-A sealed invocation actor is a normal policy subject whose matcher contains a `signature-key` proof:
+A sealed invocation uses a normal schema-3 subject whose expression binds the local presenter and
+verified signing key. This host-process example expects the bridge to run as UID `9100`:
 
 ```json
 {
-  "schemaVersion": 2,
+  "schema": "policy",
   "subjects": {
     "content.publisher": {
-      "allOf": [
+      "domain": "host-process",
+      "match": { "all": [
+        { "process.uid": 9100 },
         {
-          "kind": "signature-key",
-          "algorithm": "ed25519",
-          "public": "BASE64URL_32_BYTE_ED25519_PUBLIC_KEY"
+          "invocation.signature-key": {
+            "algorithm": "ed25519",
+            "public": "BASE64URL_32_BYTE_ED25519_PUBLIC_KEY"
+          }
         }
-      ]
+      ] }
     }
   },
   "rules": [
@@ -406,13 +412,15 @@ A sealed invocation actor is a normal policy subject whose matcher contains a `s
 }
 ```
 
+Every successful sealed-invocation path must include a matching `invocation.signature-key` leaf.
 `algorithm` is `ed25519` for base64url raw Ed25519 public keys or `nats-nkey` for public NATS NKeys.
-Malformed public material is rejected at policy load time. Grant only the broker request-encryption
-key and the specific operation keys the actor needs.
+Malformed public material is rejected at policy load time. A covered `iss` claim may be required to
+equal the independently resolved subject; it cannot select among two matches. Grant only the broker
+request-encryption key and the specific operation keys the actor needs.
 
 ## Where to go next
 
-- [The policy](/configuration/policy/): `signature-key` subjects and the actor grants behind sealed invocations.
+- [The policy](/configuration/policy/): domain-scoped subjects and signature-key evidence.
 - [Configuration overview](/configuration/overview/): startup TOML, including `[invocation]`.
 - [NATS bridge](/clients/nats-bridge/): raw COSE request/reply courier behavior.
 - [Rust client](/clients/rust/): the `basil::sealed_invocation` helper exports.

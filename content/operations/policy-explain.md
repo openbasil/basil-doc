@@ -5,15 +5,14 @@ weight = 70
 
 # Policy explain / dry-run
 
-`basil explain` answers "would this request be allowed, and why?" **without performing it**. By
-**default** it is an *offline* dry-run: it loads *only* the catalog and policy JSON (no sealed bundle,
-no backend I/O, no socket, no secret material), builds the real policy decision point, and evaluates a
-proposed subject/op/key tuple through the same matcher the live broker enforces with. There is no
-second copy of the matching logic, so a dry-run can never report a different answer than enforcement;
-default-deny holds exactly as it does at request time.
+`basil explain` answers "what authority can this policy subject reach, and why?" **without performing
+the operation**. By default it is an *offline* static preview: it loads only the catalog and policy
+JSON, with no sealed bundle, backend I/O, socket, or secret material. It evaluates a proposed
+subject/op/key tuple through the same grant matcher as the broker. A serving allow also requires the
+caller domain and exactly one subject to resolve from live evidence.
 
 Add `--live` to instead query the **running** broker's serving generation over the global `--socket`
-(a gated admin RPC — see the grant below). The two modes are one verb: use the default offline path
+(a gated admin RPC; see the grant below). The two modes are one verb: use the default offline path
 for pre-deploy review of proposed files; use `--live` when an operator needs to interrogate the
 currently serving generation. `--effective` (preview every grant for a subject) is offline-only and
 conflicts with `--live`.
@@ -26,9 +25,12 @@ the reserved target `broker.explain`:
 
 ```json
 {
-  "schemaVersion": 2,
+  "schema": "policy",
   "subjects": {
-    "svc.explain": { "allOf": [ { "kind": "unix", "uid": 4242 } ] }
+    "svc.explain": {
+      "domain": "host-process",
+      "match": { "all": [ { "process.uid": 4242 } ] }
+    }
   },
   "rules": [
     { "id": "broker-admin-explain",
@@ -41,7 +43,8 @@ the reserved target `broker.explain`:
 
 ```nix
 services.basil.policy.subjects."svc.explain" = {
-  allOf = [ { kind = "unix"; uid = 4242; } ];
+  domain = "host-process";
+  match.all = [ { "process.uid" = 4242; } ];
 };
 services.basil.policy.rules = [
   { id = "broker-admin-explain";
@@ -83,7 +86,8 @@ The `--op` tokens are: `get`, `list`, `get_public_key`, `verify`, `sign`, `sign_
 {% note(title="Subjects are the authorization boundary") %}
 Runtime authorization first resolves the attested caller to a configured **subject**. The `uid`,
 `gid`, and `pid` stay as authentication evidence and presenter context in the audit trail; the PDP
-itself evaluates `(subject, op, key)`.
+itself evaluates `(subject, op, key)`. Offline `--subject` input is operator-supplied and cannot prove
+that serving requests will resolve uniquely to that subject.
 {% end %}
 
 Explain evaluates a registered policy subject, not a raw uid/gid principal. `--subject`, Rust
@@ -106,7 +110,7 @@ ALLOW  subject svc.grafana  get  grafana.admin_password  (via subject:svc.grafan
   matched rule `grafana-reader`: action `role:reader` over target `grafana.admin_password`
 ```
 
-When the granting subject definition combines several proofs with `allOf`, the matched rule still
+When the granting subject definition combines several proofs with `all`, the matched rule still
 names the canonical subject. The rule provenance tells you which subject the policy granted, not the
 raw uid/gid predicate that happened to resolve it:
 
@@ -135,7 +139,8 @@ With `--json`:
 ```
 
 A world-readable (`class: public`) read is allowed with `"via": "public_class"` and
-`"matched_rule": null`. No policy *rule* produces it.
+`"matched_rule": null`. No policy *rule* produces it. Serving still requires a resolved domain and
+exactly one subject.
 
 ## Deny: the reason (default-deny)
 
@@ -171,13 +176,11 @@ The `--effective` view emits `{"subject":…,"effective":[{"key","op","via","rul
 `null` for a world-readable public-class read.
 
 {% best() %}
-Before merging a catalog/policy change, run `basil explain` in CI against the *proposed* files
-for the tuples you care about (the service identities that must keep working and the ones that must
-stay denied), and assert on the `--json` `decision`. Because `explain` runs the identical matcher the
-broker enforces with, a green dry-run is a real guarantee, not an approximation. Pair it with
-[`basil doctor`](/operations/doctor/) so a change that would be rejected at load *or* would
-change an authorization outcome is caught pre-merge. Use `--effective --json` to diff the full granted
-`(key, op)` set for an identity across the old and new policy.
+Before merging a catalog/policy change, run `basil explain` in CI against the *proposed* files for
+the tuples you care about, then assert on the `--json` decision. This proves the static grant and hard
+cap result. Pair it with evidence-aware integration tests for domain and unique-subject resolution,
+and with [`basil doctor`](/operations/doctor/) so rejected policy shapes are caught before rollout.
+Use `--effective --json` to diff the full conditional `(key, op)` set for a subject across versions.
 {% end %}
 
 ## Where to go next

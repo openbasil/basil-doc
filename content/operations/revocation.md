@@ -40,9 +40,12 @@ The revoke grant:
 
 ```json
 {
-	"schemaVersion": 2,
+	"schema": "policy",
 	"subjects": {
-		"svc.revoke": { "allOf": [{ "kind": "unix", "uid": 4244 }] }
+		"svc.revoke": {
+			"domain": "host-process",
+			"match": { "all": [{ "process.uid": 4244 }] }
+		}
 	},
 	"rules": [
 		{

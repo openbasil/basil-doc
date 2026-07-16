@@ -10,10 +10,10 @@ service without making the bridge a trusted actor. It is a **courier**: it moves
 bytes between NATS and `InvocationService.Invoke`, and Basil does the identity, policy, decryption,
 operation execution, response signing, and response encryption.
 
-Use this path when a workload can publish to NATS but should still authorize as the subject proved by
-its sealed COSE request. The bridge process is only the local Unix-socket presenter. It must not
-decrypt request or response bodies, rewrite subjects, delegate, impersonate, or fabricate operation
-results.
+Use this path when a workload can publish to NATS but should still authorize through a verified
+signing key. The bridge process is the local Unix-socket presenter. Basil binds its independently
+attested local evidence and the remote signing key in one schema-3 subject. The bridge must not
+decrypt request or response bodies, rewrite subjects, delegate, impersonate, or fabricate results.
 
 ## Binary and config
 
@@ -57,9 +57,9 @@ and decrypt the body before trusting any status or result.
 3. The bridge checks only transport shape: reply subject and payload size.
 4. The bridge wraps the bytes as `SealedRequest { message }` and forwards them to Basil over
    `InvocationService.Invoke` on the configured Unix socket.
-5. Basil authenticates the sealed actor from the COSE `signature-key` proof, authorizes the
-   operation-specific policy grants, executes the operation, and returns `SealedResponse { message,
-   response_subject }`.
+5. Basil verifies the COSE signature, resolves one domain-scoped subject from bridge and signature
+   evidence, authorizes its operation-specific grants, executes the operation, and returns
+   `SealedResponse { message, response_subject }`.
 6. The bridge publishes `SealedResponse.message` bytes unchanged to `SealedResponse.response_subject`
    when present, or otherwise to the NATS reply subject.
 7. The caller verifies the broker response signature, checks request binding, decrypts with its
@@ -81,25 +81,27 @@ invocation gRPC service.
 
 ## Policy grant
 
-The bridge process itself needs **no policy grant**. There is no transport-level `op:invoke` action
-in the policy language (a policy naming one fails to load). Basil authorizes the *actor* inside each
-sealed message, never the process that delivered it: the actor proof (the request's `signature-key`
-subject) must verify, the actor needs `op:decrypt` on the request-encryption key, and the actor
-needs the operation-specific grant for the inner request. The bridge's Unix identity is recorded in
-the audit log as the presenter for context, but it holds no data-plane authority.
+The bridge needs no separate `op:invoke` grant. There is no transport-level `op:invoke` action in the
+policy language. Its local identity still participates in subject resolution: the matching subject
+must bind the bridge evidence and a verified `invocation.signature-key` leaf. The resolved compound
+subject needs `op:decrypt` on the request-encryption key and the operation-specific grant for the
+inner request.
 
 ```json
 {
-  "schemaVersion": 2,
+  "schema": "policy",
   "subjects": {
     "content.publisher": {
-      "allOf": [
+      "domain": "host-process",
+      "match": { "all": [
+        { "process.uid": 9100 },
         {
-          "kind": "signature-key",
-          "algorithm": "nats-nkey",
-          "public": "UANATS_PUBLIC_NKEY"
+          "invocation.signature-key": {
+            "algorithm": "nats-nkey",
+            "public": "UANATS_PUBLIC_NKEY"
+          }
         }
-      ]
+      ] }
     }
   },
   "rules": [
@@ -113,9 +115,9 @@ the audit log as the presenter for context, but it holds no data-plane authority
 }
 ```
 
-The first rule authorizes the presenter to reach `Invoke`. The second rule is the actor's real
-authority: Basil resolves it from the sealed COSE proof and applies it to the requested operation and
-target. A bridge uid/gid grant cannot make an unsigned or invalid message authorize.
+The rule grants the compound subject its real authority. A bridge UID match cannot make an unsigned
+or invalid message authorize, and a valid signature cannot bypass the bridge's local domain and
+process evidence. If two subjects match, Basil denies before evaluating this rule.
 
 ## Audit semantics
 
@@ -124,7 +126,7 @@ Bridged audit records deliberately separate actor and presenter:
 | Field | Bridged meaning |
 | --- | --- |
 | `actor_kind` / `actor_id` | The sealed invocation subject proved by the message, such as `content.publisher`. |
-| `authenticated_by` | The actor proof summary, such as a `signature-key` proof. |
+| `authenticated_by` | The evidence summary, including process credentials and a signature-key fingerprint. |
 | `presenter_kind` / `presenter_id` | The bridge process attested by `SO_PEERCRED`, such as `svc-nats-bridge(9100)`. |
 | `generation`, `op`, `target_id`, `decision`, `reason` | The policy generation, operation target, and PDP outcome for the actor. |
 
@@ -174,6 +176,6 @@ never builds or opens the COSE messages it carries.
 ## Where to go next
 
 - [Sealed invocations](/clients/sealed-invocations/): the COSE profile and response verification contract.
-- [The policy](/configuration/policy/): `signature-key` subjects and the actor grants behind sealed invocations.
+- [The policy](/configuration/policy/): domain-scoped subjects and signature-key evidence.
 - [Audit logs](/operations/audit-logs/): actor-vs-presenter fields for bridged requests.
 - [NATS integration](/clients/nats/): NATS identity minting, JWT signing, validation, and xkey boxes.

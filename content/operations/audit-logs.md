@@ -52,13 +52,11 @@ Ship the audit file to an append-only store and alert on `deny` spikes and on an
 allowed", and it never contains key material, so it's safe to forward and back up.
 {% end %}
 
-For sealed or bridged invocation, treat `actor_*` as the authorized subject and `presenter_*` as the
-transport process that delivered the request. The bridge's Unix subject is useful operational context,
-but it does not inherit the actor's data-plane grants and cannot make an unsigned COSE message
-authorize.
-For the NATS bridge, `authenticated_by` summarizes the sealed `signature-key` actor proof, while
-`presenter_id` names the bridge process that delivered the message (presenting needs no policy
-grant of its own).
+For sealed or bridged invocation, treat `actor_*` as the compound domain-scoped subject and
+`presenter_*` as the transport process that delivered the request. `authenticated_by` summarizes
+the local evidence and verified signature-key fingerprint that established that subject. A bridge
+credential match cannot make an unsigned message authorize, and a signature cannot bypass the
+presenter's local evidence. The bridge needs no separate transport-level `op:invoke` grant.
 
 ## Sinks
 

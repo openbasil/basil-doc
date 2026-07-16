@@ -74,8 +74,12 @@ Issuance is a credential-emitting operation, so it is gated by `mint`, not by `s
 
 ```json
 {
+  "schema": "policy",
   "subjects": {
-    "svc.cert-renew": { "allOf": [{ "kind": "unix", "uid": 990 }] }
+    "svc.cert-renew": {
+      "domain": "host-process",
+      "match": { "all": [{ "process.uid": 990 }] }
+    }
   },
   "rules": [
     {
